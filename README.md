@@ -26,4 +26,11 @@ Another must have is tmux, makes my SSH life so much smoother
 https://github.com/tmux/tmux
 ```
 
+Just beware, if you are upgrading from bash to zsh after installing conda, you might lose the settings.
+Luckily, the fix is easy thanks to [this](https://stackoverflow.com/questions/40370467/anaconda-not-found-in-zsh)
+
+```
+/(your conda installation path)/bin/conda init zsh
+```
+
 This repo stores the vim settings and zsh settings I use.

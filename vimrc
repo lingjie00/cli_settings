@@ -16,9 +16,9 @@ let NERDTreeIgnore=['\~$']
 let R_assign = 0
 
 " Folder Tree options
-autocmd VimEnter * NERDTree | wincmd p
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+" autocmd VimEnter * NERDTree | wincmd p
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"    \ quit | endif
 
 """"""""""""""""""""
 " Auto install
@@ -106,7 +106,7 @@ Plug 'lervag/vimtex'
 Plug 'vim-scripts/Latex-Text-Formatter'
             
 " Folder Tree
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 
 " status bar
 Plug 'vim-airline/vim-airline'

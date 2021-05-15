@@ -121,3 +121,4 @@ source $ZSH/oh-my-zsh.sh
 #
 export PROMPT='%(!.%{%F{yellow}%}.)$USER@%{$fg[white]%}%M ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
+[[ -z $TMUX ]] || conda deactivate; conda activate base

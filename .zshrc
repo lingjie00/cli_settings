@@ -2,10 +2,7 @@
 case "$OSTYPE" in
     darwin*)
         # mac
-        # 1. set PATH for python
-        PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
-        export PATH
-        # 2. conda init
+        # conda init
         __conda_setup="$('/Users/lingjie/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
         if [ $? -eq 0 ]; then
             eval "$__conda_setup"
@@ -17,14 +14,12 @@ case "$OSTYPE" in
             fi
         fi
         unset __conda_setup
-        # 3. path to ZSH setting
+        # path to ZSH setting
         export ZSH="/Users/lingjie/.oh-my-zsh"
     ;;
     linux*)
         # ubuntu
-        # 1. set PATH for python
-        PATH=
-        # 2. conda init
+        # conda init
         __conda_setup="$('/home/ling/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
         if [ $? -eq 0 ]; then
             eval "$__conda_setup"
@@ -36,7 +31,7 @@ case "$OSTYPE" in
             fi
         fi
         unset __conda_setup
-        # 3. path to ZSH setting
+        # path to ZSH setting
         export ZSH="/home/ling/.oh-my-zsh"
 esac
 

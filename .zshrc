@@ -14,8 +14,36 @@ case "$OSTYPE" in
             fi
         fi
         unset __conda_setup
+        # install ZSH if not installed
+        if [ -f "/Users/lingjie/.oh-my-zsh" ]; then
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        fi
         # path to ZSH setting
         export ZSH="/Users/lingjie/.oh-my-zsh"
+        # check nodejs
+        if [ ! -x "$(command -v node)"  ]; then
+            brew install nodejs
+        fi
+        # Install coc
+        if [ -f "/Users/lingjie/.config/coc" ]; then
+            # Install coc.nvim
+            # for vim8
+            mkdir -p ~/.vim/pack/coc/start
+            cd ~/.vim/pack/coc/start
+            curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
+
+            # Install COC extensions
+            # https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+            mkdir -p ~/.config/coc/extensions
+            cd ~/.config/coc/extensions
+            if [ ! -f package.json ]
+            then
+                echo '{"dependencies":{}}'> package.json
+            fi
+            # Change extension names to the extensions you need
+            npm install coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+            cd
+        fi
     ;;
     linux*)
         # ubuntu
@@ -31,9 +59,50 @@ case "$OSTYPE" in
             fi
         fi
         unset __conda_setup
+        # install ZSH if not installed
+        if [ -f "/home/ling/.oh-my-zsh" ]; then
+            sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        fi
         # path to ZSH setting
         export ZSH="/home/ling/.oh-my-zsh"
+        # check nodejs
+        if [ ! -x "$(command -v node)" ]; then
+            sudo apt-get install nodejs
+        fi
+        # Install coc
+        if [ -f "/home/ling/.config/coc" ]; then
+            # Install coc.nvim
+            # for vim8
+            mkdir -p ~/.vim/pack/coc/start
+            cd ~/.vim/pack/coc/start
+            curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
+
+            # Install COC extensions
+            # https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+            mkdir -p ~/.config/coc/extensions
+            cd ~/.config/coc/extensions
+            if [ ! -f package.json ]
+            then
+                echo '{"dependencies":{}}'> package.json
+            fi
+            # Change extension names to the extensions you need
+            npm install coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+            cd
+        fi
 esac
+
+
+# download vim plugin
+if [ -f "$ZSH/custom/plugins/zsh-vi-mode" ]; then
+    git clone https://github.com/jeffreytse/zsh-vi-mode \
+  $ZSH/custom/plugins/zsh-vi-mode
+fi
+
+if [ -f "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions \
+  $ZSH/custom/plugins/zsh-autosuggestions
+fi
+
 
 [[ -z $TMUX ]] || conda deactivate; conda activate base
 
@@ -123,4 +192,3 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 export PROMPT='%(!.%{%F{yellow}%}.)$USER@%{$fg[white]%}%M ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
-

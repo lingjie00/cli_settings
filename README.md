@@ -21,10 +21,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ## zsh
 zsh is good, more fun than bash. Remember to install Oh My Zsh, makes zsh even better.
 
-<<<<<<< HEAD
-=======
 [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
->>>>>>> c5681f6... clean up
 ```
 https://github.com/ohmyzsh/ohmyzsh
 

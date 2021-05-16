@@ -1,0 +1,94 @@
+""""""""""""""""""""""
+" Macros
+" LaTex
+let @t=":w \<cr> :!pdflatex -output-directory '%:p:h'  '%:p' \<cr> :!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>"
+let @1="i\\begin{lstlisting}[language=R]"
+" System
+let @s=":!wakeonlan -i 192.168.86.255 9c:5c:8e:bf:fc:c3 \<cr> i ssh ling@222.164.164.230 -p 99 \<Esc> yydd"
+" R
+let @r=":term Rscript % \<cr>"
+" Python
+let @p=":term python % \<cr>"
+
+let g:SimpylFold_docstring_preview=1
+let python_highlight_all=1
+let R_assign = 0
+
+"""""""""""""""
+" Preferences
+syntax on
+set number
+set tabstop=4
+set softtabstop=4
+set textwidth=120
+set autoindent
+set fileformat=unix
+set shiftwidth=4
+set expandtab
+set foldmethod=indent
+set foldlevel=99
+set encoding=utf-8
+set ignorecase "ignore search case
+
+"""""""""""""""
+" map keys
+
+" COC settings
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+"""""""""""""""""""
+" Plugin
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+""""""""""""""""""
+" R plug in
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
+
+"""""""""""""""""
+" Python plug in
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+
+" Syntax check
+Plug 'vim-syntastic/syntastic'
+
+" auto complete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
+" LaTeX
+Plug 'vim-scripts/Latex-Text-Formatter'
+            
+" status bar
+Plug 'vim-airline/vim-airline'
+
+" Initialize plugin system
+call plug#end()
+

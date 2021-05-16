@@ -20,7 +20,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ## zsh
 zsh is good, more fun than bash. Remember to install Oh My Zsh, makes zsh even better.
 
-[oh-my-zsh](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)
+[oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```

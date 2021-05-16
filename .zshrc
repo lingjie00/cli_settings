@@ -89,6 +89,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git 
     zsh-vi-mode
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh

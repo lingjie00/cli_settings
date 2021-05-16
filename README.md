@@ -1,19 +1,18 @@
 # CLI settings
-My CLI settings.
+My CLI settings. Works with mac and Linux
 
-This repo stores the following settings that I use:
-1. VIM
-2. zsh
-3. miniconda fixes
+Using the following tools:
+1. zsh
+2. tmux
+3. vim
 
 ## VIM
 Vim is fun, saves me tons of time moving between keyboard and mouse.
 
 Vim is more fun when I have some handy add ons.
 
+[vim-plug](https://github.com/junegunn/vim-plug)
 ```
-https://github.com/junegunn/vim-plug
-
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
@@ -21,12 +20,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ## zsh
 zsh is good, more fun than bash. Remember to install Oh My Zsh, makes zsh even better.
 
+[oh-my-zsh](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)
 ```
-https://github.com/ohmyzsh/ohmyzsh
-
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 Another must have is tmux, makes my SSH life so much smoother
@@ -52,6 +48,9 @@ zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode \
   $ZSH/custom/plugins/zsh-vi-mode
 ```
+
+zsh-autosuggestions
+
 ```
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```

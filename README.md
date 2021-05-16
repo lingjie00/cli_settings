@@ -6,29 +6,15 @@ This repo stores the following settings that I use:
 2. zsh
 3. miniconda fixes
 
+The setting file will also install package and plugin that are missing.
+
 ## VIM
 Vim is fun, saves me tons of time moving between keyboard and mouse.
-
-Vim is more fun when I have some handy add ons.
-
-```
-https://github.com/junegunn/vim-plug
-
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
 
 ## zsh
 zsh is good, more fun than bash. Remember to install Oh My Zsh, makes zsh even better.
 
 [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
-```
-https://github.com/ohmyzsh/ohmyzsh
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
 
 Another must have is tmux, makes my SSH life so much smoother
 
@@ -45,14 +31,3 @@ Luckily, the fix is easy thanks to [this](https://stackoverflow.com/questions/40
 /(your conda installation path)/bin/conda init zsh
 ```
 
-# Plugin
-
-zsh-vi-mode
-
-```
-git clone https://github.com/jeffreytse/zsh-vi-mode \
-  $ZSH/custom/plugins/zsh-vi-mode
-```
-```
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```

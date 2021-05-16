@@ -44,3 +44,11 @@ Luckily, the fix is easy thanks to [this](https://stackoverflow.com/questions/40
 /(your conda installation path)/bin/conda init zsh
 ```
 
+# Plugin
+
+zsh-vi-mode
+
+```
+git clone https://github.com/jeffreytse/zsh-vi-mode \
+  $ZSH/custom/plugins/zsh-vi-mode
+```

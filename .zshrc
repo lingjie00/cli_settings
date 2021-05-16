@@ -35,8 +35,6 @@ case "$OSTYPE" in
         export ZSH="/home/ling/.oh-my-zsh"
 esac
 
-export PROMPT='%(!.%{%F{yellow}%}.)$USER@%{$fg[white]%}%M ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
-
 [[ -z $TMUX ]] || conda deactivate; conda activate base
 
 # Set name of the theme to load --- if set to "random", it will
@@ -124,3 +122,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+export PROMPT='%(!.%{%F{yellow}%}.)$USER@%{$fg[white]%}%M ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+

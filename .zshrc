@@ -93,14 +93,14 @@ esac
 
 
 # download vim plugin
-if [ -f "$ZSH/custom/plugins/zsh-vi-mode" ]; then
+if [ -f "$ZSH_CUSTOM/plugins/zsh-vi-mode" ]; then
     git clone https://github.com/jeffreytse/zsh-vi-mode \
-  $ZSH/custom/plugins/zsh-vi-mode
+  $ZSH_CUSTOM/plugins/zsh-vi-mode
 fi
 
-if [ -f "$ZSH/custom/plugins/zsh-autosuggestions" ]; then
+if [ -f "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions \
-  $ZSH/custom/plugins/zsh-autosuggestions
+  $ZSH_CUSTOM/plugins/zsh-autosuggestions
 fi
 
 

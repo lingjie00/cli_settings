@@ -79,6 +79,7 @@ call plug#end()
 
 """""""""""""""
 " map keys
+nmap <silent> <C-f> :Files<CR>
 
 " COC settings
 " GoTo code navigation.

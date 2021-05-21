@@ -70,6 +70,10 @@ Plug 'vim-scripts/Latex-Text-Formatter'
 " status bar
 Plug 'vim-airline/vim-airline'
 
+" terminal fuzzy finder
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 " Initialize plugin system
 call plug#end()
 

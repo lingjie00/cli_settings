@@ -103,6 +103,12 @@ if [ -f "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
   $ZSH_CUSTOM/plugins/zsh-autosuggestions
 fi
 
+# download fzf
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
 
 [[ -z $TMUX ]] || conda deactivate; conda activate base
 

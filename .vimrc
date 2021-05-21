@@ -84,6 +84,7 @@ call plug#end()
 " Gruvbox
 autocmd vimenter * ++nested colorscheme gruvbox
 set background=dark
+let g:gruvbox_contrast_dark="hard"
 
 """""""""""""""
 " map keys

@@ -74,8 +74,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
+" gruvbox
+Plug 'morhetz/gruvbox'
+
 " Initialize plugin system
 call plug#end()
+
+""""""""""""""
+" Gruvbox
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
 
 """""""""""""""
 " map keys

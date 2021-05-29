@@ -31,7 +31,8 @@ set encoding=utf-8
 set ignorecase "ignore search case
 set cmdheight=2
 set updatetime=300
-
+set spelllang=en "spell check
+set spell " always on spell check
 
 """""""""""""""""""
 " Plugin

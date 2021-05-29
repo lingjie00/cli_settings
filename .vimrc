@@ -77,6 +77,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " gruvbox
 Plug 'morhetz/gruvbox'
 
+" navigation shortcut
+Plug 'christoomey/vim-tmux-navigator'
+
 " Initialize plugin system
 call plug#end()
 

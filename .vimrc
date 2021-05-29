@@ -80,6 +80,9 @@ Plug 'morhetz/gruvbox'
 " navigation shortcut
 Plug 'christoomey/vim-tmux-navigator'
 
+" vim interact with kernel
+Plug 'preservim/vimux'
+
 " Initialize plugin system
 call plug#end()
 
@@ -91,7 +94,10 @@ let g:gruvbox_contrast_dark="hard"
 
 """""""""""""""
 " map keys
+" map find files
 nmap <silent> <C-f> :Files<CR>
+" map vimux command
+map <Leader>vp :VimuxPromptCommand<CR>
 
 " COC settings
 " GoTo code navigation.

@@ -98,6 +98,9 @@ Plug 'preservim/nerdtree'
 "markdown preview
 Plug 'JamshedVesuna/vim-markdown-preview'
 
+" send buffer
+Plug 'esamattis/slimux'
+
 " Initialize plugin system
 call plug#end()
 
@@ -113,6 +116,13 @@ let g:gruvbox_contrast_dark="hard"
 nmap <silent> <C-f> :Files<CR>
 " map vimux command
 map <Leader>vp :VimuxPromptCommand<CR>
+
+" send to buffer
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>b :SlimuxREPLSendBuffer<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
 
 " COC settings
 " GoTo code navigation.

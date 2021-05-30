@@ -14,6 +14,10 @@ let g:SimpylFold_docstring_preview=1
 let python_highlight_all=1
 let R_assign = 0
 
+" markdown preview
+let vim_markdown_preview_toggle=2
+"let vim_markdown_preview_browser='Safari'
+
 """""""""""""""
 " Preferences
 syntax on
@@ -90,6 +94,9 @@ Plug 'airblade/vim-gitgutter'
 
 "Nerd tree
 Plug 'preservim/nerdtree'
+
+"markdown preview
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 " Initialize plugin system
 call plug#end()

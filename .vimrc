@@ -33,6 +33,7 @@ set cmdheight=2
 set updatetime=300
 set spelllang=en "spell check
 set spell " always on spell check
+set updatetime=100  " change git update
 
 """""""""""""""""""
 " Plugin
@@ -83,6 +84,12 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " vim interact with kernel
 Plug 'preservim/vimux'
+
+" vim git
+Plug 'airblade/vim-gitgutter'
+
+"Nerd tree
+Plug 'preservim/nerdtree'
 
 " Initialize plugin system
 call plug#end()

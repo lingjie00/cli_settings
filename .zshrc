@@ -1,3 +1,9 @@
+# tip to add ssh without password
+# ssh-keygen
+# without filename and passphrase
+# ssh-copy-id userid@hostname
+# ssh userid@hostname
+#
 # system specific ZSH settings
 case "$OSTYPE" in
     darwin*)

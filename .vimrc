@@ -72,6 +72,7 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " LaTeX
 Plug 'vim-scripts/Latex-Text-Formatter'
+Plug 'lervag/vimtex'
             
 " status bar
 Plug 'vim-airline/vim-airline'

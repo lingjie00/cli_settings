@@ -102,6 +102,9 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 " send buffer
 Plug 'esamattis/slimux'
 
+" Easy motion
+Plug 'easymotion/vim-easymotion'
+
 " Initialize plugin system
 call plug#end()
 

@@ -47,7 +47,7 @@ case "$OSTYPE" in
                 echo '{"dependencies":{}}'> package.json
             fi
             # Change extension names to the extensions you need
-            npm install coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+            npm install coc-clangd coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
             cd
         fi
     ;;
@@ -92,7 +92,7 @@ case "$OSTYPE" in
                 echo '{"dependencies":{}}'> package.json
             fi
             # Change extension names to the extensions you need
-            npm install coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+            npm install coc-clangd coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
             cd
         fi
 esac

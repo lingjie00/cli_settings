@@ -9,6 +9,8 @@ let @s=":!wakeonlan -i 192.168.86.255 9c:5c:8e:bf:fc:c3 \<cr> i ssh ling@222.164
 let @r=":term Rscript % \<cr>"
 " Python
 let @p=":term python % \<cr>"
+" C++
+let @c=":!g++ '%' -o '%:r' \<cr>"
 
 let g:SimpylFold_docstring_preview=1
 let python_highlight_all=1

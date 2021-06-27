@@ -16,10 +16,6 @@ let g:SimpylFold_docstring_preview=1
 let python_highlight_all=1
 let R_assign = 0
 
-" markdown preview
-let vim_markdown_preview_toggle=2
-"let vim_markdown_preview_browser='Safari'
-
 """""""""""""""
 " Preferences
 syntax on
@@ -38,10 +34,6 @@ set encoding=utf-8
 set ignorecase "ignore search case
 set cmdheight=2
 set updatetime=300
-set spelllang=en "spell check
-set spell " always on spell check
-set updatetime=100  " change git update
-
 """""""""""""""""""
 " Plugin
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -98,9 +90,6 @@ Plug 'airblade/vim-gitgutter'
 
 "Nerd tree
 Plug 'preservim/nerdtree'
-
-"markdown preview
-Plug 'JamshedVesuna/vim-markdown-preview'
 
 " send buffer
 Plug 'esamattis/slimux'

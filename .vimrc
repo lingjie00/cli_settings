@@ -11,6 +11,8 @@ let @r=":term Rscript % \<cr>"
 let @p=":term python % \<cr>"
 " C++
 let @c=":!g++ '%' -o '%:r' \<cr>"
+" Json
+let @j=":%!python -m json.tool \<cr>"
 
 let g:SimpylFold_docstring_preview=1
 let python_highlight_all=1

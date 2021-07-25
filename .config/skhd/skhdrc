@@ -20,6 +20,12 @@ hyper - l : yabai -m window --swap east
 hyper - j : yabai -m window --swap south
 hyper - k : yabai -m window --swap north
 
+## resize window
+hyper - a : yabai -m window --resize left:-100:0
+hyper - s : yabai -m window --resize bottom:0:100
+hyper - w : yabai -m window --resize top:0:-100
+hyper - d : yabai -m window --resize right:100:0
+
 ## focus display
 ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
 ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2

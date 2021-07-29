@@ -36,6 +36,7 @@ set encoding=utf-8
 set ignorecase "ignore search case
 set cmdheight=2
 set updatetime=300
+set termguicolors
 """""""""""""""""""
 " Plugin
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -99,14 +100,25 @@ Plug 'esamattis/slimux'
 " Easy motion
 Plug 'easymotion/vim-easymotion'
 
+" NeoSolarized
+Plug 'overcache/NeoSolarized'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
 " Initialize plugin system
 call plug#end()
 
 """"""""""""""
 " Gruvbox
-autocmd vimenter * ++nested colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark="hard"
+" autocmd vimenter * ++nested colorscheme gruvbox
+" set background=dark
+"let g:gruvbox_contrast_dark="hard"
+
+"""""""""""""""
+" NeoSolarized
+colorscheme NeoSolarized
 
 """""""""""""""
 " map keys

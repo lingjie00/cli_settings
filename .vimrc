@@ -3,8 +3,6 @@
 " LaTex
 let @t=":w \<cr> :!pdflatex -output-directory '%:p:h'  '%:p' \<cr> :!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>"
 let @1="i\\begin{lstlisting}[language=R]"
-" System
-let @s=":!wakeonlan -i 192.168.86.255 9c:5c:8e:bf:fc:c3 \<cr> i ssh ling@222.164.164.230 -p 99 \<Esc> yydd"
 " R
 let @r=":term Rscript % \<cr>"
 " Python
@@ -36,6 +34,7 @@ set encoding=utf-8
 set ignorecase "ignore search case
 set cmdheight=2
 set updatetime=300
+set spell
 """""""""""""""""""
 " Plugin
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -68,7 +67,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " LaTeX
-Plug 'vim-scripts/Latex-Text-Formatter'
 Plug 'lervag/vimtex'
             
 " status bar
@@ -84,12 +82,6 @@ Plug 'morhetz/gruvbox'
 " navigation shortcut
 Plug 'christoomey/vim-tmux-navigator'
 
-" vim interact with kernel
-Plug 'preservim/vimux'
-
-" vim git
-Plug 'airblade/vim-gitgutter'
-
 "Nerd tree
 Plug 'preservim/nerdtree'
 
@@ -102,6 +94,7 @@ Plug 'easymotion/vim-easymotion'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
 
 " Initialize plugin system
 call plug#end()
@@ -116,8 +109,6 @@ set background=dark
 " map keys
 " map find files
 nmap <silent> <C-f> :Files<CR>
-" map vimux command
-map <Leader>vp :VimuxPromptCommand<CR>
 
 " send to buffer
 map <Leader>s :SlimuxREPLSendLine<CR>
@@ -173,6 +164,19 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+" fuzzy search with easymotion
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that

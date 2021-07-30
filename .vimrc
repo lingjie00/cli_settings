@@ -88,8 +88,8 @@ Plug 'preservim/nerdtree'
 " send buffer
 Plug 'esamattis/slimux'
 
-" Easy motion
-Plug 'easymotion/vim-easymotion'
+" insearch
+Plug 'haya14busa/incsearch.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -116,6 +116,25 @@ vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>b :SlimuxREPLSendBuffer<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
+
+" system clipboard
+vnoremap <leader>y "*y
+vnoremap <leader>p "+p
+
+" insearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 " COC settings
 " GoTo code navigation.
@@ -175,8 +194,6 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
-
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that

@@ -49,6 +49,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     " LSP
     Plug 'nvim-lua/popup.nvim'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'glepnir/lspsaga.nvim'
 
     " LaTeX
     Plug 'lervag/vimtex'
@@ -159,6 +160,6 @@ xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
 
 lua <<EOF
-require'lspconfig'.pyright.setup{}
+require'lspconfig'.pylsp.setup{}
 require'lspconfig'.r_language_server.setup{}
 EOF

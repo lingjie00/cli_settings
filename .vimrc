@@ -36,6 +36,7 @@ set cmdheight=2
 set updatetime=300
 set spell
 set mouse=a
+set lazyredraw
 """""""""""""""""""
 " Plugin
 if empty(glob('~/.vim/autoload/plug.vim'))

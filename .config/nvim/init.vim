@@ -46,6 +46,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 
+    " Autocomplete
+    Plug 'nvim-lua/completion-nvim'
+
     " LSP
     Plug 'nvim-lua/popup.nvim'
     Plug 'neovim/nvim-lspconfig'
@@ -126,7 +129,7 @@ nnoremap <Leader>' <cmd>lua require'telescope.builtin'.marks{}<CR>
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
 
 " all files
-nnoremap <Leader>bfs <cmd>lua require'telescope.builtin'.find_files{}<CR>
+nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
 
 " ripgrep like grep through dir
 nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
@@ -158,6 +161,9 @@ nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
+
+" Use completion-nvim in every buffer
+" autocmd BufEnter * lua require'completion'.on_attach()
 
 lua <<EOF
 require'lspconfig'.pylsp.setup{}

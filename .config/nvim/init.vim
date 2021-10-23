@@ -37,8 +37,6 @@ set updatetime=300
 set spell
 set mouse=a
 set completeopt=menu,menuone,noselect
-
-" Don't redraw while executing macros (good performance config)
 set lazyredraw
 
 " >> load plugins
@@ -89,7 +87,6 @@ call plug#end()
 " Gruvbox
 autocmd vimenter * ++nested colorscheme gruvbox
 set background=dark
-" let g:gruvbox_contrast_dark="hard"
 
 " insearch
 map /  <Plug>(incsearch-forward)
@@ -164,9 +161,6 @@ nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
-
-" Use completion-nvim in every buffer
-" autocmd BufEnter * lua require'completion'.on_attach()
 
 lua <<EOF
 -- Setup nvim-cmp.

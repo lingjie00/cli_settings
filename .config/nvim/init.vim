@@ -59,6 +59,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " status bar
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
     " gruvbox
     Plug 'morhetz/gruvbox'
@@ -89,6 +90,10 @@ call plug#end()
 " Gruvbox
 autocmd vimenter * ++nested colorscheme gruvbox
 set background=dark
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='wombat'
 
 " insearch
 map /  <Plug>(incsearch-forward)

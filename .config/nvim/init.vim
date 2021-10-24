@@ -37,7 +37,6 @@ set updatetime=300
 set spell
 set mouse=a
 set completeopt=menu,menuone,noselect
-set lazyredraw
 
 " >> load plugins
 call plug#begin(stdpath('data') . 'vimplug')
@@ -55,6 +54,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/popup.nvim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'glepnir/lspsaga.nvim'
+
+    " comment
+    Plug 'terrortylor/nvim-comment'
 
     " LaTeX
     Plug 'lervag/vimtex'
@@ -209,6 +211,16 @@ end,
     }, {
     { name = 'buffer' },
     })
+})
+
+-- setup nvim-comment
+require('nvim_comment').setup({
+  -- should comment out empty or whitespace only lines
+  comment_empty = true,
+  -- Normal mode mapping left hand side
+  line_mapping = "gcc",
+  -- Visual/Operator mapping left hand side
+  operator_mapping = "gc",
 })
 
 -- Setup lspconfig.

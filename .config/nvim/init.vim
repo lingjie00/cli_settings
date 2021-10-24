@@ -79,6 +79,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     " insearch
     Plug 'haya14busa/incsearch.vim'
 
+    " change surround
+    Plug 'tpope/vim-surround'
+
     " Git
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'

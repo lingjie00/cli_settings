@@ -83,6 +83,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
     Plug 'airblade/vim-gitgutter'
+
+    " Easymotion
+    Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 
@@ -110,6 +113,11 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+" Easymotion
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+let g:EasyMotion_smartcase = 1
+
 " send to buffer
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
@@ -122,7 +130,7 @@ nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
 " most recently used files
 nnoremap <Leader>m <cmd>lua require'telescope.builtin'.oldfiles{}<CR>
 " find buffer
-nnoremap ; <cmd>lua require'telescope.builtin'.buffers{}<CR>
+nnoremap <Leader>; <cmd>lua require'telescope.builtin'.buffers{}<CR>
 " find in current buffer
 nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
 " bookmarks

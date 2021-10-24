@@ -1,20 +1,16 @@
 """"""""""""""""""""""
 " Macros
-" LaTex
+" LaTex: compile latex file
 let @t=":w \<cr> :!pdflatex -output-directory '%:p:h'  '%:p' \<cr> :!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>"
 let @1="i\\begin{lstlisting}[language=R]"
-" R
+" R : run current script
 let @r=":term Rscript % \<cr>"
-" Python
-let @p=":term python % \<cr>"
-" C++
+" Python: run current python script
+let @p=":term python3 % \<cr>"
+" C++: compile the current file
 let @c=":!g++ '%' -o '%:r' \<cr>"
-" Json
+" Json: reformat json files
 let @j=":%!python -m json.tool \<cr>"
-
-let g:SimpylFold_docstring_preview=1
-let python_highlight_all=1
-let R_assign = 0
 
 """""""""""""""
 " Preferences
@@ -118,39 +114,22 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 
 " >> Telescope bindings
 nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
-
 " most recently used files
 nnoremap <Leader>m <cmd>lua require'telescope.builtin'.oldfiles{}<CR>
-
 " find buffer
 nnoremap ; <cmd>lua require'telescope.builtin'.buffers{}<CR>
-
 " find in current buffer
 nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
-
 " bookmarks
 nnoremap <Leader>' <cmd>lua require'telescope.builtin'.marks{}<CR>
-
 " git files
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
-
 " all files
 nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
-
 " ripgrep like grep through dir
 nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
-
 " pick color scheme
 nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
-
-
-" >> setup nerdcomment key bindings
-let g:NERDCreateDefaultMappings = 0
-let g:NERDSpaceDelims = 1
-
-xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
-nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
-
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>

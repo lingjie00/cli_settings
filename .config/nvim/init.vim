@@ -115,7 +115,8 @@ map g# <Plug>(incsearch-nohl-g#)
 
 " Easymotion
 " s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
+nmap s <Plug>(easymotion-overwin-f)
+nmap S <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
 
 " send to buffer

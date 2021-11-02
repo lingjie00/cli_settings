@@ -38,7 +38,7 @@ set completeopt=menu,menuone,noselect
 call plug#begin(stdpath('data') . 'vimplug')
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telesccpe/telescope.nvim'
     Plug 'nvim-treesitter/nvim-treesitter'
 
     " Autocomplete
@@ -58,11 +58,10 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'lervag/vimtex'
 
     " status bar
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-
-    " gruvbox
-    Plug 'morhetz/gruvbox'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
+    Plug 'nvim-lualine/lualine.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
 
     " navigation shortcut
     Plug 'christoomey/vim-tmux-navigator'
@@ -86,17 +85,25 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " Easymotion
     Plug 'easymotion/vim-easymotion'
+
+    " Themes 
+    " gruvbox
+    Plug 'morhetz/gruvbox'
+
+    " Catppuccino 
+    Plug 'Pocco81/Catppuccino.nvim'
+
 call plug#end()
 
 
 """"""""""""""
 " Gruvbox
-autocmd vimenter * ++nested colorscheme gruvbox
-set background=dark
+" autocmd vimenter * ++nested colorscheme gruvbox
+" set background=dark
 
 " Airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme='wombat'
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='wombat'
 
 " insearch
 map /  <Plug>(incsearch-forward)
@@ -225,4 +232,99 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require'lspconfig'.pylsp.setup{}
 require'lspconfig'.r_language_server.setup{}
 require'lspconfig'.texlab.setup{}
+
+local catppuccino = require("catppuccino")
+
+-- configure it
+catppuccino.setup(
+    {
+		colorscheme = "dark_catppuccino",
+		transparency = true,
+		term_colors = true,
+		styles = {
+			comments = "italic",
+			functions = "italic",
+			keywords = "italic",
+			strings = "NONE",
+			variables = "NONE",
+		},
+		integrations = {
+			treesitter = true,
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = "italic",
+					hints = "italic",
+					warnings = "italic",
+					information = "italic",
+				},
+				underlines = {
+					errors = "underline",
+					hints = "underline",
+					warnings = "underline",
+					information = "underline",
+				}
+			},
+			lsp_trouble = false,
+			lsp_saga = false,
+			gitgutter = false,
+			gitsigns = false,
+			telescope = false,
+			nvimtree = {
+				enabled = false,
+				show_root = false,
+			},
+			which_key = false,
+			indent_blankline = {
+				enabled = false,
+				colored_indent_levels = false,
+			},
+			dashboard = false,
+			neogit = false,
+			vim_sneak = false,
+			fern = false,
+			barbar = false,
+			bufferline = false,
+			markdown = false,
+			lightspeed = false,
+			ts_rainbow = false,
+			hop = false,
+		}
+	}
+)
+
+-- lualine
+require'lualine'.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'catppuccino',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff',
+                  {'diagnostics', sources={'nvim_lsp', 'coc'}}},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+  }
+
 EOF
+
+" Catppuccino
+colorscheme catppuccino

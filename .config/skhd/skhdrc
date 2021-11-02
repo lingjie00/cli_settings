@@ -10,9 +10,6 @@ ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 ## Close active application
 hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
-## open terminal
-# hyper - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
-
 ## swap window
 # hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key
 hyper - h : yabai -m window --swap west
@@ -26,11 +23,26 @@ hyper - s : yabai -m window --resize bottom:0:100
 hyper - w : yabai -m window --resize top:0:-100
 hyper - d : yabai -m window --resize right:100:0
 hyper - b : yabai -m window --resize abs:1280:750
+shift + cmd - a : yabai -m window --resize left:100:0
+shift + cmd - s : yabai -m window --resize bottom:0:-100
+shift + cmd - w : yabai -m window --resize top:0:100
+shift + cmd - d : yabai -m window --resize right:-100:0
+
+## toggle window fullscreen zoom
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+# cycle through windows
+hyper - i : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
+hyper - o : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
+
+################################################################
+############################# UNUSED ###########################
+################################################################
 
 ## focus display
-ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
-ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2
-ctrl + cmd - 3 : yabai -m window --display 3 yabai -m display --focus 3
+# ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
+# ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2
+# ctrl + cmd - 3 : yabai -m window --display 3 yabai -m display --focus 3
 
 ## increase window size
 #shift + alt - a : yabai -m window --resize left:-20:0
@@ -43,6 +55,10 @@ ctrl + cmd - 3 : yabai -m window --display 3 yabai -m display --focus 3
 #shift + cmd - s : yabai -m window --resize bottom:0:-20
 #shift + cmd - w : yabai -m window --resize top:0:20
 #shift + cmd - d : yabai -m window --resize right:-20:0
+
+
+## open terminal
+# hyper + return : /Applications/iTerm.app/Contents/MacOS/iTerm2
 
 ## rotate tree 90
 # hyper - r : yabai -m space --rotate 90
@@ -58,17 +74,6 @@ ctrl + cmd - 3 : yabai -m window --display 3 yabai -m display --focus 3
 # shift + lalt + lcmd + ctrl + ralt - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
 # shift + lalt + lcmd + ctrl + ralt - 2 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
 # shift + lalt + lcmd + ctrl + ralt - 3 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '5' ]]; then yabai -m window --space 6; elif [[ '{}' = '6' ]]; then yabai -m window --space 5; fi"
-
-## toggle window fullscreen zoom
-hyper - f : yabai -m window --toggle zoom-fullscreen
-
-# cycle through windows
-hyper - i : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
-hyper - o : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
-
-################################################################
-############################# UNUSED ###########################
-################################################################
 
 ## float / unfloat window and center on screen
 #alt - t : yabai -m window --toggle float;\

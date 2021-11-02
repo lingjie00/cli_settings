@@ -58,16 +58,14 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'lervag/vimtex'
 
     " status bar
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
 
     " navigation shortcut
     Plug 'christoomey/vim-tmux-navigator'
 
-    "Nerd tree
-    Plug 'preservim/nerdtree'
+    "nvim tree
+    Plug 'kyazdani42/nvim-tree.lua'
 
     " send buffer
     Plug 'esamattis/slimux'
@@ -100,10 +98,6 @@ call plug#end()
 " Gruvbox
 " autocmd vimenter * ++nested colorscheme gruvbox
 " set background=dark
-
-" Airline
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme='wombat'
 
 " insearch
 map /  <Plug>(incsearch-forward)
@@ -154,7 +148,6 @@ nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
@@ -168,6 +161,9 @@ nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
 
+" nvim tree binding
+nnoremap <C-f> :NvimTreeToggle<CR>
+
 lua <<EOF
 
 -- Setup treesitter
@@ -180,18 +176,18 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
 }
 
 
--- Setup nvim-cmp.
+-- Setup nvim-cmp (autocomplete)
 local cmp = require'cmp'
 
 cmp.setup({
 snippet = {
     expand = function(args)
-    vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
     -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
@@ -199,15 +195,16 @@ end,
 },
     mapping = {
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-u>'] = cmp.mapping.scroll_docs(4),
+        -- ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        -- ['<C-CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
         ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
         },
     sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
+    { name = 'nvim_lsp' }, 
+    -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
@@ -271,7 +268,7 @@ catppuccino.setup(
 			gitsigns = false,
 			telescope = false,
 			nvimtree = {
-				enabled = false,
+				enabled = true,
 				show_root = false,
 			},
 			which_key = false,
@@ -323,6 +320,55 @@ require'lualine'.setup {
   tabline = {},
   extensions = {}
   }
+
+-- nvim tree 
+require'nvim-tree'.setup {
+  disable_netrw       = true,
+  hijack_netrw        = true,
+  open_on_setup       = false,
+  ignore_ft_on_setup  = {},
+  auto_close          = true,
+  open_on_tab         = false,
+  hijack_cursor       = false,
+  update_cwd          = false,
+  update_to_buf_dir   = {
+    enable = true,
+    auto_open = true,
+  },
+  diagnostics = {
+    enable = false,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }
+  },
+  update_focused_file = {
+    enable      = false,
+    update_cwd  = false,
+    ignore_list = {}
+  },
+  system_open = {
+    cmd  = nil,
+    args = {}
+  },
+  filters = {
+    dotfiles = false,
+    custom = {}
+  },
+  view = {
+    width = 30,
+    height = 30,
+    hide_root_folder = false,
+    side = 'left',
+    auto_resize = false,
+    mappings = {
+      custom_only = false,
+      list = {}
+    }
+  }
+}
 
 EOF
 

@@ -19,7 +19,7 @@ set number
 set relativenumber
 set tabstop=4
 set softtabstop=4
-set textwidth=120
+set textwidth=70
 set autoindent
 set fileformat=unix
 set shiftwidth=4

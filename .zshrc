@@ -26,30 +26,30 @@ case "$OSTYPE" in
         fi
         # path to ZSH setting
         export ZSH="/Users/lingjie/.oh-my-zsh"
-        # check nodejs
-        if [ ! -x "$(command -v node)"  ]; then
-            brew install nodejs
-        fi
-        # Install coc
-        if [ -f "/Users/lingjie/.config/coc" ]; then
-            # Install coc.nvim
-            # for vim8
-            mkdir -p ~/.vim/pack/coc/start
-            cd ~/.vim/pack/coc/start
-            curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
-
-            # Install COC extensions
-            # https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-            mkdir -p ~/.config/coc/extensions
-            cd ~/.config/coc/extensions
-            if [ ! -f package.json ]
-            then
-                echo '{"dependencies":{}}'> package.json
-            fi
-            # Change extension names to the extensions you need
-            npm install coc-clangd coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-            cd
-        fi
+#         # check nodejs
+#         if [ ! -x "$(command -v node)"  ]; then
+#             brew install nodejs
+#         fi
+#         # Install coc
+#         if [ -f "/Users/lingjie/.config/coc" ]; then
+#             # Install coc.nvim
+#             # for vim8
+#             mkdir -p ~/.vim/pack/coc/start
+#             cd ~/.vim/pack/coc/start
+#             curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
+# 
+#             # Install COC extensions
+#             # https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+#             mkdir -p ~/.config/coc/extensions
+#             cd ~/.config/coc/extensions
+#             if [ ! -f package.json ]
+#             then
+#                 echo '{"dependencies":{}}'> package.json
+#             fi
+#             # Change extension names to the extensions you need
+#             npm install coc-clangd coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+#             cd
+#         fi
     ;;
     linux*)
         # ubuntu
@@ -71,30 +71,30 @@ case "$OSTYPE" in
         fi
         # path to ZSH setting
         export ZSH="/home/ling/.oh-my-zsh"
-        # check nodejs
-        if [ ! -x "$(command -v node)" ]; then
-            sudo apt-get install nodejs
-        fi
-        # Install coc
-        if [ -f "/home/ling/.config/coc" ]; then
-            # Install coc.nvim
-            # for vim8
-            mkdir -p ~/.vim/pack/coc/start
-            cd ~/.vim/pack/coc/start
-            curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
-
-            # Install COC extensions
-            # https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-            mkdir -p ~/.config/coc/extensions
-            cd ~/.config/coc/extensions
-            if [ ! -f package.json ]
-            then
-                echo '{"dependencies":{}}'> package.json
-            fi
-            # Change extension names to the extensions you need
-            npm install coc-clangd coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-            cd
-        fi
+#         # check nodejs
+#         if [ ! -x "$(command -v node)" ]; then
+#             sudo apt-get install nodejs
+#         fi
+#         # Install coc
+#         if [ -f "/home/ling/.config/coc" ]; then
+#             # Install coc.nvim
+#             # for vim8
+#             mkdir -p ~/.vim/pack/coc/start
+#             cd ~/.vim/pack/coc/start
+#             curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
+# 
+#             # Install COC extensions
+#             # https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+#             mkdir -p ~/.config/coc/extensions
+#             cd ~/.config/coc/extensions
+#             if [ ! -f package.json ]
+#             then
+#                 echo '{"dependencies":{}}'> package.json
+#             fi
+#             # Change extension names to the extensions you need
+#             npm install coc-clangd coc-json coc-python coc-pydocstring coc-r-lsp coc-snippets coc-vimlsp --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+#             cd
+#         fi
 esac
 
 
@@ -109,11 +109,11 @@ if [ -f "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
   $ZSH_CUSTOM/plugins/zsh-autosuggestions
 fi
 
-# download fzf
-if type rg &> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files'
-  export FZF_DEFAULT_OPTS='-m --height 50% --border'
-fi
+# # download fzf
+# if type rg &> /dev/null; then
+#   export FZF_DEFAULT_COMMAND='rg --files'
+#   export FZF_DEFAULT_OPTS='-m --height 50% --border'
+# fi
 
 
 [[ -z $TMUX ]] || conda deactivate; conda activate base

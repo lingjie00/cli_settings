@@ -38,7 +38,7 @@ set completeopt=menu,menuone,noselect
 call plug#begin(stdpath('data') . 'vimplug')
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telesccpe/telescope.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-treesitter/nvim-treesitter'
 
     " Autocomplete

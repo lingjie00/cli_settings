@@ -39,7 +39,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter'
 
     " Autocomplete
 	Plug 'hrsh7th/cmp-nvim-lsp'
@@ -50,6 +49,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-lua/popup.nvim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'glepnir/lspsaga.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter'
 
     " comment
     Plug 'terrortylor/nvim-comment'
@@ -59,6 +59,8 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim'
+
+    " web icons
     Plug 'kyazdani42/nvim-web-devicons'
 
     " navigation shortcut

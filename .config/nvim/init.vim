@@ -86,6 +86,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Easymotion
     Plug 'easymotion/vim-easymotion'
 
+    " Harpoon
+    Plug 'ThePrimeagen/harpoon'
+
     " Themes 
     " gruvbox
     Plug 'morhetz/gruvbox'
@@ -121,6 +124,13 @@ map g# <Plug>(incsearch-nohl-g#)
 nmap s <Plug>(easymotion-overwin-f)
 nmap S <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
+
+" Harpoon 
+nnoremap <leader>` <cmd>lua require'harpoon.mark'.add_file()<CR>
+nnoremap <leader>1 <cmd>lua require'harpoon.ui'.nav_file(1)<CR>
+nnoremap <leader>2 <cmd>lua require'harpoon.ui'.nav_file(2)<CR>
+nnoremap <leader>3 <cmd>lua require'harpoon.ui'.nav_file(3)<CR>
+nnoremap <leader>4 <cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>
 
 " send to buffer
 map <Leader>s :SlimuxREPLSendLine<CR>

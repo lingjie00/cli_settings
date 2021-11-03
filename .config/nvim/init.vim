@@ -173,6 +173,10 @@ nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
 
+" global copy
+noremap <leader>p "+p
+noremap <leader>y "+y
+
 " nvim tree binding
 nnoremap <C-f> :NvimTreeToggle<CR>
 

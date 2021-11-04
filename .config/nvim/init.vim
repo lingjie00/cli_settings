@@ -36,6 +36,18 @@ set completeopt=menu,menuone,noselect
 
 " >> load plugins
 call plug#begin(stdpath('data') . 'vimplug')
+    """""""""""
+    " Themes  "
+    """""""""""
+    " gruvbox
+    Plug 'morhetz/gruvbox'
+
+    " Catppuccino 
+    Plug 'Pocco81/Catppuccino.nvim'
+
+    """""""""""
+    " Plugins "
+    """""""""""
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
@@ -44,6 +56,8 @@ call plug#begin(stdpath('data') . 'vimplug')
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/nvim-cmp'
+    Plug 'f3fora/cmp-spell'
+    Plug 'hrsh7th/cmp-path'
 
     " LSP
     Plug 'nvim-lua/popup.nvim'
@@ -60,8 +74,12 @@ call plug#begin(stdpath('data') . 'vimplug')
     " status bar
     Plug 'nvim-lualine/lualine.nvim'
 
+    " nvim-gps
+    Plug 'SmiteshP/nvim-gps'
+
     " web icons
     Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'yamatsum/nvim-nonicons'
 
     " navigation shortcut
     Plug 'christoomey/vim-tmux-navigator'
@@ -82,6 +100,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
     Plug 'airblade/vim-gitgutter'
+    Plug 'f-person/git-blame.nvim'
 
     " Easymotion
     Plug 'easymotion/vim-easymotion'
@@ -89,12 +108,20 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Harpoon
     Plug 'ThePrimeagen/harpoon'
 
-    " Themes 
-    " gruvbox
-    Plug 'morhetz/gruvbox'
+    " Start dashboard
+    Plug 'glepnir/dashboard-nvim'
 
-    " Catppuccino 
-    Plug 'Pocco81/Catppuccino.nvim'
+    " Trouble
+    Plug 'folke/trouble.nvim'
+
+    " Symbols-outline
+    Plug 'simrat39/symbols-outline.nvim'
+
+    " Aerial
+    Plug 'stevearc/aerial.nvim'
+
+    " Glow
+    Plug 'ellisonleao/glow.nvim'
 
 call plug#end()
 
@@ -180,18 +207,24 @@ noremap <leader>y "+y
 " nvim tree binding
 nnoremap <C-f> :NvimTreeToggle<CR>
 
+" dashboard
+let g:dashboard_default_executive = 'telescope'
+
+" Trouble
+nnoremap <C-t> :TroubleToggle<CR>
+
+" Symbols-outline
+nnoremap <C-y> :SymbolsOutline<CR>
+
+
 lua <<EOF
 
 -- Setup treesitter
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {},  -- list of language that will be disabled
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
+    enable = true,                 -- false will disable the whole extension
+    disable = {},                  -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
 }
@@ -203,10 +236,6 @@ local cmp = require'cmp'
 cmp.setup({
 snippet = {
     expand = function(args)
-    -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-    -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
 end,
 },
     mapping = {
@@ -220,12 +249,12 @@ end,
         },
     sources = cmp.config.sources({
     { name = 'nvim_lsp' }, 
-    -- { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
     }, {
     { name = 'buffer' },
+    }, {
+    { name = 'path' },
+    }, {
+    { name = 'spell' },
     })
 })
 
@@ -242,13 +271,6 @@ require('nvim_comment').setup({
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require'lspconfig'.pylsp.setup{}
-require'lspconfig'.r_language_server.setup{}
-require'lspconfig'.texlab.setup{}
-require'lspconfig'.vimls.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.dockerls.setup{}
-require'lspconfig'.jsonls.setup{}
 
 local catppuccino = require("catppuccino")
 
@@ -310,6 +332,9 @@ catppuccino.setup(
 	}
 )
 
+require("nvim-gps").setup()
+local gps = require("nvim-gps")
+
 -- lualine
 require'lualine'.setup {
   options = {
@@ -324,7 +349,7 @@ require'lualine'.setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff',
                   {'diagnostics', sources={'nvim_lsp', 'coc'}}},
-    lualine_c = {'filename'},
+                  lualine_c = {'filename', {gps.get_location, condition = gps.is_available}},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
@@ -347,47 +372,57 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
   ignore_ft_on_setup  = {},
-  auto_close          = false,
+  auto_close          = true,
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
   update_to_buf_dir   = {
     enable = true,
     auto_open = true,
-  },
-  diagnostics = {
-    enable = false,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
     }
-  },
-  update_focused_file = {
-    enable      = false,
-    update_cwd  = false,
-    ignore_list = {}
-  },
-  system_open = {
-    cmd  = nil,
-    args = {}
-  },
-  filters = {
-    dotfiles = false,
-    custom = {}
-  },
-  view = {
-    width = 30,
-    height = 30,
-    hide_root_folder = false,
-    side = 'left',
-    auto_resize = false,
-    mappings = {
-      custom_only = false,
-      list = {}
-    }
+}
+
+-- Trouble
+require'trouble'.setup{}
+
+-- Aerial
+local aerial = require'aerial'
+
+local custom_attach = function(client)
+  aerial.on_attach(client)
+
+  -- Aerial does not set any mappings by default, so you'll want to set some up
+  -- Toggle the aerial window with <leader>a
+  vim.api.nvim_buf_set_keymap(0, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+  -- Jump forwards/backwards with '{' and '}'
+  vim.api.nvim_buf_set_keymap(0, 'n', '{', '<cmd>AerialPrev<CR>', {})
+  vim.api.nvim_buf_set_keymap(0, 'n', '}', '<cmd>AerialNext<CR>', {})
+  -- Jump up the tree with '[[' or ']]'
+  vim.api.nvim_buf_set_keymap(0, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
+  vim.api.nvim_buf_set_keymap(0, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
+end
+
+-- Set up your LSP clients here, using the custom on_attach method
+require'lspconfig'.pylsp.setup{
+  on_attach = custom_attach
+}
+require'lspconfig'.r_language_server.setup{
+  on_attach = custom_attach
+}
+require'lspconfig'.texlab.setup{
+  on_attach = custom_attach
   }
+require'lspconfig'.vimls.setup{
+  on_attach = custom_attach
+}
+require'lspconfig'.bashls.setup{
+  on_attach = custom_attach
+}
+require'lspconfig'.dockerls.setup{
+  on_attach = custom_attach
+}
+require'lspconfig'.jsonls.setup{
+  on_attach = custom_attach
 }
 
 EOF

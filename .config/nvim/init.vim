@@ -32,7 +32,7 @@ set cmdheight=2
 set updatetime=300
 set spell
 set mouse=a
-set completeopt=menu,menuone,noselect
+set completeopt=menu,menuone,preview,noinsert
 
 " change dashboard default fuzzy search
 let g:dashboard_default_executive = 'telescope'
@@ -171,18 +171,13 @@ nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> gn    <cmd>Lspsaga rename<CR>
 nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
-xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
-nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
+nnoremap <silent> gh    <cmd>Lspsaga lsp_finder<CR>
 
 
 """""""""""""""""
@@ -271,7 +266,6 @@ end
 
 
 -- LSP --
--- Add nvim_lsp
 -- Setup nvim-cmp (autocomplete)
 local cmp = require'cmp'
 cmp.setup({
@@ -283,7 +277,7 @@ end,
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-e>'] = cmp.mapping.close(),
-        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
         ['<Up>'] = cmp.mapping.select_prev_item({ select = true }),
         ['<Down>'] = cmp.mapping.select_next_item({ select = true })
         },

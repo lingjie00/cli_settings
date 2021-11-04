@@ -34,7 +34,11 @@ set spell
 set mouse=a
 set completeopt=menu,menuone,noselect
 
-" >> load plugins
+" change dashboard default fuzzy search
+let g:dashboard_default_executive = 'telescope'
+
+""""""""""""""""""
+" Plugin Install
 call plug#begin(stdpath('data') . 'vimplug')
     """""""""""
     " Themes  "
@@ -93,6 +97,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Specific Language support
     Plug 'lervag/vimtex' " latex
     Plug 'ellisonleao/glow.nvim' " markdown
+    Plug 'untitled-ai/jupyter_ascending.vim' " jupyter notebook
 
     " Git
     Plug 'tpope/vim-fugitive' " adds Git command to vim
@@ -103,18 +108,14 @@ call plug#end()
 
 
 """"""""""""""
-" Gruvbox
-" autocmd vimenter * ++nested colorscheme gruvbox
-" set background=dark
+" Key mappings
 
-" insearch
+" >> replace default search with insearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
@@ -122,44 +123,51 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" Easymotion
-" s{char}{char} to move to {char}{char}
+" >> map Easymotion s{char}{char} to move to {char}{char}
+let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f)
 nmap S <Plug>(easymotion-overwin-f2)
-let g:EasyMotion_smartcase = 1
 
-" Harpoon 
+" >> adds perm bookmark with Harpoon 
 nnoremap <leader>` <cmd>lua require'harpoon.mark'.add_file()<CR>
 nnoremap <leader>1 <cmd>lua require'harpoon.ui'.nav_file(1)<CR>
 nnoremap <leader>2 <cmd>lua require'harpoon.ui'.nav_file(2)<CR>
 nnoremap <leader>3 <cmd>lua require'harpoon.ui'.nav_file(3)<CR>
 nnoremap <leader>4 <cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>
 
-" send to buffer
+" >> send to tmux buffer
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>b :SlimuxREPLSendBuffer<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
 
+" >> shortcut for global copy
+noremap <leader>p "+p
+noremap <leader>y "+y
+
+" >> shortcut to launch nvim tree
+nnoremap <C-f> :NvimTreeToggle<CR>
+
+" >> shortcut to launch Trouble
+nnoremap <C-t> :TroubleToggle<CR>
+
+" >> shortcut to show var with Symbols-outline
+nnoremap <C-y> :SymbolsOutline<CR>
+
+" >> shortcut to launch jupyter notebook
+nmap <leader>e <Plug>JupyterExecute<CR>
+nmap <leader>E <Plug>JupyterExecuteAll<CR>
+
 " >> Telescope bindings
-nnoremap <Leader>pp <cmd>lua require'telescope.builtin'.builtin{}<CR>
-" most recently used files
-nnoremap <Leader>m <cmd>lua require'telescope.builtin'.oldfiles{}<CR>
 " find buffer
 nnoremap <Leader>; <cmd>lua require'telescope.builtin'.buffers{}<CR>
 " find in current buffer
 nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>
-" bookmarks
-nnoremap <Leader>' <cmd>lua require'telescope.builtin'.marks{}<CR>
-" git files
+" search in git files
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
-" all files
+" search all files
 nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
-" ripgrep like grep through dir
-nnoremap <Leader>rg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
-" pick color scheme
-nnoremap <Leader>cs <cmd>lua require'telescope.builtin'.colorscheme{}<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -176,107 +184,31 @@ nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
 
-" global copy
-noremap <leader>p "+p
-noremap <leader>y "+y
 
-" nvim tree binding
-nnoremap <C-f> :NvimTreeToggle<CR>
-
-" dashboard
-let g:dashboard_default_executive = 'telescope'
-
-" Trouble
-nnoremap <C-t> :TroubleToggle<CR>
-
-" Symbols-outline
-nnoremap <C-y> :SymbolsOutline<CR>
-
-
+"""""""""""""""""
+" Lua functions
 lua <<EOF
 
--- Setup treesitter
--- highlights text and codes
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,                 -- false will disable the whole extension
-    disable = {},                  -- list of language that will be disabled
-    additional_vim_regex_highlighting = true,
-  },
-}
-
--- setup nvim-comment
--- auto convert code into comment
-require('nvim_comment').setup({
-  -- should comment out empty or whitespace only lines
-  comment_empty = true,
-  -- Normal mode mapping left hand side
-  line_mapping = "gcc",
-  -- Visual/Operator mapping left hand side
-  operator_mapping = "gc",
-})
-
+-- THEME and STATUS BAR --
+-- configure theme: catppuccino
 local catppuccino = require("catppuccino")
-
--- configure it
 catppuccino.setup(
     {
 		colorscheme = "dark_catppuccino",
 		transparency = true,
 		term_colors = true,
-		styles = {
-			comments = "italic",
-			functions = "italic",
-			keywords = "italic",
-			strings = "NONE",
-			variables = "NONE",
-		},
 		integrations = {
-			treesitter = true,
-			native_lsp = {
-				enabled = true,
-				virtual_text = {
-					errors = "italic",
-					hints = "italic",
-					warnings = "italic",
-					information = "italic",
-				},
-				underlines = {
-					errors = "underline",
-					hints = "underline",
-					warnings = "underline",
-					information = "underline",
-				}
-			},
-			lsp_trouble = false,
-			lsp_saga = false,
-			gitgutter = false,
-			gitsigns = false,
-			telescope = false,
-			nvimtree = {
-				enabled = true,
-				show_root = false,
-			},
-			which_key = false,
-			indent_blankline = {
-				enabled = false,
-				colored_indent_levels = false,
-			},
-			dashboard = false,
-			neogit = false,
-			vim_sneak = false,
-			fern = false,
-			barbar = false,
-			bufferline = false,
-			markdown = false,
-			lightspeed = false,
-			ts_rainbow = false,
-			hop = false,
+			lsp_trouble = true,
+			lsp_saga = true,
+			gitgutter = true,
+			gitsigns = true,
+			telescope = true,
+			markdown = true
 		}
 	}
 )
 
+-- configure gps: show function within file
 require("nvim-gps").setup()
 local gps = require("nvim-gps")
 
@@ -284,11 +216,7 @@ local gps = require("nvim-gps")
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'catppuccino',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
+    theme = 'catppuccino'
   },
   sections = {
     lualine_a = {'mode'},
@@ -298,17 +226,7 @@ require'lualine'.setup {
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
+    }
   }
 
 -- nvim tree 
@@ -327,30 +245,35 @@ require'nvim-tree'.setup {
     }
 }
 
--- Trouble
+
+-- PLUGIN --
+
+-- setup nvim-comment, auto convert code into comment
+require('nvim_comment').setup({
+  -- should comment out empty or whitespace only lines
+  comment_empty = true,
+  -- Normal mode mapping left hand side
+  line_mapping = "gcc",
+  -- Visual/Operator mapping left hand side
+  operator_mapping = "gc",
+})
+
+-- Trouble, showcase all code issues at once
 require'trouble'.setup{}
 
--- Aerial
+-- Aerial, showcase code base structure
 local aerial = require'aerial'
-
 local custom_attach = function(client)
   aerial.on_attach(client)
-
-  -- Aerial does not set any mappings by default, so you'll want to set some up
   -- Toggle the aerial window with <leader>a
   vim.api.nvim_buf_set_keymap(0, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
-  -- Jump forwards/backwards with '{' and '}'
-  vim.api.nvim_buf_set_keymap(0, 'n', '{', '<cmd>AerialPrev<CR>', {})
-  vim.api.nvim_buf_set_keymap(0, 'n', '}', '<cmd>AerialNext<CR>', {})
-  -- Jump up the tree with '[[' or ']]'
-  vim.api.nvim_buf_set_keymap(0, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
-  vim.api.nvim_buf_set_keymap(0, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
 end
 
+
+-- LSP --
 -- Add nvim_lsp
 -- Setup nvim-cmp (autocomplete)
 local cmp = require'cmp'
-
 cmp.setup({
 snippet = {
     expand = function(args)
@@ -372,11 +295,20 @@ end,
     { name = 'spell' },
     })
 })
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Set up your LSP clients here, using the custom on_attach method
+-- Setup treesitter, highlights text and codes
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,                 -- false will disable the whole extension
+    disable = {},                  -- list of language that will be disabled
+    additional_vim_regex_highlighting = true,
+  },
+}
+
+-- LSP servers
 require'lspconfig'.pylsp.setup{
   on_attach = custom_attach,
   capabilities = capabilities
@@ -408,5 +340,5 @@ require'lspconfig'.jsonls.setup{
 
 EOF
 
-" Catppuccino
+" Catppuccino, has to happen after config in Lua
 colorscheme catppuccino

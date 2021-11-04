@@ -334,10 +334,10 @@ require'lspconfig'.jsonls.setup{
   on_attach = custom_attach,
   capabilities = capabilities
 }
-require'lspconfig'.ltex.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
-}
+--require'lspconfig'.ltex.setup{
+--  on_attach = custom_attach,
+--  capabilities = capabilities
+--}
 
 EOF
 

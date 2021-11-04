@@ -39,89 +39,65 @@ call plug#begin(stdpath('data') . 'vimplug')
     """""""""""
     " Themes  "
     """""""""""
-    " gruvbox
-    Plug 'morhetz/gruvbox'
+    " gruvbox, no longer used but used to love this
+    " Plug 'morhetz/gruvbox'
 
     " Catppuccino 
     Plug 'Pocco81/Catppuccino.nvim'
 
+    " Starting dashboard
+    Plug 'glepnir/dashboard-nvim'
+
+    " status bar
+    Plug 'nvim-lualine/lualine.nvim' " status bar
+    Plug 'SmiteshP/nvim-gps' " adds sub-loc to function name
+
     """""""""""
     " Plugins "
     """""""""""
-    " Telescope
+    " Basic lua functions needed for many plugins
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
 
-    " Autocomplete
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/nvim-cmp'
-    Plug 'f3fora/cmp-spell'
-    Plug 'hrsh7th/cmp-path'
-
-    " LSP
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'glepnir/lspsaga.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter'
-
-    " comment
-    Plug 'terrortylor/nvim-comment'
-
-    " LaTeX
-    Plug 'lervag/vimtex'
-
-    " status bar
-    Plug 'nvim-lualine/lualine.nvim'
-
-    " nvim-gps
-    Plug 'SmiteshP/nvim-gps'
-
-    " web icons
+    " add list of web icons
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'yamatsum/nvim-nonicons'
 
-    " navigation shortcut
-    Plug 'christoomey/vim-tmux-navigator'
+    " navigation
+    Plug 'nvim-telescope/telescope.nvim' " telescope
+    Plug 'haya14busa/incsearch.vim' " adds partial search support
+    Plug 'ThePrimeagen/harpoon' " adds perm bookmark to files
+    Plug 'kyazdani42/nvim-tree.lua' " adds file browser
+    Plug 'easymotion/vim-easymotion' " better jump word
+    Plug 'folke/trouble.nvim' " nav to code errors
+    Plug 'simrat39/symbols-outline.nvim' " nav to var defined
+    Plug 'stevearc/aerial.nvim' " nav to code structure
 
-    "nvim tree
-    Plug 'kyazdani42/nvim-tree.lua'
+    " tmux navigation
+    Plug 'christoomey/vim-tmux-navigator' " nav shortcut for tmux
+    Plug 'esamattis/slimux' " sends buffer to tmux
 
-    " send buffer
-    Plug 'esamattis/slimux'
+    " Autocomplete
+	Plug 'hrsh7th/nvim-cmp' " main plugin
+	Plug 'hrsh7th/cmp-nvim-lsp' " add lsp support
+	Plug 'hrsh7th/cmp-buffer' " add buffer support
+    Plug 'hrsh7th/cmp-path' " add path support
+    Plug 'f3fora/cmp-spell' " add spelling support
 
-    " insearch
-    Plug 'haya14busa/incsearch.vim'
+    " LSP
+    Plug 'neovim/nvim-lspconfig' " config lsp key maps
+    Plug 'glepnir/lspsaga.nvim' " adds diagnostics jumps
+    Plug 'nvim-treesitter/nvim-treesitter' " provide better code highlights
+    Plug 'terrortylor/nvim-comment' " convert code into comments
+    Plug 'tpope/vim-surround' " auto add brackets etc
 
-    " change surround
-    Plug 'tpope/vim-surround'
+    " Specific Language support
+    Plug 'lervag/vimtex' " latex
+    Plug 'ellisonleao/glow.nvim' " markdown
 
     " Git
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-rhubarb'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'f-person/git-blame.nvim'
-
-    " Easymotion
-    Plug 'easymotion/vim-easymotion'
-
-    " Harpoon
-    Plug 'ThePrimeagen/harpoon'
-
-    " Start dashboard
-    Plug 'glepnir/dashboard-nvim'
-
-    " Trouble
-    Plug 'folke/trouble.nvim'
-
-    " Symbols-outline
-    Plug 'simrat39/symbols-outline.nvim'
-
-    " Aerial
-    Plug 'stevearc/aerial.nvim'
-
-    " Glow
-    Plug 'ellisonleao/glow.nvim'
+    Plug 'tpope/vim-fugitive' " adds Git command to vim
+    Plug 'airblade/vim-gitgutter' " shows git diff marks
+    Plug 'f-person/git-blame.nvim' " shows git blame
 
 call plug#end()
 
@@ -192,10 +168,10 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
@@ -220,6 +196,7 @@ nnoremap <C-y> :SymbolsOutline<CR>
 lua <<EOF
 
 -- Setup treesitter
+-- highlights text and codes
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
@@ -229,36 +206,8 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-
--- Setup nvim-cmp (autocomplete)
-local cmp = require'cmp'
-
-cmp.setup({
-snippet = {
-    expand = function(args)
-end,
-},
-    mapping = {
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-u>'] = cmp.mapping.scroll_docs(4),
-        -- ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        -- ['<C-CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
-        },
-    sources = cmp.config.sources({
-    { name = 'nvim_lsp' }, 
-    }, {
-    { name = 'buffer' },
-    }, {
-    { name = 'path' },
-    }, {
-    { name = 'spell' },
-    })
-})
-
 -- setup nvim-comment
+-- auto convert code into comment
 require('nvim_comment').setup({
   -- should comment out empty or whitespace only lines
   comment_empty = true,
@@ -267,10 +216,6 @@ require('nvim_comment').setup({
   -- Visual/Operator mapping left hand side
   operator_mapping = "gc",
 })
-
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 
 local catppuccino = require("catppuccino")
 
@@ -402,27 +347,63 @@ local custom_attach = function(client)
   vim.api.nvim_buf_set_keymap(0, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
 end
 
+-- Add nvim_lsp
+-- Setup nvim-cmp (autocomplete)
+local cmp = require'cmp'
+
+cmp.setup({
+snippet = {
+    expand = function(args)
+end,
+},
+    mapping = {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-u>'] = cmp.mapping.scroll_docs(4),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
+        },
+    sources = cmp.config.sources({
+    { name = 'nvim_lsp' }, 
+    }, {
+    { name = 'buffer' },
+    }, {
+    { name = 'path' },
+    }, {
+    { name = 'spell' },
+    })
+})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 -- Set up your LSP clients here, using the custom on_attach method
 require'lspconfig'.pylsp.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
+  capabilities = capabilities
 }
 require'lspconfig'.r_language_server.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
+  capabilities = capabilities
 }
 require'lspconfig'.texlab.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
+  capabilities = capabilities
   }
 require'lspconfig'.vimls.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
+  capabilities = capabilities
 }
 require'lspconfig'.bashls.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
+  capabilities = capabilities
 }
 require'lspconfig'.dockerls.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
+  capabilities = capabilities
 }
 require'lspconfig'.jsonls.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
+  capabilities = capabilities
 }
 
 EOF

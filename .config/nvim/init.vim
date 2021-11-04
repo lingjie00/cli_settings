@@ -93,6 +93,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-treesitter/nvim-treesitter' " provide better code highlights
     Plug 'terrortylor/nvim-comment' " convert code into comments
     Plug 'tpope/vim-surround' " auto add brackets etc
+    Plug 'williamboman/nvim-lsp-installer' " LspInstall
 
     " Specific Language support
     Plug 'lervag/vimtex' " latex
@@ -330,6 +331,10 @@ require'lspconfig'.dockerls.setup{
   capabilities = capabilities
 }
 require'lspconfig'.jsonls.setup{
+  on_attach = custom_attach,
+  capabilities = capabilities
+}
+require'lspconfig'.ltex.setup{
   on_attach = custom_attach,
   capabilities = capabilities
 }

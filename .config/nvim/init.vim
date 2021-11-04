@@ -245,6 +245,10 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require'lspconfig'.pylsp.setup{}
 require'lspconfig'.r_language_server.setup{}
 require'lspconfig'.texlab.setup{}
+require'lspconfig'.vimls.setup{}
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.dockerls.setup{}
+require'lspconfig'.jsonls.setup{}
 
 local catppuccino = require("catppuccino")
 

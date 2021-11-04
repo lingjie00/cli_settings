@@ -283,7 +283,9 @@ end,
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-e>'] = cmp.mapping.close(),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        ['<Up>'] = cmp.mapping.select_prev_item({ select = true }),
+        ['<Down>'] = cmp.mapping.select_next_item({ select = true })
         },
     sources = cmp.config.sources({
     { name = 'nvim_lsp' }, 

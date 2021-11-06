@@ -34,9 +34,6 @@ set spell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
 
-" change dashboard default fuzzy search
-let g:dashboard_default_executive = 'telescope'
-
 """"""""""""""""""
 " Plugin Install
 call plug#begin(stdpath('data') . 'vimplug')
@@ -48,9 +45,6 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " Catppuccino 
     Plug 'Pocco81/Catppuccino.nvim'
-
-    " Starting dashboard
-    Plug 'glepnir/dashboard-nvim'
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar
@@ -302,7 +296,7 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,                 -- false will disable the whole extension
     disable = {},                  -- list of language that will be disabled
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
 }
 

@@ -157,8 +157,8 @@ nnoremap <C-t> :TroubleToggle<CR>
 nnoremap <C-y> :SymbolsOutline<CR>
 
 " >> shortcut to launch jupyter notebook
-nmap <leader>e <Plug>JupyterExecute<CR>
-nmap <leader>E <Plug>JupyterExecuteAll<CR>
+nmap <leader>e :w<CR><Plug>JupyterExecute<CR>
+nmap <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
 
 " >> Telescope bindings
 " find buffer

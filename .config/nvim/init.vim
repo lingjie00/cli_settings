@@ -134,6 +134,12 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 inoremap <C-j> <esc>:m .+1<CR>==
 inoremap <C-k> <esc>:m .-1<CR>==
+" copy word and after
+nnoremap Y y$
+" >> shortcut for global copy
+noremap <leader>p "+p
+noremap <leader>y "+y
+noremap <leader>Y "+y$
 
 " >> map Easymotion s{char}{char} to move to {char}{char}
 let g:EasyMotion_smartcase = 1
@@ -153,10 +159,6 @@ vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>b :SlimuxREPLSendBuffer<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
-
-" >> shortcut for global copy
-noremap <leader>p "+p
-noremap <leader>y "+y
 
 " >> shortcut to launch nvim tree
 nnoremap <C-f> :NvimTreeToggle<CR>

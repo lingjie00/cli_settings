@@ -67,7 +67,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
     Plug 'easymotion/vim-easymotion' " better jump word
     Plug 'folke/trouble.nvim' " nav to code errors
-    Plug 'simrat39/symbols-outline.nvim' " nav to var defined
     Plug 'stevearc/aerial.nvim' " nav to code structure
 
     " tmux navigation
@@ -166,9 +165,6 @@ nnoremap <C-f> :NvimTreeToggle<CR>
 " >> shortcut to launch Trouble
 nnoremap <C-t> :TroubleToggle<CR>
 
-" >> shortcut to show var with Symbols-outline
-nnoremap <C-y> :SymbolsOutline<CR>
-
 " >> shortcut to launch jupyter notebook
 nmap <leader>e :w<CR><Plug>JupyterExecute<CR>
 nmap <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
@@ -184,14 +180,17 @@ nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
 nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
 
 " >> Lsp key bindings
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> gn    <cmd>Lspsaga rename<CR>
 nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> gh    <cmd>Lspsaga lsp_finder<CR>
+nnoremap <silent> gd    <cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>
+nnoremap <silent> gr    <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
+
+" >> shortcut to show var
+nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 
 
 """""""""""""""""
@@ -275,7 +274,7 @@ local aerial = require'aerial'
 local custom_attach = function(client)
   aerial.on_attach(client)
   -- Toggle the aerial window with <leader>a
-  vim.api.nvim_buf_set_keymap(0, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+  vim.api.nvim_buf_set_keymap(0, 'n', '<leader>q', '<cmd>AerialToggle!<CR>', {})
 end
 
 

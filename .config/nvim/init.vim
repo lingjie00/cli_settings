@@ -34,6 +34,9 @@ set spell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
 
+" Autopairs in Latex
+au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+
 """"""""""""""""""
 " Plugin Install
 call plug#begin(stdpath('data') . 'vimplug')
@@ -87,6 +90,8 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'terrortylor/nvim-comment' " convert code into comments
     Plug 'tpope/vim-surround' " auto add brackets etc
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
+    Plug 'jiangmiao/auto-pairs' " Insert bracket in pairs
+    Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
 
     " Specific Language support
     Plug 'lervag/vimtex' " latex
@@ -279,6 +284,9 @@ end
 
 
 -- LSP --
+-- highlight TODO, FIX, HACK
+require'todo-comments'.setup{}
+
 -- Setup nvim-cmp (autocomplete)
 local cmp = require'cmp'
 cmp.setup({

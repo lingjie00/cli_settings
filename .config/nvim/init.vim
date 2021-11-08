@@ -36,6 +36,7 @@ set completeopt=menu,menuone,preview,noinsert
 
 " Autopairs in Latex
 au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
 
 """"""""""""""""""
 " Plugin Install

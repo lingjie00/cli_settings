@@ -7,6 +7,8 @@ let @1="i\\begin{lstlisting}[language=R]"
 let @r=":term Rscript % \<cr>"
 " Python: run current python script
 let @p=":term python3 % \<cr>"
+" Python: sort imports
+let @s=":%!isort - \<cr>"
 " C++: compile the current file
 let @c=":!g++ '%' -o '%:r' \<cr>"
 " Json: reformat json files

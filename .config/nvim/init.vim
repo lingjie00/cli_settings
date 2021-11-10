@@ -1,18 +1,18 @@
 """"""""""""""""""""""
 " Macros
 " LaTex: compile latex file
-let @t=":w \<cr> :!pdflatex -output-directory '%:p:h'  '%:p' \<cr> :!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>"
-let @1="i\\begin{lstlisting}[language=R]"
+au FileType tex     let @t=":w \<cr> :!pdflatex -output-directory '%:p:h'  '%:p' \<cr> :!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>"
+au FileType tex     let @1="i\\begin{lstlisting}[language=R]"
 " R : run current script
-let @r=":term Rscript % \<cr>"
+au FileType R       let @r=":term Rscript % \<cr>"
 " Python: run current python script
-let @p=":term python3 % \<cr>"
+au FileType python  let @p=":term python3 % \<cr>"
 " Python: sort imports
-let @s=":%!isort - \<cr>"
+au FileType python  let @s=":%!isort - \<cr>"
 " C++: compile the current file
-let @c=":!g++ '%' -o '%:r' \<cr>"
+au FileType C       let @c=":!g++ '%' -o '%:r' \<cr>"
 " Json: reformat json files
-let @j=":%!python -m json.tool \<cr>"
+au FileType json    let @j=":%!python -m json.tool \<cr>"
 
 """""""""""""""
 " Preferences
@@ -49,7 +49,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     " gruvbox, no longer used but used to love this
     " Plug 'morhetz/gruvbox'
 
-    " Catppuccino 
+    " Catppuccino
     Plug 'Pocco81/Catppuccino.nvim'
 
     " status bar
@@ -153,7 +153,7 @@ let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f)
 nmap S <Plug>(easymotion-overwin-f2)
 
-" >> adds perm bookmark with Harpoon 
+" >> adds perm bookmark with Harpoon
 nnoremap <leader>` <cmd>lua require'harpoon.mark'.add_file()<CR>
 nnoremap <leader>1 <cmd>lua require'harpoon.ui'.nav_file(1)<CR>
 nnoremap <leader>2 <cmd>lua require'harpoon.ui'.nav_file(2)<CR>
@@ -245,7 +245,7 @@ require'lualine'.setup {
     }
   }
 
--- nvim tree 
+-- nvim tree
 require'nvim-tree'.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
@@ -307,7 +307,7 @@ end,
         ['<Down>'] = cmp.mapping.select_next_item({ select = true })
         },
     sources = cmp.config.sources({
-    { name = 'nvim_lsp' }, 
+    { name = 'nvim_lsp' },
     }, {
     { name = 'buffer' },
     }, {
@@ -358,10 +358,6 @@ require'lspconfig'.jsonls.setup{
   on_attach = custom_attach,
   capabilities = capabilities
 }
---require'lspconfig'.ltex.setup{
---  on_attach = custom_attach,
---  capabilities = capabilities
---}
 
 EOF
 

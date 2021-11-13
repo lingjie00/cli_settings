@@ -92,7 +92,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     " LSP
     Plug 'neovim/nvim-lspconfig' " config lsp key maps
     Plug 'glepnir/lspsaga.nvim' " adds diagnostics jumps
-    Plug 'nvim-treesitter/nvim-treesitter' " provide better code highlights
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " provide better code highlights
     Plug 'terrortylor/nvim-comment' " convert code into comments
     Plug 'tpope/vim-surround' " auto add brackets etc
     Plug 'williamboman/nvim-lsp-installer' " LspInstall

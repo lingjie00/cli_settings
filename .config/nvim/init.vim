@@ -91,7 +91,6 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " LSP
     Plug 'neovim/nvim-lspconfig' " config lsp key maps
-    Plug 'glepnir/lspsaga.nvim' " adds diagnostics jumps
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " provide better code highlights
     Plug 'terrortylor/nvim-comment' " convert code into comments
     Plug 'tpope/vim-surround' " auto add brackets etc
@@ -193,10 +192,10 @@ nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
 " >> Lsp key bindings
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> gn    <cmd>Lspsaga rename<CR>
-nnoremap <silent> <C-p> <cmd>Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> <C-n> <cmd>Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> gh    <cmd>Lspsaga lsp_finder<CR>
+nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> gd    <cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>
 nnoremap <silent> gr    <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
 

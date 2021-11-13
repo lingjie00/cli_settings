@@ -36,9 +36,12 @@ set spell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
 
-" Autopairs in Latex
+" Autopairs in specific languages
 au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
 au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
+" Remove backspace deleting bracket pairs
+let g:AutoPairsMapBS = 0
 
 """"""""""""""""""
 " Plugin Install
@@ -50,7 +53,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Plug 'morhetz/gruvbox'
 
     " Catppuccino
-    Plug 'Pocco81/Catppuccino.nvim'
+    Plug 'catppuccin/nvim'
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar
@@ -206,23 +209,32 @@ nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 lua <<EOF
 
 -- THEME and STATUS BAR --
--- configure theme: catppuccino
-local catppuccino = require("catppuccino")
-catppuccino.setup(
-    {
-		colorscheme = "dark_catppuccino",
-		transparency = true,
-		term_colors = true,
-		integrations = {
-			lsp_trouble = true,
-			lsp_saga = true,
-			gitgutter = true,
-			gitsigns = true,
-			telescope = true,
-			markdown = true
-		}
-	}
-)
+-- configure theme: catppuccin
+local catppuccino = require("catppuccin")
+catppuccino.setup({
+    colorscheme = "dark_catppuccino",
+    transparency = true,
+    term_colors = true,
+    styles = {
+        variables = "bold"
+    },
+    integrations = {
+        native_lsp = {
+            underlines = {
+                errors = "undercurl",
+                warnings = "undercurl"
+            }
+        },
+        lsp_trouble = true,
+        lsp_saga = true,
+        gitgutter = true,
+        gitsigns = true,
+        telescope = true,
+        markdown = true,
+        nvimtree = { enabled = true }
+    }
+})
+vim.cmd[[colorscheme catppuccin]]
 
 -- configure gps: show function within file
 require("nvim-gps").setup()
@@ -232,7 +244,7 @@ local gps = require("nvim-gps")
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'catppuccino'
+    theme = 'catppuccin'
   },
   sections = {
     lualine_a = {'mode'},
@@ -361,5 +373,3 @@ require'lspconfig'.jsonls.setup{
 
 EOF
 
-" Catppuccino, has to happen after config in Lua
-colorscheme catppuccino

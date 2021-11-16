@@ -22,9 +22,8 @@ for browsing. The only time I will still need my
 mouse is to navigate PDF documents.
 
 For data science related work, I have discovered a
-plugin called ( Jupyter Ascending )[
-https://github.com/untitled-ai/jupyter_ascending.vim
-].
+plugin called [ Jupyter Ascending ]( https://github.com/untitled-ai/jupyter_ascending.vim
+        ).
 This package allows auto-sync between Jupyter
 notebook and Python script which finally balances
 the need to experiment with data in notebooks and

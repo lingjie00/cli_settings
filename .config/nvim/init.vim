@@ -1,18 +1,47 @@
 """"""""""""""""""""""
-" Macros
-" LaTex: compile latex file
-au FileType tex     let @t=":w \<cr> :!pdflatex -output-directory '%:p:h'  '%:p' \<cr> :!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>"
-au FileType tex     let @1="i\\begin{lstlisting}[language=R]"
+" File specific key mappings and macros
+" <Leader>c for compile
+" LaTex: compile latex file, delete temp files, map syntax
+au FileType tex     nnoremap <Leader>c :w <cr> :!pdflatex -output-directory '%:p:h'  '%:p' <cr>
+au FileType tex     let @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
+au FileType tex     let @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
+au FileType tex     let @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
+au FileType tex     let @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
+au FileType tex     let @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
+au FileType tex     let @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
+
 " R : run current script
-au FileType R       let @r=":term Rscript % \<cr>"
+au FileType R       nnoremap <Leader>c :!Rscript '%:p'<cr>
+" Rmd: compile Rmd file
+au FileType rmd     nnoremap <Leader>c :!Rscript -e "rmarkdown::render('%:p')"<cr>
+
 " Python: run current python script
-au FileType python  let @p=":term python3 % \<cr>"
+au FileType python  nnoremap <Leader>c :!python3 '%:p'<cr>
 " Python: sort imports
 au FileType python  let @s=":%!isort - \<cr>"
+" >> shortcut to launch jupyter notebook
+au FileType python  nmap <leader>e :w<CR><Plug>JupyterExecute<CR>
+au FileType python  nmap <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
+
 " C++: compile the current file
-au FileType C       let @c=":!g++ '%' -o '%:r' \<cr>"
+au FileType C       nnoremap <Leader>c :!g++ '%' -o '%:r'<cr>
+
 " Json: reformat json files
-au FileType json    let @j=":%!python -m json.tool \<cr>"
+au FileType json    nnoremap <Leader>c :%!python -m json.tool<cr>
+
+" Git related commands
+nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
+nnoremap <Leader>d :Git diff %:p<cr>
+
+" Autopairs in specific languages
+au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
+" Remove backspace deleting bracket pairs
+let g:AutoPairsMapBS = 0
+
+" Map <Leader>q as :q for qutting
+nnoremap <Leader>q :q<cr>
 
 """""""""""""""
 " Preferences
@@ -36,12 +65,6 @@ set spell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
 
-" Autopairs in specific languages
-au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
-au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
-au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
-" Remove backspace deleting bracket pairs
-let g:AutoPairsMapBS = 0
 
 """"""""""""""""""
 " Plugin Install
@@ -165,19 +188,13 @@ nnoremap <leader>4 <cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>
 " >> send to tmux buffer
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
-map <Leader>b :SlimuxREPLSendBuffer<CR>
 map <Leader>a :SlimuxShellLast<CR>
-map <Leader>k :SlimuxSendKeysLast<CR>
 
 " >> shortcut to launch nvim tree
 nnoremap <C-f> :NvimTreeToggle<CR>
 
 " >> shortcut to launch Trouble
 nnoremap <C-t> :TroubleToggle<CR>
-
-" >> shortcut to launch jupyter notebook
-nmap <leader>e :w<CR><Plug>JupyterExecute<CR>
-nmap <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
 
 " >> Telescope bindings
 " find buffer
@@ -187,7 +204,7 @@ nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find
 " search in git files
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
 " search all files
-nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
+nnoremap <Leader>F <cmd>lua require'telescope.builtin'.file_browser{}<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -203,6 +220,8 @@ nnoremap <silent> gi    <cmd>lua require'telescope.builtin'.lsp_implementations(
 " >> shortcut to show var
 nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 
+" >> Toggle the aerial window
+nnoremap <C-r> <cmd>AerialToggle!<CR>
 
 """""""""""""""""
 " Lua functions
@@ -293,8 +312,6 @@ require'trouble'.setup{}
 local aerial = require'aerial'
 local custom_attach = function(client)
   aerial.on_attach(client)
-  -- Toggle the aerial window with <leader>a
-  vim.api.nvim_buf_set_keymap(0, 'n', '<leader>q', '<cmd>AerialToggle!<CR>', {})
 end
 
 

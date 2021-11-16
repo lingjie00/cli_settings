@@ -17,13 +17,14 @@ I started switching to Vim and full terminal based
 workflow from May 2021. In Nov 2021 I have managed
 to switch to nearly 100% of my workflow to
 Vim/Neovim. I use
-(Vimium)[https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en]
+[ Vimium ]( https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en )
 for browsing. The only time I will still need my
 mouse is to navigate PDF documents.
 
 For data science related work, I have discovered a
-plugin called [Jupyter
-Ascending](https://github.com/untitled-ai/jupyter_ascending.vim).
+plugin called ( Jupyter Ascending )[
+https://github.com/untitled-ai/jupyter_ascending.vim
+].
 This package allows auto-sync between Jupyter
 notebook and Python script which finally balances
 the need to experiment with data in notebooks and
@@ -34,15 +35,15 @@ common tasks in specific languages.
 I mainly use 1) Python 2) R 3) Latex, so most of
 the mapping are based on these 3 languages.
 
-Read more about Neovim from their (official
-page)[https://neovim.io/]
+Read more about Neovim from their [ official
+page ]( https://neovim.io/ )
 
 ## zsh
 
 I replace Bash with Zsh for the additional
 customizations Zsh provides.
 I have some plugins installed for Zsh, but the
-main one is simply (Oh My Zsh)[https://ohmyz.sh/]
+main one is simply [ Oh My Zsh ]( https://ohmyz.sh/ )
 
 Since most of my workflow is in Neovim and Tmux
 now, the most usage for Zsh will be to prompt

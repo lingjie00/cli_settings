@@ -221,7 +221,7 @@ nnoremap <silent> gi    <cmd>lua require'telescope.builtin'.lsp_implementations(
 nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 
 " >> Toggle the aerial window
-nnoremap <C-r> <cmd>AerialToggle!<CR>
+nnoremap <C-w> <cmd>AerialToggle!<CR>
 
 """""""""""""""""
 " Lua functions

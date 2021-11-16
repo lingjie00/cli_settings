@@ -43,6 +43,10 @@ let g:AutoPairsMapBS = 0
 " Map <Leader>q as :q for qutting
 nnoremap <Leader>q :q<cr>
 
+" Navigate Quickfix list
+nnoremap <Leader>[ :cnext<cr>
+nnoremap <Leader>] :cprevious<cr>
+
 """""""""""""""
 " Preferences
 syntax on

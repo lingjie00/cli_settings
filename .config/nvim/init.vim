@@ -50,7 +50,7 @@ set number
 set relativenumber
 set tabstop=4
 set softtabstop=4
-set textwidth=70
+set textwidth=50
 set autoindent
 set fileformat=unix
 set shiftwidth=4
@@ -387,6 +387,13 @@ require'lspconfig'.jsonls.setup{
   on_attach = custom_attach,
   capabilities = capabilities
 }
+require'lspconfig'.ltex.setup{
+filetypes = {
+    "bib", "markdown", "org",
+    "plaintex", "rst", "rnoweb", "tex"
+    },
+  on_attach = custom_attach,
+  capabilities = capabilities
+}
 
 EOF
-

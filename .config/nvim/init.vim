@@ -11,12 +11,12 @@ au FileType tex     let @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
 au FileType tex     let @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
 
 " R : run current script
-au FileType R       nnoremap <Leader>c :!Rscript '%:p'<cr>
+au FileType R       nnoremap <Leader>c :w <cr> :!Rscript '%:p'<cr>
 " Rmd: compile Rmd file
-au FileType rmd     nnoremap <Leader>c :!Rscript -e "rmarkdown::render('%:p')"<cr>
+au FileType rmd     nnoremap <Leader>c :w <cr> :!Rscript -e "rmarkdown::render('%:p')"<cr>
 
 " Python: run current python script
-au FileType python  nnoremap <Leader>c :!python3 '%:p'<cr>
+au FileType python  nnoremap <Leader>c :w <cr> :!python3 '%:p'<cr>
 " Python: sort imports
 au FileType python  let @s=":%!isort - \<cr>"
 " >> shortcut to launch jupyter notebook
@@ -24,10 +24,10 @@ au FileType python  nmap <leader>e :w<CR><Plug>JupyterExecute<CR>
 au FileType python  nmap <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
 
 " C++: compile the current file
-au FileType C       nnoremap <Leader>c :!g++ '%' -o '%:r'<cr>
+au FileType C       nnoremap <Leader>c :w<cr>:!g++ '%' -o '%:r'<cr>
 
 " Json: reformat json files
-au FileType json    nnoremap <Leader>c :%!python -m json.tool<cr>
+au FileType json    nnoremap <Leader>c :w<cr>:%!python -m json.tool<cr>
 
 " Git related commands
 nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>

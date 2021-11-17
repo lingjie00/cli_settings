@@ -68,6 +68,7 @@ set updatetime=300
 set spell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
+set termguicolors
 
 
 """"""""""""""""""

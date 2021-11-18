@@ -84,3 +84,39 @@ system. MacOS's default window management is
 confusing with windows popping everywhere. I use
 [yabai](https://github.com/koekeishiya/yabai) to
 control my spaces.
+
+# Saving SSH settings
+
+If you use SSH frequently, then perhaps you also
+face the problem of constantly needing to enter in
+the IP address and password for the server. There
+are ways to simplify the workflow
+
+
+## Add SSH host
+
+Add in `~/.ssh/config`
+
+```
+Host example_host
+    User name
+    HostName 111.111.111.111
+    IdentityFile ~/.ssh/host.pub
+    Port 22
+```
+
+## Add private key
+
+1. Generate SSH key in host
+
+```
+ssh-keygen
+```
+
+2. Copy key to server
+
+Remember to copy the SSH over with e.g. `scp`
+
+```
+ssh-copy-id -i ~./ssh/host.pub user@host
+```

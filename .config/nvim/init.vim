@@ -34,9 +34,9 @@ nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
 nnoremap <Leader>d :Git diff %:p<cr>
 
 " Autopairs in specific languages
-au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
-au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
-au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
+" au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+" au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+" au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
 " Remove backspace deleting bracket pairs
 let g:AutoPairsMapBS = 0
 

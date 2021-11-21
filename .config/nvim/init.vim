@@ -29,6 +29,9 @@ au FileType C       nnoremap <Leader>c :w<cr>:!g++ '%' -o '%:r'<cr>
 " Json: reformat json files
 au FileType json    nnoremap <Leader>c :w<cr>:%!python -m json.tool<cr>
 
+" Vim: source Vim config
+au FileType vim    nnoremap <Leader>c :w<cr>:source %<cr>
+
 " Git related commands
 nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
 nnoremap <Leader>d :Git diff %:p<cr>
@@ -54,7 +57,9 @@ set number
 set relativenumber
 set tabstop=4
 set softtabstop=4
-set textwidth=50
+set textwidth=60
+set colorcolumn=60
+set nowrap
 set autoindent
 set fileformat=unix
 set shiftwidth=4

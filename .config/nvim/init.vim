@@ -1,3 +1,7 @@
+" >> remap leader key
+let mapleader = " "
+nnoremap <SPACE> <Nop>
+
 """"""""""""""""""""""
 " File specific key mappings and macros
 " <Leader>c for compile
@@ -35,13 +39,6 @@ au FileType vim    nnoremap <Leader>c :w<cr>:source %<cr>
 " Git related commands
 nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
 nnoremap <Leader>d :Git diff %:p<cr>
-
-" Autopairs in specific languages
-" au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
-" au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
-" au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
-" Remove backspace deleting bracket pairs
-let g:AutoPairsMapBS = 0
 
 " Map <Leader>q as :q for qutting
 nnoremap <Leader>q :q<cr>
@@ -232,6 +229,14 @@ nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 
 " >> Toggle the aerial window
 nnoremap <C-w> <cmd>AerialToggle!<CR>
+
+" Autopairs in specific languages
+au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
+au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$', "<!--", "-->"})
+au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
+
+" Remove backspace deleting bracket pairs
+let g:AutoPairsMapBS = 0
 
 """""""""""""""""
 " Lua functions

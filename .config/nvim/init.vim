@@ -19,6 +19,9 @@ au FileType R       nnoremap <Leader>c :w <cr> :!Rscript '%:p'<cr>
 " Rmd: compile Rmd file
 au FileType rmd     nnoremap <Leader>c :w <cr> :!Rscript -e "rmarkdown::render('%:p')"<cr>
 
+" Markdown: compile to pdf
+au FileType markdown nnoremap <Leader>c :w <cr> :!pandoc '%:p' -o '%:p:r.pdf' <cr>
+
 " Python: run current python script
 au FileType python  nnoremap <Leader>c :w <cr> :!python3 '%:p'<cr>
 " Python: sort imports

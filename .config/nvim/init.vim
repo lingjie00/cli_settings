@@ -50,6 +50,16 @@ nnoremap <Leader>q :q<cr>
 nnoremap <Leader>[ :cnext<cr>
 nnoremap <Leader>] :cprevious<cr>
 
+" Auto close brackets in specific languages
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+au FileType tex,rmd         inoremap $ $<space><space>$<left><left>
+au FileType python          inoremap % %<space>%
+au FileType tex             inoremap { \left{<tab><tab>\right}
+
 """""""""""""""
 " Preferences
 syntax on
@@ -126,9 +136,8 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'neovim/nvim-lspconfig' " config lsp key maps
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " provide better code highlights
     Plug 'terrortylor/nvim-comment' " convert code into comments
-    Plug 'tpope/vim-surround' " auto add brackets etc
+    Plug 'tpope/vim-surround' " auto modify surround brackets
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
-    Plug 'jiangmiao/auto-pairs' " Insert bracket in pairs
     Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
 
     " Specific Language support
@@ -233,13 +242,6 @@ nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 " >> Toggle the aerial window
 nnoremap <C-w> <cmd>AerialToggle!<CR>
 
-" Autopairs in specific languages
-au FileType tex      let b:AutoPairs = AutoPairsDefine({'$' : '$'})
-au FileType rmd      let b:AutoPairs = AutoPairsDefine({'$' : '$', "<!--", "-->"})
-au FileType python   let b:AutoPairs = AutoPairsDefine({'%' : '%'})
-
-" Remove backspace deleting bracket pairs
-let g:AutoPairsMapBS = 0
 
 """""""""""""""""
 " Lua functions

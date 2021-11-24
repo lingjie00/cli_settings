@@ -6,38 +6,38 @@ nnoremap <SPACE> <Nop>
 " File specific key mappings and macros
 " <Leader>c for compile
 " LaTex: compile latex file, delete temp files, map syntax
-au FileType tex     nnoremap <Leader>c :w <cr> :!pdflatex -output-directory '%:p:h'  '%:p' <cr>
-au FileType tex     let @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
-au FileType tex     let @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
-au FileType tex     let @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
-au FileType tex     let @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
-au FileType tex     let @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
-au FileType tex     let @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
+au FileType tex     nnoremap <buffer> <Leader>c :w <cr> :!pdflatex -output-directory '%:p:h'  '%:p' <cr>
+au FileType tex     let <buffer> @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
+au FileType tex     let <buffer> @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
+au FileType tex     let <buffer> @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
+au FileType tex     let <buffer> @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
+au FileType tex     let <buffer> @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
+au FileType tex     let <buffer> @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
 
 " R : run current script
-au FileType R       nnoremap <Leader>c :w <cr> :!Rscript '%:p'<cr>
+au FileType R       nnoremap <buffer> <Leader>c :w <cr> :!Rscript '%:p'<cr>
 " Rmd: compile Rmd file
-au FileType rmd     nnoremap <Leader>c :w <cr> :!Rscript -e "rmarkdown::render('%:p')"<cr>
+au FileType rmd     nnoremap <buffer> <Leader>c :w <cr> :!Rscript -e "rmarkdown::render('%:p')"<cr>
 
 " Markdown: compile to pdf
-au FileType markdown nnoremap <Leader>c :w <cr> :!pandoc '%:p' -o '%:p:r.pdf' <cr>
+au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :!pandoc '%:p' -o '%:p:r.pdf' <cr>
 
 " Python: run current python script
-au FileType python  nnoremap <Leader>c :w <cr> :!python3 '%:p'<cr>
+au FileType python  nnoremap <buffer> <Leader>c :w <cr> :!python3 '%:p'<cr>
 " Python: sort imports
-au FileType python  let @s=":%!isort - \<cr>"
+au FileType python  let <buffer> @s=":%!isort - \<cr>"
 " >> shortcut to launch jupyter notebook
-au FileType python  nmap <leader>e :w<CR><Plug>JupyterExecute<CR>
-au FileType python  nmap <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
+au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
+au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
 
 " C++: compile the current file
-au FileType C       nnoremap <Leader>c :w<cr>:!g++ '%' -o '%:r'<cr>
+au FileType C       nnoremap <buffer> <Leader>c :w<cr>:!g++ '%' -o '%:r'<cr>
 
 " Json: reformat json files
-au FileType json    nnoremap <Leader>c :w<cr>:%!python -m json.tool<cr>
+au FileType json    nnoremap <buffer> <Leader>c :w<cr>:%!python -m json.tool<cr>
 
 " Vim: source Vim config
-au FileType vim    nnoremap <Leader>c :w<cr>:source %<cr>
+au FileType vim    nnoremap <buffer> <Leader>c :w<cr>:source %<cr>
 
 " Git related commands
 nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
@@ -56,9 +56,9 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
-au FileType tex,rmd         inoremap $ $<space><space>$<left><left>
-au FileType python          inoremap % %<space>%
-au FileType tex             inoremap { \left{<tab><tab>\right}
+au FileType tex,rmd         inoremap <buffer> $ $<space><space>$<left><left>
+au FileType python          inoremap <buffer> % %<space>%
+au FileType tex             inoremap <buffer> { \left{<tab><tab>\right}
 
 """""""""""""""
 " Preferences
@@ -78,7 +78,7 @@ set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
 set ignorecase "ignore search case
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 set spell
 set mouse=a
@@ -100,7 +100,6 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar
-    Plug 'SmiteshP/nvim-gps' " adds sub-loc to function name
 
     """""""""""
     " Plugins "
@@ -275,21 +274,19 @@ catppuccino.setup({
 })
 vim.cmd[[colorscheme catppuccin]]
 
--- configure gps: show function within file
-require("nvim-gps").setup()
-local gps = require("nvim-gps")
-
 -- lualine
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'catppuccin'
+    theme = 'iceberg_dark',
+    section_separators = '',
+    component_separators = ''
   },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff',
-                  {'diagnostics', sources={'nvim_lsp', 'coc'}}},
-                  lualine_c = {'filename', {gps.get_location, condition = gps.is_available}},
+        {'diagnostics', sources={'nvim_lsp'}}},
+    lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}

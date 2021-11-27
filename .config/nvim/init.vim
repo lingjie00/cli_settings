@@ -7,12 +7,12 @@ nnoremap <SPACE> <Nop>
 " <Leader>c for compile
 " LaTex: compile latex file, delete temp files, map syntax
 au FileType tex     nnoremap <buffer> <Leader>c :w <cr> :!pdflatex -output-directory '%:p:h'  '%:p' <cr>
-au FileType tex     let <buffer> @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
-au FileType tex     let <buffer> @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
-au FileType tex     let <buffer> @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
-au FileType tex     let <buffer> @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
-au FileType tex     let <buffer> @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
-au FileType tex     let <buffer> @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
+au FileType tex     let @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
+au FileType tex     let @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
+au FileType tex     let @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
+au FileType tex     let @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
+au FileType tex     let @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
+au FileType tex     let @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
 
 " R : run current script
 au FileType R       nnoremap <buffer> <Leader>c :w <cr> :!Rscript '%:p'<cr>
@@ -25,7 +25,7 @@ au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :!pandoc '%:p' -o '%:p:
 " Python: run current python script
 au FileType python  nnoremap <buffer> <Leader>c :w <cr> :!python3 '%:p'<cr>
 " Python: sort imports
-au FileType python  let <buffer> @s=":%!isort - \<cr>"
+au FileType python  let @s=":%!isort - \<cr>"
 " >> shortcut to launch jupyter notebook
 au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
 au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>

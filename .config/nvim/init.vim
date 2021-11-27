@@ -58,7 +58,7 @@ inoremap [ []<left>
 inoremap { {}<left>
 au FileType tex,rmd         inoremap <buffer> $ $<space><space>$<left><left>
 au FileType python          inoremap <buffer> % %<space>%
-au FileType tex             inoremap <buffer> { \left{<tab><tab>\right}
+au FileType tex             inoremap <buffer> \{ \left\{<space><space>\right\}
 
 """""""""""""""
 " Preferences

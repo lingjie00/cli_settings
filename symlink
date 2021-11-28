@@ -32,4 +32,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     done
 fi
 
+
+##########################################
+# optional workplace script require sudo #
+##########################################
+read -p "Copy script to bin? " command;
+case $command in
+    [Yy]es )
+        for file in "nb_clean" "tmux_setup"
+        do
+            [ -f /usr/local/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
+        done;;
+    * )
+        echo "ok no script is transferred";;
+esac
+
 echo "Done with config"

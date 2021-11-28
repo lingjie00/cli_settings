@@ -41,11 +41,7 @@ case $command in
     [Yy]es )
         for file in "nb_clean" "tmux_setup"
         do
-<<<<<<< HEAD
             [ -f /usr/local/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
-=======
-            [ -f /usr/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
->>>>>>> c68d9122e3c969ec6cad1bd310f8670ed00c0ac3
         done;;
     * )
         echo "ok no script is transferred";;

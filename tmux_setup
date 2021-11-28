@@ -19,20 +19,12 @@ case $command in
         tmux previous-window;;
     * ) 
         # create env with conda
-        tmux send-keys "conda activate ${conda}" C-m;
+        tmux send-keys "conda activate ${command}" C-m;
         tmux split-window -v -p 20;
-        case $conda in
-            [Nn]o ) ;;
-            * ) tmux send-keys "conda activate ${conda}" C-m;;
-        esac
-
+        tmux send-keys "conda activate ${command}" C-m;
         tmux split-window -h -p 50;
-        case $conda in
-            [Nn]o ) ;;
-            * ) tmux send-keys "conda activate ${conda}" C-m;;
-        esac
+        tmux send-keys "conda activate ${command}" C-m;
 
         tmux rename-window "vim";
         tmux select-pane -D;
 esac
-

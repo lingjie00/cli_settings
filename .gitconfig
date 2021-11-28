@@ -1,3 +1,5 @@
+[core]
+    editor = vim
 [user]
 	name = ling
 	email = 64540764+lingjie00@users.noreply.github.com
@@ -6,3 +8,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	rebase = false
+[alias]
+    hist = log --graph --oneline --decorate

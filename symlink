@@ -6,6 +6,7 @@
 # if not, create folders
 [ -d ~/.config ] || { echo "creating .config folder"; mkdir ~/.config; }
 [ -d ~/.config/nvim ] || { echo "creating nvim config folder" ; mkdir ~/.config/nvim; }
+[ -d ~/.config/nvim/lua ] || { echo "creating nvim/lua config folder" ; mkdir ~/.config/nvim/lua; }
 
 # macos specific preference
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -19,7 +20,9 @@ fi
 #########################
 # create symbolic links #
 #########################
-for file in ".vimrc" ".zshrc" ".tmux.conf" ".config/nvim/init.vim" ".gitconfig"
+files=(".vimrc" ".zshrc" ".tmux.conf" ".gitconfig" ".config/nvim/init.vim" ".config/nvim/lua/lualine_theme.lua");
+
+for file in ${files[@]}
     do
         [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
 done

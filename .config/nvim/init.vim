@@ -98,8 +98,8 @@ call plug#begin(stdpath('data') . 'vimplug')
     " gruvbox, no longer used but used to love this
     " Plug 'morhetz/gruvbox'
 
-    " Catppuccino
-    Plug 'catppuccin/nvim'
+    " Current theme
+    Plug 'shaunsingh/nord.nvim'
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar
@@ -252,51 +252,11 @@ nnoremap <C-w> <cmd>AerialToggle!<CR>
 lua <<EOF
 
 -- THEME and STATUS BAR --
--- configure theme: catppuccin
-local catppuccino = require("catppuccin")
-catppuccino.setup({
-    colorscheme = "dark_catppuccino",
-    transparency = true,
-    term_colors = true,
-    styles = {
-        variables = "bold"
-    },
-    integrations = {
-        native_lsp = {
-            underlines = {
-                errors = "undercurl",
-                warnings = "undercurl"
-            }
-        },
-        lsp_trouble = true,
-        lsp_saga = true,
-        gitgutter = true,
-        gitsigns = true,
-        telescope = true,
-        markdown = true,
-        nvimtree = { enabled = true }
-    }
-})
-vim.cmd[[colorscheme catppuccin]]
+vim.g.nord_borders = false
+vim.cmd[[colorscheme nord]]
 
 -- lualine
-require'lualine'.setup {
-  options = {
-    icons_enabled = true,
-    theme = 'iceberg_dark',
-    section_separators = '',
-    component_separators = ''
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff',
-        {'diagnostics', sources={'nvim_lsp'}}},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-    }
-  }
+require('lualine_theme')
 
 -- nvim tree
 require'nvim-tree'.setup {
@@ -375,7 +335,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,                 -- false will disable the whole extension
-    disable = {},                  -- list of language that will be disabled
+    disable = {"zig", "godotResource"},     -- list of language that will be disabled
     additional_vim_regex_highlighting = false,
   },
 }
@@ -417,10 +377,14 @@ filetypes = {
   on_attach = custom_attach,
   capabilities = capabilities
 }
+local null_ls = require("null-ls")
 require("null-ls").config({
     sources = {
-        require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.completion.spell,
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.completion.spell,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.diagnostics.write_good,
+        null_ls.builtins.code_actions.gitsigns,
     },
 })
 require("lspconfig")["null-ls"].setup({

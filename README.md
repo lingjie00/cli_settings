@@ -5,7 +5,7 @@ This repo stores the following CLI settings I use:
 1. Neovim (text editor)
 2. zsh (bash)
 3. Tmux
-4. Yabai (window management for MacOS)
+4. Yabai (window management for macOS)
 
 # Setup
 
@@ -109,8 +109,8 @@ into 1) Neovim 2) Script Terminal (Python, R) 3)
 checking files (with `ls`) and launch another
 window within Tmux to launch jupyter server.
 
-I use a home server to perform heavy duty work.
-Using Tmux allows me perform my workflow with a
+I use a home server to perform heavy-duty work.
+Using Tmux allows me to perform my workflow with a
 single SSH and allows me to continue my work after
 resuming server back from sleep.
 
@@ -125,9 +125,9 @@ control my spaces.
 # Saving SSH settings
 
 If you use SSH frequently, then perhaps you also
-face the problem of constantly needing to enter in
-the IP address and password for the server. There
-are ways to simplify the workflow
+face the problem of constantly needing to enter the IP
+address and password for the server. There are ways to
+simplify the workflow
 
 
 ## Add SSH host

@@ -147,6 +147,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'lervag/vimtex' " latex
     Plug 'ellisonleao/glow.nvim' " markdown
     Plug 'untitled-ai/jupyter_ascending.vim' " jupyter notebook
+    Plug 'rhysd/vim-grammarous' " Grammar check
 
     " Git
     Plug 'tpope/vim-fugitive' " adds Git command to vim

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#######################
+# check folder exists #
+#######################
+# if not, create folders
+[ -d ~/.config ] || { echo "creating .config folder"; mkdir ~/.config; }
+[ -d ~/.config/nvim ] || { echo "creating nvim config folder" ; mkdir ~/.config/nvim; }
+
+# macos specific preference
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    for program in "limelight" "skhd" "yabai"
+    do
+        [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
+    done
+fi
+
+
+#########################
+# create symbolic links #
+#########################
+for file in ".vimrc" ".zshrc" ".tmux.conf" ".config/nvim/init.vim" ".gitconfig"
+    do
+        [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
+done
+
+# macos specific config files
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    for file in "skhd/skhdrc" "yabai/yabairc" "limelight/limelightrc"
+    do
+        [ -f ~/.config/$file ] || { echo "creating $file symlink"; ln -s $PWD/.config/$file ~/.config/$file; }
+    done
+fi
+
+echo "Done with config"

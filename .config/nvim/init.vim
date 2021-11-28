@@ -2,6 +2,9 @@
 let mapleader = " "
 nnoremap <SPACE> <Nop>
 
+" >> remap bash escape
+tnoremap <Esc> <C-\><C-n>
+
 """"""""""""""""""""""
 " File specific key mappings and macros
 " <Leader>c for compile

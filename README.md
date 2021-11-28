@@ -7,6 +7,43 @@ This repo stores the following CLI settings I use:
 3. Tmux
 4. Yabai (window management for MacOS)
 
+# Setup
+
+## symbolic links
+
+For a new machine, all the configs done can be done by git
+clone and symbolic linking the files.
+
+```bash
+# git clone
+git clone https://github.com/lingjie00/cli_settings .dotfiles
+
+# symbolic link
+symlink
+```
+
+## Python and R workflow
+
+I use Neovim for script editing.
+Therefore, there is no specific configurations for script 
+files (.py and .R)
+
+However, there are occasions visualizations or
+experimentation are required. In these cases, a notebook
+style of editing is preferred.
+
+For Python, I use Jupyter notebook. Jupyter notebook runs a
+local host at port (default) 8888, which I forward to local
+machine using SSH.
+
+For R, if you install the GUI RStudio then it is very
+troublesome to forward the GUI using X11. The simple
+solution would be to install
+[Rstudio server](https://www.rstudio.com/products/rstudio/download-server/)
+which will work similarity as Jupyter Lab.
+
+# Config
+
 ## Neovim
 
 I have switched from Vim to Neovim to display

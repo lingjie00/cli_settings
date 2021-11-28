@@ -141,6 +141,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-surround' " auto modify surround brackets
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
     Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
+    Plug 'jose-elias-alvarez/null-ls.nvim' " Additional lsp
 
     " Specific Language support
     Plug 'lervag/vimtex' " latex
@@ -415,5 +416,15 @@ filetypes = {
   on_attach = custom_attach,
   capabilities = capabilities
 }
+require("null-ls").config({
+    sources = {
+        require("null-ls").builtins.formatting.stylua,
+        require("null-ls").builtins.completion.spell,
+    },
+})
+require("lspconfig")["null-ls"].setup({
+    on_attach = custom_attach,
+    capabilities = capabilities
+})
 
 EOF

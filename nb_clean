@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# convert notebook into markdown
+jupyter nbconvert --to markdown *.ipynb
+
+# clear all outputs
+nbstripout *.ipynb

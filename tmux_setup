@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# main window
+# accepts either 1) no 2) ssh 3) conda env name
+# refer to ssh setup for server name setup
+read -p "Welcome back, Ling! conda, ssh or no? " command;
+case $command in
+    [Nn]o ) ;;
+    ssh ) 
+        # create server window
+        tmux new-window;
+        tmux rename-window "ssh";
+        tmux split-window -v -p 50;
+        # Jupyter server
+        tmux send-keys "ssh -NT -L 8888:localhost:8888 server" C-m;
+        tmux select-pane -D;
+        # RStudio server
+        tmux send-keys "ssh -NT -L 8787:localhost:8787 server" C-m;
+        tmux previous-window;;
+    * ) 
+        # create env with conda
+        tmux send-keys "conda activate ${conda}" C-m;
+        tmux split-window -v -p 20;
+        case $conda in
+            [Nn]o ) ;;
+            * ) tmux send-keys "conda activate ${conda}" C-m;;
+        esac
+
+        tmux split-window -h -p 50;
+        case $conda in
+            [Nn]o ) ;;
+            * ) tmux send-keys "conda activate ${conda}" C-m;;
+        esac
+
+        tmux rename-window "vim";
+        tmux select-pane -D;
+esac
+

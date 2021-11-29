@@ -44,7 +44,11 @@ fi
 files=("nb_clean" "tmux_setup")
 for file in ${files[@]}
 do
-    [ -f /usr/local/bin/$file ] || { echo "transfer $file"; ln -s $PWD/$file /usr/local/bin/$file; }
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        [ -f /usr/local/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        [ -f /usr/local/bin/$file ] || { echo "transfer $file"; ln -s $PWD/$file /usr/local/bin/$file; }
+    fi
 done
 
 echo "Done with config"

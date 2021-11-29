@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# this script will remove the current config files
+# useful for re-installing all the config files
+
+files=(".vimrc" ".zshrc" ".tmux.conf" ".gitconfig" ".config/nvim/init.vim" ".config/nvim/lua/lualine_theme.lua");
+
+for file in ${files[@]}
+    do
+        [ -f ~/$file ] && { echo "deleting $file"; rm ~/$file; }
+done
+
+# macos specific config files
+files=("skhd/skhdrc" "yabai/yabairc" "limelight/limelightrc")
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    for file in ${files[@]}
+    do
+        [ -f ~/.config/$file ] && { echo "deleting $file"; rm ~/.config/$file; }
+    done
+fi
+
+files=("nb_clean" "tmux_setup")
+for file in ${files[@]}
+do
+    [ -f /usr/local/bin/$file ] && { echo "deleting $file"; rm /usr/local/bin/$file; }
+done

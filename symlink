@@ -9,8 +9,9 @@
 [ -d ~/.config/nvim/lua ] || { echo "creating nvim/lua config folder" ; mkdir ~/.config/nvim/lua; }
 
 # macos specific preference
+files=("limelight" "skhd" "yabai")
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    for program in "limelight" "skhd" "yabai"
+    for program in ${files[@]}
     do
         [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
     done
@@ -28,23 +29,25 @@ for file in ${files[@]}
 done
 
 # macos specific config files
+files=("skhd/skhdrc" "yabai/yabairc" "limelight/limelightrc")
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    for file in "skhd/skhdrc" "yabai/yabairc" "limelight/limelightrc"
+    for file in ${files[@]}
     do
         [ -f ~/.config/$file ] || { echo "creating $file symlink"; ln -s $PWD/.config/$file ~/.config/$file; }
     done
 fi
 
 
-##########################################
-# optional workplace script require sudo #
-##########################################
-read -p "Copy script to bin? " command;
+#############################
+# optional workplace script #
+#############################
+read -p "Copy script to bin? (yes/no) " command;
+files=("nb_clean" "tmux_setup")
 case $command in
     [Yy]es )
-        for file in "nb_clean" "tmux_setup"
+        for file in ${files[@]}
         do
-            [ -f /usr/local/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
+            [ -f /usr/local/bin/$file ] || { echo "transfer $file"; ln -s $PWD/$file /usr/local/bin/$file; }
         done;;
     * )
         echo "ok no script is transferred";;

@@ -38,19 +38,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 
-#############################
-# optional workplace script #
-#############################
-read -p "Copy script to bin? (yes/no) " command;
+####################
+# workplace script #
+####################
 files=("nb_clean" "tmux_setup")
-case $command in
-    [Yy]es )
-        for file in ${files[@]}
-        do
-            [ -f /usr/local/bin/$file ] || { echo "transfer $file"; ln -s $PWD/$file /usr/local/bin/$file; }
-        done;;
-    * )
-        echo "ok no script is transferred";;
-esac
+for file in ${files[@]}
+do
+    [ -f /usr/local/bin/$file ] || { echo "transfer $file"; ln -s $PWD/$file /usr/local/bin/$file; }
+done
 
 echo "Done with config"

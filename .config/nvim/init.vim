@@ -87,6 +87,7 @@ set spell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
 set cmdheight=1
+set termguicolors
 
 
 """"""""""""""""""
@@ -99,7 +100,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Plug 'morhetz/gruvbox'
 
     " Current theme
-    Plug 'shaunsingh/nord.nvim'
+    Plug 'wuelnerdotexe/vim-enfocado'
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar
@@ -252,8 +253,8 @@ nnoremap <C-w> <cmd>AerialToggle!<CR>
 lua <<EOF
 
 -- THEME and STATUS BAR --
-vim.g.nord_borders = false
-vim.cmd[[colorscheme nord]]
+vim.g.enfocado_style = "nature"
+vim.cmd[[colorscheme enfocado]]
 
 -- lualine
 require('lualine_theme')

@@ -122,7 +122,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
     Plug 'easymotion/vim-easymotion' " better jump word
     Plug 'folke/trouble.nvim' " nav to code errors
-    Plug 'stevearc/aerial.nvim' " nav to code structure
 
     " tmux navigation
     Plug 'christoomey/vim-tmux-navigator' " nav shortcut for tmux
@@ -244,9 +243,6 @@ nnoremap <silent> gi    <cmd>lua require'telescope.builtin'.lsp_implementations(
 " >> shortcut to show var
 nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 
-" >> Toggle the aerial window
-nnoremap <C-w> <cmd>AerialToggle!<CR>
-
 
 """""""""""""""""
 " Lua functions
@@ -291,13 +287,6 @@ require('nvim_comment').setup({
 -- Trouble, showcase all code issues at once
 require'trouble'.setup{}
 
--- Aerial, showcase code base structure
-local aerial = require'aerial'
-local custom_attach = function(client)
-  aerial.on_attach(client)
-end
-
-
 -- LSP --
 -- highlight TODO, FIX, HACK
 require'todo-comments'.setup{}
@@ -339,6 +328,15 @@ require'nvim-treesitter.configs'.setup {
     disable = {"zig", "godotResource"},     -- list of language that will be disabled
     additional_vim_regex_highlighting = false,
   },
+    incremental_selection = {
+    enable = true,
+    keymaps = {
+        init_selection = '<CR>',
+        scope_incremental = '<CR>',
+        node_incremental = '<TAB>',
+        node_decremental = '<S-TAB>',
+        },
+    },
 }
 
 -- LSP servers

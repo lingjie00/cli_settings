@@ -329,7 +329,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
     incremental_selection = {
-    enable = true,
+    enable = false,
     keymaps = {
         init_selection = '<CR>',
         scope_incremental = '<CR>',

@@ -60,7 +60,7 @@ inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
 au FileType tex,rmd         inoremap <buffer> $ $<space><space>$<left><left>
-au FileType python          inoremap <buffer> % %<space>%
+au FileType python          inoremap <buffer> % %%
 au FileType tex             inoremap <buffer> \{ \left\{<space><space>\right\}
 
 """""""""""""""

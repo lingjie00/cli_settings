@@ -1,20 +1,67 @@
-""""""""""""""""""""""
-" Macros
-" LaTex
-let @t=":w \<cr> :!pdflatex -output-directory '%:p:h'  '%:p' \<cr> :!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>"
-let @1="i\\begin{lstlisting}[language=R]"
-" R
-let @r=":term Rscript % \<cr>"
-" Python
-let @p=":term python % \<cr>"
-" C++
-let @c=":!g++ '%' -o '%:r' \<cr>"
-" Json
-let @j=":%!python -m json.tool \<cr>"
+" >> remap leader key
+let mapleader = " "
+nnoremap <SPACE> <Nop>
 
-let g:SimpylFold_docstring_preview=1
-let python_highlight_all=1
-let R_assign = 0
+" >> remap bash escape
+tnoremap <Esc> <C-\><C-n>
+
+""""""""""""""""""""""
+" File specific key mappings and macros
+" <Leader>c for compile
+" LaTex: compile latex file, delete temp files, map syntax
+au FileType tex     nnoremap <buffer> <Leader>c :w <cr> :!pdflatex -output-directory '%:p:h'  '%:p' <cr>
+au FileType tex     let @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
+au FileType tex     let @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
+au FileType tex     let @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
+au FileType tex     let @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
+au FileType tex     let @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
+au FileType tex     let @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
+
+" R : run current script
+au FileType R       nnoremap <buffer> <Leader>c :w <cr> :!Rscript '%:p'<cr>
+" Rmd: compile Rmd file
+au FileType rmd     nnoremap <buffer> <Leader>c :w <cr> :!Rscript -e "rmarkdown::render('%:p')"<cr>
+
+" Markdown: compile to pdf
+au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :!pandoc '%:p' -o '%:p:r.pdf' <cr>
+
+" Python: run current python script
+au FileType python  nnoremap <buffer> <Leader>c :w <cr> :!python3 '%:p'<cr>
+" Python: sort imports
+au FileType python  let @s=":%!isort - \<cr>"
+" >> shortcut to launch jupyter notebook
+au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
+au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
+
+" C++: compile the current file
+au FileType C       nnoremap <buffer> <Leader>c :w<cr>:!g++ '%' -o '%:r'<cr>
+
+" Json: reformat json files
+au FileType json    nnoremap <buffer> <Leader>c :w<cr>:%!python -m json.tool<cr>
+
+" Vim: source Vim config
+au FileType vim    nnoremap <buffer> <Leader>c :w<cr>:source %<cr>
+
+" Git related commands
+nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
+nnoremap <Leader>d :Git diff %:p<cr>
+
+" Map <Leader>q as :q for qutting
+nnoremap <Leader>q :q<cr>
+
+" Navigate Quickfix list
+nnoremap <Leader>[ :cnext<cr>
+nnoremap <Leader>] :cprevious<cr>
+
+" Auto close brackets in specific languages
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+au FileType tex,rmd         inoremap <buffer> $ $<space><space>$<left><left>
+au FileType python          inoremap <buffer> % %%
+au FileType tex             inoremap <buffer> \{ \left\{<space><space>\right\}
 
 """""""""""""""
 " Preferences
@@ -23,7 +70,9 @@ set number
 set relativenumber
 set tabstop=4
 set softtabstop=4
-set textwidth=120
+set textwidth=60
+set colorcolumn=60
+set nowrap
 set autoindent
 set fileformat=unix
 set shiftwidth=4
@@ -32,11 +81,14 @@ set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
 set ignorecase "ignore search case
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 set spell
 set mouse=a
-set lazyredraw
+set completeopt=menu,menuone,preview,noinsert
+set cmdheight=1
+set termguicolors
+
 """""""""""""""""""
 " Plugin
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -51,52 +103,21 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-""""""""""""""""""
-" R plug in
-"Plug 'ncm2/ncm2'
-"Plug 'roxma/nvim-yarp'
+    " status bar
+    Plug 'vim-airline/vim-airline'
+    " gruvbox
+    Plug 'morhetz/gruvbox'
 
-"""""""""""""""""
-" Python plug in
-Plug 'tmhedberg/SimpylFold'
-Plug 'vim-scripts/indentpython.vim'
+    " navigation shortcut
+    Plug 'christoomey/vim-tmux-navigator'
 
-" Syntax check
-Plug 'vim-syntastic/syntastic'
+    " insearch
+    Plug 'haya14busa/incsearch.vim'
 
-" auto complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-" LaTeX
-Plug 'lervag/vimtex'
-            
-" status bar
-Plug 'vim-airline/vim-airline'
-
-" terminal fuzzy finder
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-" gruvbox
-Plug 'morhetz/gruvbox'
-
-" navigation shortcut
-Plug 'christoomey/vim-tmux-navigator'
-
-"Nerd tree
-Plug 'preservim/nerdtree'
-
-" send buffer
-Plug 'esamattis/slimux'
-
-" insearch
-Plug 'haya14busa/incsearch.vim'
-
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
+    " Git
+    Plug 'tpope/vim-fugitive' " adds Git command to vim
+    Plug 'airblade/vim-gitgutter' " shows git diff marks
+    Plug 'f-person/git-blame.nvim' " shows git blame
 
 " Initialize plugin system
 call plug#end()
@@ -109,84 +130,38 @@ set background=dark
 
 """""""""""""""
 " map keys
-" map find files
-nmap <silent> <C-f> :Files<CR>
-
-" send to buffer
-map <Leader>s :SlimuxREPLSendLine<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
-map <Leader>b :SlimuxREPLSendBuffer<CR>
-map <Leader>a :SlimuxShellLast<CR>
-map <Leader>k :SlimuxSendKeysLast<CR>
-
-" system clipboard
-vnoremap <leader>y "*y
-vnoremap <leader>p "+p
-
-" insearch
+" >> replace default search with insearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)zz
+map N  <Plug>(incsearch-nohl-N)zz
+map *  <Plug>(incsearch-nohl-*)zz
+map #  <Plug>(incsearch-nohl-#)zz
+map g* <Plug>(incsearch-nohl-g*)zz
+map g# <Plug>(incsearch-nohl-g#)zz
 
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-" COC settings
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" >> Functional remap
+" keeping next line centered
+nnoremap J mzJ`z
+" undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+" Jump list mutation
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+" Moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-1<CR>==
+" copy word and after
+nnoremap Y y$
+" >> shortcut for global copy
+noremap <leader>p "+p
+noremap <leader>y "+y
+noremap <leader>Y "+y$

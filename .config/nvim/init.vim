@@ -307,7 +307,7 @@ end,
         ['<Down>'] = cmp.mapping.select_next_item({ select = true })
         },
     sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
+    { name = 'nvim_diagnostic' },
     }, {
     { name = 'buffer' },
     }, {

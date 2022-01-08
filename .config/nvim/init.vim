@@ -105,6 +105,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar
 
+    " Zoom in nvim windows
+    Plug 'nyngwang/NeoZoom.lua'
+
     """""""""""
     " Plugins "
     """""""""""
@@ -217,6 +220,9 @@ nnoremap <C-f> :NvimTreeToggle<CR>
 
 " >> shortcut to launch Trouble
 nnoremap <C-t> :TroubleToggle<CR>
+
+" >> Zoom nvim window
+nnoremap <CR> :NeoZoomToggle<CR>
 
 " >> Telescope bindings
 " find buffer

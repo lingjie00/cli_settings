@@ -42,6 +42,9 @@ au FileType json    nnoremap <buffer> <Leader>c :w<cr>:%!python -m json.tool<cr>
 " Vim: source Vim config
 au FileType vim    nnoremap <buffer> <Leader>c :w<cr>:source %<cr>
 
+" Java: compile
+au FileType java   nnoremap <buffer> <Leader>c :w<cr>:!javac %<cr>
+
 " Git related commands
 nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
 nnoremap <Leader>d :Git diff %:p<cr>

@@ -111,6 +111,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Zoom in nvim windows
     Plug 'nyngwang/NeoZoom.lua'
 
+    " indention marks
+    Plug 'lukas-reineke/indent-blankline.nvim'
+
     """""""""""
     " Plugins "
     """""""""""

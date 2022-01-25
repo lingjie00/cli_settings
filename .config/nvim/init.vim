@@ -56,6 +56,9 @@ nnoremap <Leader>q :q<cr>
 nnoremap <Leader>[ :cnext<cr>
 nnoremap <Leader>] :cprevious<cr>
 
+" change working drive
+nnoremap <Leader>cd :cd %:p:h<cr>
+
 " Auto close brackets in specific languages
 inoremap " ""<left>
 inoremap ' ''<left>

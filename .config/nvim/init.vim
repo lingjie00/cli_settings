@@ -46,7 +46,7 @@ au FileType vim    nnoremap <buffer> <Leader>c :w<cr>:source %<cr>
 au FileType java   nnoremap <buffer> <Leader>c :w<cr>:AsyncRun javac %<cr>
 
 " Git related commands
-nnoremap <Leader>w :w<cr> :AsyncRun git add '%:p'<cr>
+nnoremap <Leader>w :w<cr> :! git add '%:p'<cr>
 nnoremap <Leader>d :Git diff %:p<cr>
 
 " Map <Leader>q as :q for qutting
@@ -231,7 +231,7 @@ nnoremap <C-f> :NvimTreeToggle<CR>
 nnoremap <C-t> :TroubleToggle<CR>
 
 " >> Zoom nvim window
-nnoremap <CR> :NeoZoomToggle<CR>
+nnoremap <Leader><CR> :NeoZoomToggle<CR>
 
 " >> Telescope bindings
 " find buffer
@@ -335,23 +335,30 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Setup treesitter, highlights text and codes
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,                 -- false will disable the whole extension
-    disable = {"zig", "godotResource"},     -- list of language that will be disabled
-    additional_vim_regex_highlighting = false,
-  },
-    incremental_selection = {
-    enable = false,
-    keymaps = {
-        init_selection = '<CR>',
-        scope_incremental = '<CR>',
-        node_incremental = '<TAB>',
-        node_decremental = '<S-TAB>',
-        },
-    },
-}
+-- require'nvim-treesitter.configs'.setup {
+--   ensure_installed = 
+--   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+--   {
+--     "bash", "c", "cmake", "comment", "cpp",
+--     "dockerfile", "dot", "hjson", "java", "javascript",
+--     "json", "lua", "make", "markdown", "python", "r",
+--     "regex", "swift", "yaml", "vim"
+--       }, 
+--   highlight = {
+--     enable = true,                 -- false will disable the whole extension
+--     disable = {"zig", "godotResource"},     -- list of language that will be disabled
+--     additional_vim_regex_highlighting = false,
+--   },
+--     incremental_selection = {
+--     enable = false,
+--     keymaps = {
+--         init_selection = '<CR>',
+--         scope_incremental = '<CR>',
+--         node_incremental = '<TAB>',
+--         node_decremental = '<S-TAB>',
+--         },
+--     },
+-- }
 
 -- LSP servers
 require'lspconfig'.pylsp.setup{

@@ -244,7 +244,7 @@ nnoremap <Leader>/ <cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find
 " search in git files
 nnoremap <Leader>f <cmd>lua require'telescope.builtin'.git_files{}<CR>
 " search all files
-nnoremap <Leader>F <cmd>lua require'telescope.builtin'.file_browser{}<CR>
+nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>

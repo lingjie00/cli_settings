@@ -250,8 +250,8 @@ nnoremap <Leader>F <cmd>lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> <C-p> <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-n> <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> gd    <cmd>lua require'telescope.builtin'.lsp_definitions()<CR>
 nnoremap <silent> gr    <cmd>lua require'telescope.builtin'.lsp_references()<CR>

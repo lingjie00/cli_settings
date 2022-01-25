@@ -9,8 +9,8 @@ tnoremap <Esc> <C-\><C-n>
 " File specific key mappings and macros
 " <Leader>c for compile
 " LaTex: compile latex file, delete temp files, map syntax
-au FileType tex     nnoremap <buffer> <Leader>c :w <cr> :!pdflatex -output-directory '%:p:h'  '%:p' <cr>
-au FileType tex     let @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
+au FileType tex     nnoremap <buffer> <Leader>c :w <cr> :AsyncRun pdflatex -output-directory '%:p:h'  '%:p' <cr>
+au FileType tex     let @c=":AsyncRun rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
 au FileType tex     let @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
 au FileType tex     let @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
 au FileType tex     let @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
@@ -18,35 +18,35 @@ au FileType tex     let @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
 au FileType tex     let @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
 
 " R : run current script
-au FileType R       nnoremap <buffer> <Leader>c :w <cr> :!Rscript '%:p'<cr>
+au FileType R       nnoremap <buffer> <Leader>c :w <cr> :AsyncRun Rscript '%:p'<cr>
 " Rmd: compile Rmd file
-au FileType rmd     nnoremap <buffer> <Leader>c :w <cr> :!Rscript -e "rmarkdown::render('%:p')"<cr>
+au FileType rmd     nnoremap <buffer> <Leader>c :w <cr> :AsyncRun Rscript -e "rmarkdown::render('%:p')"<cr>
 
 " Markdown: compile to pdf
-au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :!pandoc '%:p' -o '%:p:r.pdf' <cr>
+au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :AsyncRun pandoc '%:p' -o '%:p:r.pdf' <cr>
 
 " Python: run current python script
-au FileType python  nnoremap <buffer> <Leader>c :w <cr> :!python3 '%:p'<cr>
+au FileType python  nnoremap <buffer> <Leader>c :w <cr> :AsyncRun python3 '%:p'<cr>
 " Python: sort imports
-au FileType python  let @s=":%!isort - \<cr>"
+au FileType python  let @s=":%AsyncRun isort - \<cr>"
 " >> shortcut to launch jupyter notebook
 au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
 au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
 
 " C++: compile the current file
-au FileType C       nnoremap <buffer> <Leader>c :w<cr>:!g++ '%' -o '%:r'<cr>
+au FileType C       nnoremap <buffer> <Leader>c :w<cr>:AsyncRun g++ '%' -o '%:r'<cr>
 
 " Json: reformat json files
-au FileType json    nnoremap <buffer> <Leader>c :w<cr>:%!python -m json.tool<cr>
+au FileType json    nnoremap <buffer> <Leader>c :w<cr>:%AsyncRun python -m json.tool<cr>
 
 " Vim: source Vim config
 au FileType vim    nnoremap <buffer> <Leader>c :w<cr>:source %<cr>
 
 " Java: compile
-au FileType java   nnoremap <buffer> <Leader>c :w<cr>:!javac %<cr>
+au FileType java   nnoremap <buffer> <Leader>c :w<cr>:AsyncRun javac %<cr>
 
 " Git related commands
-nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
+nnoremap <Leader>w :w<cr> :AsyncRun git add '%:p'<cr>
 nnoremap <Leader>d :Git diff %:p<cr>
 
 " Map <Leader>q as :q for qutting
@@ -161,6 +161,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-fugitive' " adds Git command to vim
     Plug 'airblade/vim-gitgutter' " shows git diff marks
     Plug 'f-person/git-blame.nvim' " shows git blame
+
+    " Run terminal command async
+    Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 

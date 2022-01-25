@@ -47,7 +47,7 @@ au FileType java   nnoremap <buffer> <Leader>c :w<cr>:AsyncRun javac %<cr>
 
 " Git related commands
 nnoremap <Leader>w :w<cr> :! git add '%:p'<cr>
-nnoremap <Leader>d :Git diff %:p<cr>
+nnoremap <Leader>d :Git diff %<cr>
 
 " Map <Leader>q as :q for qutting
 nnoremap <Leader>q :q<cr>

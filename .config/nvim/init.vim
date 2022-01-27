@@ -260,17 +260,27 @@ nnoremap <silent> gi    <cmd>lua require'telescope.builtin'.lsp_implementations(
 " >> shortcut to show var
 nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 
+colorscheme enfocado
+let g:enfocado_style = "nature"
 
 """""""""""""""""
 " Lua functions
 lua <<EOF
 
 -- THEME and STATUS BAR --
-vim.g.enfocado_style = "nature"
-vim.cmd[[colorscheme enfocado]]
 
 -- lualine
 require('lualine_theme')
+
+-- telescope
+require('telescope').setup({
+  defaults = {
+    layout_strategy='center',
+    layout_config={
+        width=0.8
+    }
+  },
+})
 
 -- nvim tree
 require'nvim-tree'.setup {
@@ -338,30 +348,30 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Setup treesitter, highlights text and codes
--- require'nvim-treesitter.configs'.setup {
---   ensure_installed = 
---   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
---   {
---     "bash", "c", "cmake", "comment", "cpp",
---     "dockerfile", "dot", "hjson", "java", "javascript",
---     "json", "lua", "make", "markdown", "python", "r",
---     "regex", "swift", "yaml", "vim"
---       }, 
---   highlight = {
---     enable = true,                 -- false will disable the whole extension
---     disable = {"zig", "godotResource"},     -- list of language that will be disabled
---     additional_vim_regex_highlighting = false,
---   },
---     incremental_selection = {
---     enable = false,
---     keymaps = {
---         init_selection = '<CR>',
---         scope_incremental = '<CR>',
---         node_incremental = '<TAB>',
---         node_decremental = '<S-TAB>',
---         },
---     },
--- }
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = 
+  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  {
+    "bash", "c", "cmake", "comment", "cpp",
+    "dockerfile", "dot", "hjson", "java", "javascript",
+    "json", "lua", "make", "markdown", "python", "r",
+    "regex", "swift", "yaml", "vim"
+      }, 
+  highlight = {
+    enable = true,                 -- false will disable the whole extension
+    disable = {"zig", "godotResource"},     -- list of language that will be disabled
+    additional_vim_regex_highlighting = false,
+  },
+    incremental_selection = {
+    enable = false,
+    keymaps = {
+        init_selection = '<CR>',
+        scope_incremental = '<CR>',
+        node_incremental = '<TAB>',
+        node_decremental = '<S-TAB>',
+        },
+    },
+}
 
 -- LSP servers
 require'lspconfig'.pylsp.setup{

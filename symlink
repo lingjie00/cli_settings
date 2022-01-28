@@ -21,7 +21,14 @@ fi
 #########################
 # create symbolic links #
 #########################
-files=(".vimrc" ".zshrc" ".tmux.conf" ".gitconfig" ".config/nvim/init.vim" ".config/nvim/lua/lualine_theme.lua");
+files=(
+    ".vimrc" ".zshrc" ".tmux.conf" ".gitconfig"
+    ".config/nvim/init.vim"
+    ".config/nvim/plugin.vim"
+    ".config/nvim/keymap.vim"
+    ".config/nvim/lua/lualine_theme.lua"
+    ".config/nvim/lua/config.lua"
+    );
 
 for file in ${files[@]}
     do

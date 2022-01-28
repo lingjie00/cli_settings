@@ -45,3 +45,6 @@ runtime ./keymap.vim
 """""""""""""""""
 " Lua functions
 runtime ./lua/config.lua
+
+" lualine
+runtime ./lua/lualine_theme.lua

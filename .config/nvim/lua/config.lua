@@ -6,9 +6,6 @@ require('nightfox').setup({
 })
 require('nightfox').load()
 
--- lualine
-require('lualine_theme')
-
 -- telescope
 require('telescope').setup({
   defaults = {

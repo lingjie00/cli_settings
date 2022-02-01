@@ -11,3 +11,6 @@ switch (uname)
         eval /home/ling/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 end
 # <<< conda initialize <<<
+
+# vim mode
+fish_vi_key_bindings

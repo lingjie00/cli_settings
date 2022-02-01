@@ -7,6 +7,8 @@
 [ -d ~/.config ] || { echo "creating .config folder"; mkdir ~/.config; }
 [ -d ~/.config/nvim ] || { echo "creating nvim config folder" ; mkdir ~/.config/nvim; }
 [ -d ~/.config/nvim/lua ] || { echo "creating nvim/lua config folder" ; mkdir ~/.config/nvim/lua; }
+[ -d ~/.config/fish ] || { echo "creating fish config folder" ; mkdir ~/.config/fish; }
+[ -d ~/.config/fish/functions ] || { echo "creating fish/functions config folder" ; mkdir ~/.config/fish/functions; }
 
 # macos specific preference
 files=("limelight" "skhd" "yabai")
@@ -28,6 +30,12 @@ files=(
     ".config/nvim/keymap.vim"
     ".config/nvim/lua/lualine_theme.lua"
     ".config/nvim/lua/config.lua"
+    ".config/fish/config.fish"
+    ".config/fish/fish_plugins"
+    ".config/fish/fish_variables"
+    ".config/fish/functions/fish_prompt.fish"
+    ".config/fish/functions/fish_right_prompt.fish"
+    ".config/fish/functions/fisher.fish"
     );
 
 for file in ${files[@]}

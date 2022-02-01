@@ -3,7 +3,7 @@
 This repo stores the following CLI settings I use:
 
 1. Neovim (text editor)
-2. zsh (bash)
+2. fish shell
 3. Tmux
 4. Yabai (window management for macOS)
 
@@ -74,15 +74,13 @@ the mapping are based on these 3 languages.
 Read more about Neovim from their [ official
 page ]( https://neovim.io/ )
 
-## zsh
+## Fish shell
 
-I replace Bash with Zsh for the additional
-customizations Zsh provides.
-I have some plugins installed for Zsh, but the
-main one is simply [ Oh My Zsh ]( https://ohmyz.sh/ )
+I have transit from Bash to Zsh to fish shell now.
+Fish shell is much more responsive than zsh.
 
 Since most of my workflow is in Neovim and Tmux
-now, the most usage for Zsh will be to prompt
+now, the most usage for terminal will be to prompt
 files and commands.
 
 ## miniconda, and fixes

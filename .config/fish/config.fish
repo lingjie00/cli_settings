@@ -4,8 +4,10 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /Users/lingjie/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+switch (uname)
+    case Darwin
+        eval /Users/lingjie/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+    case Linux
+        eval /home/ling/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+end
 # <<< conda initialize <<<
-
-# Enable vim mode
-fish_vi_key_bindings

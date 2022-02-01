@@ -15,7 +15,6 @@ files=(
     ".config/fish/fish_variables"
     ".config/fish/functions/fish_prompt.fish"
     ".config/fish/functions/fish_right_prompt.fish"
-    ".config/fish/functions/fisher.fish"
     );
 
 for file in ${files[@]}

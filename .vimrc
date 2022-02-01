@@ -117,7 +117,6 @@ call plug#begin('~/.vim/plugged')
     " Git
     Plug 'tpope/vim-fugitive' " adds Git command to vim
     Plug 'airblade/vim-gitgutter' " shows git diff marks
-    Plug 'f-person/git-blame.nvim' " shows git blame
 
 " Initialize plugin system
 call plug#end()

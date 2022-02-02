@@ -54,6 +54,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-surround' " auto modify surround brackets
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
     Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
+    Plug 'ray-x/lsp_signature.nvim' " Provide lsp signature (prompt in function param)
 
     " Specific Language support
     Plug 'lervag/vimtex' " latex
@@ -65,6 +66,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'tpope/vim-fugitive' " adds Git command to vim
     Plug 'airblade/vim-gitgutter' " shows git diff marks
     Plug 'f-person/git-blame.nvim' " shows git blame
+    Plug 'rhysd/conflict-marker.vim' " mark conflicts
 
     " Run terminal command async
     Plug 'skywind3000/asyncrun.vim'

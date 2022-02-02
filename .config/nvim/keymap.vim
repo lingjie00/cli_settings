@@ -52,6 +52,9 @@ nnoremap <Leader>] :cprevious<cr>
 " change working drive
 nnoremap <Leader>cd :cd %:p:h<cr>
 
+" cancel highlight with escape
+nnoremap <silent> <Esc> <Esc>:noh<CR>
+
 " Auto close brackets in specific languages
 inoremap " ""<left>
 inoremap ' ''<left>

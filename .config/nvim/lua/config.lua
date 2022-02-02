@@ -108,6 +108,19 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- LSP servers
+lsp_signature = require'lsp_signature'
+lsp_signature.setup{
+    bind = true,
+    hint_prefix = "🤪 ",
+    max_height = 30,
+    handler_ops = {
+        border = "rounded"
+    }
+}
+custom_attach = function(client, bufnr)
+    lsp_signature.on_attach()
+end
+
 require'lspconfig'.pylsp.setup{
   on_attach = custom_attach,
   capabilities = capabilities

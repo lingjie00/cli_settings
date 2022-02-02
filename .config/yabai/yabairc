@@ -25,6 +25,7 @@ yabai -m rule --add app="HazeOver" manage=off
 yabai -m rule --add app="Music" manage=off
 yabai -m rule --add app="Stickies" manage=off
 yabai -m rule --add app="Numi" manage=off
+yabai -m rule --add app="LastPass" manage=off
 
 #find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
 

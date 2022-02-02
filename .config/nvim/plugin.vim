@@ -48,6 +48,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'f3fora/cmp-spell' " add spelling support
 
     " LSP
+    Plug 'jose-elias-alvarez/null-ls.nvim' " null ls
     Plug 'neovim/nvim-lspconfig' " config lsp key maps
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " provide better code highlights
     Plug 'terrortylor/nvim-comment' " convert code into comments

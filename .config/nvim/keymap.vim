@@ -20,8 +20,6 @@ au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :AsyncRun pandoc '%:p' 
 
 " Python: run current python script
 au FileType python  nnoremap <buffer> <Leader>c :w <cr> :AsyncRun python3 '%:p'<cr>
-" Python: sort imports
-au FileType python  let @s=":%AsyncRun isort - \<cr>"
 " >> shortcut to launch jupyter notebook
 au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
 au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>

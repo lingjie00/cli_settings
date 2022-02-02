@@ -107,6 +107,42 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
+-- set up null ls
+null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        -- formatting
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.fish_indent,
+        null_ls.builtins.formatting.latexindent,
+        -- null_ls.builtins.formatting.format_r,
+        -- diagostics
+        null_ls.builtins.diagnostics.chktex,
+        null_ls.builtins.diagnostics.codespell.with({
+            filetypes={ "python", "r", "rmd" },
+            }),
+        -- null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.diagnostics.gitlint,
+        null_ls.builtins.diagnostics.hadolint,
+        -- null_ls.builtins.diagnostics.write_good.with({
+        --     filetypes={ "markdown", "rmd" },
+        --     }),
+        null_ls.builtins.diagnostics.yamllint,
+        -- code actions
+        null_ls.builtins.code_actions.gitrebase,
+        null_ls.builtins.code_actions.proselint.with({
+            filetypes={"markdown", "tex", "rmd"}
+            }),
+        null_ls.builtins.code_actions.refactoring,
+        -- hovers
+        null_ls.builtins.hover.dictionary.with({
+            filetypes={"text", "markdown", "rmd"}
+        }),
+    }
+})
+
 -- LSP servers
 lsp_signature = require'lsp_signature'
 lsp_signature.setup{
@@ -122,42 +158,42 @@ custom_attach = function(client, bufnr)
 end
 
 require'lspconfig'.pylsp.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }
 require'lspconfig'.r_language_server.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }
 require'lspconfig'.texlab.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
-  }
+    on_attach = custom_attach,
+    capabilities = capabilities
+}
 require'lspconfig'.vimls.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }
 require'lspconfig'.bashls.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }
 require'lspconfig'.dockerls.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }
 require'lspconfig'.jsonls.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }
 require'lspconfig'.ltex.setup{
-filetypes = {
-    "bib", "markdown", "org",
-    "plaintex", "rst", "rnoweb", "tex"
+    filetypes = {
+        "bib", "markdown", "org",
+        "plaintex", "rst", "rnoweb", "tex"
     },
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }
 require'lspconfig'.jdtls.setup{
-  on_attach = custom_attach,
-  capabilities = capabilities
+    on_attach = custom_attach,
+    capabilities = capabilities
 }

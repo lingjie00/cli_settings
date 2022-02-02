@@ -6,6 +6,8 @@ end
 switch (uname)
     case Darwin
         eval /Users/lingjie/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+        fish_add_path /Users/lingjie/Documents/scripts
+        set -x JDTLS_HOME ~/.local/share/nvim/lsp_servers/jdtls
     case Linux
         eval /home/ling/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 end

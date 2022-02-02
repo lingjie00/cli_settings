@@ -56,6 +56,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
     Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
     Plug 'ray-x/lsp_signature.nvim' " Provide lsp signature (prompt in function param)
+    Plug 'ThePrimeagen/refactoring.nvim' " Refactoring
 
     " Specific Language support
     Plug 'lervag/vimtex' " latex

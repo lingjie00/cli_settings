@@ -148,3 +148,6 @@ nnoremap <silent> gi    <cmd>lua require'telescope.builtin'.lsp_implementations(
 
 " >> shortcut to show var
 nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
+
+" show quickfix after runing AsyncRun
+let g:asyncrun_open = 6

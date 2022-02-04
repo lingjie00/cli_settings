@@ -102,6 +102,8 @@ endif
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
+    " theme
+    Plug 'dracula/vim'
 
     " status bar
     Plug 'vim-airline/vim-airline'
@@ -122,9 +124,11 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 """"""""""""""
+let g:dracula_colorterm = 0
+colorscheme dracula
 " Gruvbox
-autocmd vimenter * ++nested colorscheme gruvbox
-set background=dark
+" autocmd vimenter * ++nested colorscheme gruvbox
+" set background=dark
 " let g:gruvbox_contrast_dark="hard"
 
 """""""""""""""

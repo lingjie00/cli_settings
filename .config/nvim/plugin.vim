@@ -8,6 +8,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " Current theme
     Plug 'EdenEast/nightfox.nvim'
+    Plug 'dracula/vim'
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar

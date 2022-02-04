@@ -1,11 +1,5 @@
 -- THEME and STATUS BAR --
 
-require('nightfox').setup({
-    fox = "nordfox",
-    transparent = true
-})
-require('nightfox').load()
-
 -- telescope
 require('telescope').setup({
   defaults = {

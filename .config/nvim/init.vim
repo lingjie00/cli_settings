@@ -36,7 +36,8 @@ set termguicolors
 runtime ./plugin.vim
 
 " >> theme
-colorscheme nightfox
+let g:dracula_colorterm = 0
+colorscheme dracula
 
 """"""""""""""
 " Key mappings

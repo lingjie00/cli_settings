@@ -14,3 +14,5 @@
     hist = log --graph --oneline --decorate
 [init]
 	defaultBranch = main
+[credential]
+	helper = cache

@@ -20,7 +20,9 @@ au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :AsyncRun pandoc '%:p' 
 
 " Python: run current python script
 au FileType python  nnoremap <buffer> <Leader>c :w <cr> :AsyncRun python3 '%:p'<cr>
-" >> shortcut to launch jupyter notebook
+" >> shortcut to launch jupyter notebook (somehow it's not working, manual script instead)
+" au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
+" au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
 au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
 au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
 

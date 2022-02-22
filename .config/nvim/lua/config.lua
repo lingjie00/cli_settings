@@ -169,9 +169,9 @@ null_ls.setup({
         -- null_ls.builtins.formatting.format_r,
         -- diagostics
         null_ls.builtins.diagnostics.chktex,
-        null_ls.builtins.diagnostics.codespell.with({
-            filetypes={ "python", "r", "rmd" },
-            }),
+        -- null_ls.builtins.diagnostics.codespell.with({
+        --     filetypes={ "python", "r", "rmd" },
+        --     }),
         -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.gitlint,
         null_ls.builtins.diagnostics.hadolint,

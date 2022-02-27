@@ -36,6 +36,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
     Plug 'easymotion/vim-easymotion' " better jump word
     Plug 'folke/trouble.nvim' " nav to code errors
+    Plug 'powerman/vim-plugin-autosess' " autosave/load sessions
 
     " tmux navigation
     Plug 'christoomey/vim-tmux-navigator' " nav shortcut for tmux

@@ -63,7 +63,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Specific Language support
     Plug 'lervag/vimtex' " latex
     Plug 'ellisonleao/glow.nvim' " markdown
-    Plug 'untitled-ai/jupyter_ascending.vim' " jupyter notebook
     Plug 'rhysd/vim-grammarous' " Grammar check
 
     " Git

@@ -35,6 +35,10 @@ hyper - f : yabai -m window --toggle zoom-fullscreen
 hyper - i : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
 hyper - o : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
 
+# cycle through monitor
+hyper - p  : yabai -m display --focus prev || yabai -m display --focus last
+hyper - u  : yabai -m display --focus next || yabai -m display --focus first
+
 ################################################################
 ############################# UNUSED ###########################
 ################################################################

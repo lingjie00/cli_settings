@@ -21,6 +21,7 @@ hyper - s : yabai -m window --resize bottom:0:100
 hyper - w : yabai -m window --resize top:0:-100
 hyper - d : yabai -m window --resize right:100:0
 hyper - b : yabai -m window --resize abs:1280:750
+hyper - n : yabai -m window --resize abs:1780:1350 | yabai -m window --move abs:830:50
 shift + cmd - a : yabai -m window --resize left:100:0
 shift + cmd - s : yabai -m window --resize bottom:0:-100
 shift + cmd - w : yabai -m window --resize top:0:100
@@ -41,12 +42,11 @@ hyper - o : yabai -m window --focus stack.next || yabai -m window --focus next |
 hyper - p  : yabai -m display --focus prev || yabai -m display --focus last
 hyper - u  : yabai -m display --focus next || yabai -m display --focus first
 
-# Move active window to next space on current display
-hyper - e : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 3; elif [[ '{}' = '3' ]]; then yabai -m window --space 1; fi"
-hyper - q : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '2' ]]; then yabai -m window --space 1; elif [[ '{}' = '3' ]]; then yabai -m window --space 2; elif [[ '{}' = '1' ]]; then yabai -m window --space 3; fi"
-hyper - 8 : yabai -m window --space 1
-hyper - 9 : yabai -m window --space 2
-hyper - 0 : yabai -m window --space 3
+# Move active window to different spaces
+hyper - 7 : yabai -m window --space 1
+hyper - 8 : yabai -m window --space 2
+hyper - 9 : yabai -m window --space 3
+hyper - 0 : yabai -m window --space 4
 
 # Move active window to the next display
 hyper - z : yabai -m window --display 1

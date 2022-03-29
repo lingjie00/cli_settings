@@ -42,11 +42,16 @@ for file in ${files[@]}
 done
 
 # macos specific config files
-files=("skhd/skhdrc" "yabai/yabairc" "limelight/limelightrc")
+files=(
+    ".config/skhd/skhdrc"
+    ".config/yabai/yabairc"
+    ".config/limelight/limelightrc"
+    ".qutebrowser/config.py"
+)
 if [[ "$OSTYPE" == "darwin"* ]]; then
     for file in ${files[@]}
     do
-        [ -f ~/.config/$file ] || { echo "creating $file symlink"; ln -s $PWD/.config/$file ~/.config/$file; }
+        [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
     done
 fi
 

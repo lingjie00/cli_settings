@@ -113,14 +113,15 @@ map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
 
-" >> shortcut to launch nvim tree
-nnoremap <C-f> :NvimTreeToggle<CR>
-
 " >> shortcut to launch Trouble
 nnoremap <C-t> :TroubleToggle<CR>
 
 " >> Zoom nvim window
 nnoremap <Leader><CR> :NeoZoomToggle<CR>
+
+" >> navigate in insert mode
+inoremap <C-j> <C-Left>
+inoremap <C-k> <C-Right>
 
 " >> Telescope bindings
 " find buffer

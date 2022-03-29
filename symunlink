@@ -22,11 +22,16 @@ for file in ${files[@]}
 done
 
 # macos specific config files
-files=("skhd/skhdrc" "yabai/yabairc" "limelight/limelightrc")
+files=(
+    ".config/skhd/skhdrc"
+    ".config/yabai/yabairc"
+    ".config/limelight/limelightrc"
+    ".qutebrowser/config.py"
+)
 if [[ "$OSTYPE" == "darwin"* ]]; then
     for file in ${files[@]}
     do
-        [ -f ~/.config/$file ] && { echo "deleting $file"; rm ~/.config/$file; }
+        [ -f ~/$file ] && { echo "deleting $file"; rm ~/$file; }
     done
 fi
 

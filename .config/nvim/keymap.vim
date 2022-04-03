@@ -20,6 +20,8 @@ au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :AsyncRun pandoc '%:p' 
 
 " Python: run current python script
 au FileType python  nnoremap <buffer> <Leader>c :w <cr> :AsyncRun python3 '%:p'<cr>
+" Python: run jupyter ascending sync (a bit buggy at this moment)
+au FileType python  nnoremap <buffer> <Leader>e :w <cr> :AsyncRun python3 -m jupyter_ascending.requests.sync --filename '%:p'<cr>
 
 " C++: compile the current file
 au FileType C       nnoremap <buffer> <Leader>c :w<cr>:AsyncRun g++ '%' -o '%:r'<cr>
@@ -49,6 +51,9 @@ nnoremap <Leader>cd :cd %:p:h<cr>
 
 " cancel highlight with escape
 nnoremap <silent> <Esc> <Esc>:noh<CR>
+
+" copy file name to clipboard
+:nnoremap <Leader>+ :let @+=expand('%:p')<CR>
 
 " Auto close brackets in specific languages
 inoremap " ""<left>
@@ -87,8 +92,6 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 " Moving text
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>==
-inoremap <C-k> <esc>:m .-1<CR>==
 " copy word and after
 nnoremap Y y$
 " >> shortcut for global copy
@@ -120,8 +123,10 @@ nnoremap <C-t> :TroubleToggle<CR>
 nnoremap <Leader><CR> :NeoZoomToggle<CR>
 
 " >> navigate in insert mode
-inoremap <C-j> <C-Left>
-inoremap <C-k> <C-Right>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Up>
+inoremap <C-k> <Down>
 
 " >> Telescope bindings
 " find buffer

@@ -27,6 +27,7 @@ files=(
     ".config/yabai/yabairc"
     ".config/limelight/limelightrc"
     ".qutebrowser/config.py"
+    ".config/zathura/zathurarc"
 )
 if [[ "$OSTYPE" == "darwin"* ]]; then
     for file in ${files[@]}

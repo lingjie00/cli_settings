@@ -11,7 +11,7 @@
 [ -d ~/.config/fish/functions ] || { echo "creating fish/functions config folder" ; mkdir ~/.config/fish/functions; }
 
 # macos specific preference
-files=("limelight" "skhd" "yabai")
+files=("limelight" "skhd" "yabai" "zathura")
 if [[ "$OSTYPE" == "darwin"* ]]; then
     for program in ${files[@]}
     do
@@ -47,6 +47,7 @@ files=(
     ".config/yabai/yabairc"
     ".config/limelight/limelightrc"
     ".qutebrowser/config.py"
+    ".config/zathura/zathurarc"
 )
 if [[ "$OSTYPE" == "darwin"* ]]; then
     for file in ${files[@]}

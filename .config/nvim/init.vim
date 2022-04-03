@@ -9,12 +9,12 @@ tnoremap <Esc> <C-\><C-n>
 " Preferences
 syntax on
 set number
-set relativenumber
+" set relativenumber
 set tabstop=4
 set softtabstop=4
 set textwidth=60
 set colorcolumn=60
-set nowrap
+set wrap
 set autoindent
 set fileformat=unix
 set shiftwidth=4
@@ -22,7 +22,7 @@ set expandtab
 set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
-set ignorecase "ignore search case
+" set ignorecase "ignore search case
 set cmdheight=1
 set updatetime=300
 set spell
@@ -49,3 +49,6 @@ runtime ./lua/config.lua
 
 " lualine
 runtime ./lua/lualine_theme.lua
+
+" Change spelling highlight"
+hi SpellBad cterm=undercurl

@@ -43,8 +43,8 @@ nnoremap <Leader>d :Git diff %<cr>
 nnoremap <Leader>q :q<cr>
 
 " Navigate Quickfix list
-nnoremap <Leader>[ :cnext<cr>
-nnoremap <Leader>] :cprevious<cr>
+nnoremap <Leader>] :cnext<cr>
+nnoremap <Leader>[ :cprevious<cr>
 
 " change working drive
 nnoremap <Leader>cd :cd %:p:h<cr>

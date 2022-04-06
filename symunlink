@@ -28,6 +28,7 @@ files=(
     ".config/limelight/limelightrc"
     ".qutebrowser/config.py"
     ".config/zathura/zathurarc"
+    ".config/karabiner/assets/complex_modifications/keymap.json"
 )
 if [[ "$OSTYPE" == "darwin"* ]]; then
     for file in ${files[@]}

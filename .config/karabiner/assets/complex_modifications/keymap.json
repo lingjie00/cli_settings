@@ -15,11 +15,11 @@
                   },
                   "to": [
                       {
-                          "key_code": "left_shift",
+                          "key_code": "right_shift",
                           "modifiers": [
-                              "left_command",
-                              "left_control",
-                              "left_option"
+                              "right_command",
+                              "right_control",
+                              "right_option"
                           ]
                       }
                   ],
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "description": "Map Left Option plus h/j/k/l to Arrows, f/b to Page Down/Up",
+      "description": "Map Left Option plus h/j/k/l to Arrows, d/u to Page Down/Up, f/b to Home / End",
       "manipulators": [
         {
           "type": "basic",
@@ -129,7 +129,7 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "f",
+            "key_code": "d",
             "modifiers": {
               "mandatory": [
                 "left_option"
@@ -148,7 +148,7 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "b",
+            "key_code": "u",
             "modifiers": {
               "mandatory": [
                 "left_option"
@@ -161,6 +161,44 @@
           "to": [
             {
               "key_code": "page_up"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "home"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "end"
             }
           ]
         }

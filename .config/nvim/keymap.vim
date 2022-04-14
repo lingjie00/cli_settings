@@ -122,12 +122,6 @@ nnoremap <C-t> :TroubleToggle<CR>
 " >> Zoom nvim window
 nnoremap <Leader><CR> :NeoZoomToggle<CR>
 
-" >> navigate in insert mode
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-inoremap <C-j> <Up>
-inoremap <C-k> <Down>
-
 " >> Telescope bindings
 " find buffer
 nnoremap <Leader>; <cmd>lua require'telescope.builtin'.buffers{}<CR>

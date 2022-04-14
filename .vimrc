@@ -5,69 +5,10 @@ nnoremap <SPACE> <Nop>
 " >> remap bash escape
 tnoremap <Esc> <C-\><C-n>
 
-""""""""""""""""""""""
-" File specific key mappings and macros
-" <Leader>c for compile
-" LaTex: compile latex file, delete temp files, map syntax
-au FileType tex     nnoremap <buffer> <Leader>c :w <cr> :!pdflatex -output-directory '%:p:h'  '%:p' <cr>
-au FileType tex     let @c=":!rm '%:p:r.aux' '%:p:r.log' '%:p:r.out' \<cr>""
-au FileType tex     let @r="i\\begin{lstlisting}[language=R]\<cr>\\end{lstlisting}\<cr>"
-au FileType tex     let @t="i\\begin{tabulary}{\linewidth}{l l}\<cr>\\end{tabulary}\<cr>"
-au FileType tex     let @a="i\\begin{align*}\<cr>\\end{align*}\<cr>"
-au FileType tex     let @i="i\\begin{itemize}\<cr>\\end{itemize}\<cr>"
-au FileType tex     let @e="i\\begin{enumerate}\<cr>\\end{enumerate}\<cr>"
-
-" R : run current script
-au FileType R       nnoremap <buffer> <Leader>c :w <cr> :!Rscript '%:p'<cr>
-" Rmd: compile Rmd file
-au FileType rmd     nnoremap <buffer> <Leader>c :w <cr> :!Rscript -e "rmarkdown::render('%:p')"<cr>
-
-" Markdown: compile to pdf
-au FileType markdown nnoremap <buffer> <Leader>c :w <cr> :!pandoc '%:p' -o '%:p:r.pdf' <cr>
-
-" Python: run current python script
-au FileType python  nnoremap <buffer> <Leader>c :w <cr> :!python3 '%:p'<cr>
-" Python: sort imports
-au FileType python  let @s=":%!isort - \<cr>"
-" >> shortcut to launch jupyter notebook
-au FileType python  nmap <buffer> <leader>e :w<CR><Plug>JupyterExecute<CR>
-au FileType python  nmap <buffer> <leader>E :w<CR><Plug>JupyterExecuteAll<CR>
-
-" C++: compile the current file
-au FileType C       nnoremap <buffer> <Leader>c :w<cr>:!g++ '%' -o '%:r'<cr>
-
-" Json: reformat json files
-au FileType json    nnoremap <buffer> <Leader>c :w<cr>:%!python -m json.tool<cr>
-
-" Vim: source Vim config
-au FileType vim    nnoremap <buffer> <Leader>c :w<cr>:source %<cr>
-
-" Git related commands
-nnoremap <Leader>w :w<cr> :!git add '%:p'<cr>
-nnoremap <Leader>d :Git diff %:p<cr>
-
-" Map <Leader>q as :q for qutting
-nnoremap <Leader>q :q<cr>
-
-" Navigate Quickfix list
-nnoremap <Leader>[ :cnext<cr>
-nnoremap <Leader>] :cprevious<cr>
-
-" Auto close brackets in specific languages
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-au FileType tex,rmd         inoremap <buffer> $ $<space><space>$<left><left>
-au FileType python          inoremap <buffer> % %%
-au FileType tex             inoremap <buffer> \{ \left\{<space><space>\right\}
-
 """""""""""""""
 " Preferences
 syntax on
 set number
-set relativenumber
 set tabstop=4
 set softtabstop=4
 set textwidth=60
@@ -80,7 +21,6 @@ set expandtab
 set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
-set ignorecase "ignore search case
 set cmdheight=1
 set updatetime=300
 set spell

@@ -22,7 +22,7 @@ set expandtab
 set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
-" set ignorecase "ignore search case
+set ignorecase "ignore search case
 set cmdheight=1
 set updatetime=300
 set spell

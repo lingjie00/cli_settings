@@ -22,6 +22,7 @@ set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8
 set cmdheight=1
+set ignorecase "ignore search case
 set updatetime=300
 set spell
 set mouse=a

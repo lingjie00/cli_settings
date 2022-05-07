@@ -101,8 +101,8 @@ noremap <leader>Y "+y$
 
 " >> map Easymotion s{char}{char} to move to {char}{char}
 let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-overwin-f)
-nmap S <Plug>(easymotion-overwin-f2)
+nmap s <Plug>(easymotion-f2)
+nmap S <Plug>(easymotion-s2)
 
 " >> adds perm bookmark with Harpoon
 nnoremap <leader>` <cmd>lua require'harpoon.mark'.add_file()<CR>

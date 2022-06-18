@@ -23,6 +23,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     done
 fi
 
+# linux specific preference
+lfiles=(
+    "i3" "i3blocks" "rofi"
+)
+if [[ "$OSTYPE" == "linux"* ]]; then
+    for program in ${lfiles[@]}
+    do
+        [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
+    done
+fi
+
 
 #########################
 # create symbolic links #
@@ -61,6 +72,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     done
 fi
 
+# linux specific config files
+lfiles=(
+    ".config/i3/config"
+    ".config/i3blocks/config"
+    ".config/rofi/config.rasi"
+)
+if [[ "$OSTYPE" == "linux"* ]]; then
+    for file in ${lfiles[@]}
+    do
+        [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
+    done
+fi
 
 ####################
 # workplace script #

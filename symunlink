@@ -37,6 +37,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     done
 fi
 
+# linux specific config files
+lfiles=(
+    ".config/i3/config"
+    ".config/i3blocks/config"
+    ".config/rofi/config.rasi"
+)
+if [[ "$OSTYPE" == "linux"* ]]; then
+    for file in ${lfiles[@]}
+    do
+        [ -f ~/$file ] && { echo "deleting $file"; rm ~/$file; }
+    done
+fi
+
 files=("nb_clean" "tmux_setup")
 for file in ${files[@]}
 do

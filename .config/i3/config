@@ -61,6 +61,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+# take screenshot
+bindsym Shift+Ctrl+4 exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+
 ##############
 # Navigation #
 ##############

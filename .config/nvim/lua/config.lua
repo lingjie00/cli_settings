@@ -101,6 +101,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- LSP servers
+require("nvim-lsp-installer").setup{}
 lsp_signature = require'lsp_signature'
 lsp_signature.setup{
     bind = true,

@@ -9,7 +9,7 @@ tnoremap <Esc> <C-\><C-n>
 " Preferences
 syntax on
 set number
-" set relativenumber
+set relativenumber
 set tabstop=4
 set softtabstop=4
 set textwidth=60

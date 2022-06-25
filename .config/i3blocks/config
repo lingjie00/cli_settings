@@ -37,9 +37,9 @@ markup=none
 
 [volume]
 command=~/.config/i3blocks/volume/volume
-#label=♪
-label=VOL
-interval=once
+label=♪
+#label=VOL
+interval=1
 signal=10
 #STEP=5%
 
@@ -49,7 +49,7 @@ signal=10
 [memory]
 command=~/.config/i3blocks/memory/memory
 label=MEM
-separator=false
+#separator=false
 interval=30
 
 [memory]

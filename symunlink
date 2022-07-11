@@ -14,6 +14,8 @@ files=(
     ".config/fish/fish_plugins"
     ".config/fish/functions/fish_prompt.fish"
     ".config/fish/functions/fish_right_prompt.fish"
+    ".qutebrowser/config.py"
+    ".config/zathura/zathurarc"
     );
 
 for file in ${files[@]}
@@ -26,8 +28,6 @@ files=(
     ".config/skhd/skhdrc"
     ".config/yabai/yabairc"
     ".config/limelight/limelightrc"
-    ".qutebrowser/config.py"
-    ".config/zathura/zathurarc"
     ".config/karabiner/assets/complex_modifications/keymap.json"
 )
 if [[ "$OSTYPE" == "darwin"* ]]; then

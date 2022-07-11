@@ -78,6 +78,8 @@ lfiles=(
     ".config/i3/compton.conf"
     ".config/i3blocks/config"
     ".config/rofi/config.rasi"
+    ".qutebrowser/config.py"
+    ".config/zathura/zathurarc"
 )
 if [[ "$OSTYPE" == "linux"* ]]; then
     for file in ${lfiles[@]}

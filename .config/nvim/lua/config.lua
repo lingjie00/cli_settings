@@ -155,6 +155,10 @@ require'lspconfig'.eslint.setup{
     on_attach = custom_attach,
     capabilities = capabilities
 }
+require'lspconfig'.yamlls.setup{
+    on_attach = custom_attach,
+    capabilities = capabilities
+}
 
 -- set up null ls
 null_ls = require("null-ls")

@@ -48,7 +48,7 @@ rshift + rcmd + ralt + rctrl - 9 : yabai -m window --space 2
 rshift + rcmd + ralt + rctrl - 0 : yabai -m window --space 3
 
 # Move active window to the next display
-rshift + rcmd + ralt + rctrl - z : yabai -m window --display 3
+rshift + rcmd + ralt + rctrl - z : yabai -m window --display 1
 rshift + rcmd + ralt + rctrl - x : yabai -m window --display 2
 
 ################################################################

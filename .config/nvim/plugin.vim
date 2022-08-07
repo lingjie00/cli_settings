@@ -79,5 +79,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-telescope/telescope-dap.nvim'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'mfussenegger/nvim-dap-python'
+    Plug 'Weissle/persistent-breakpoints.nvim'
 
 call plug#end()

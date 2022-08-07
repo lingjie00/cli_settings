@@ -219,6 +219,10 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+-- persist breakpoint
+vim.api.nvim_create_autocmd({"BufReadPost"},{ callback = require('persistent-breakpoints.api').load_breakpoints })
+require('persistent-breakpoints').setup{}
+
 -- python debugger
 -- TODO: dynamically set python path
 require('dap-python').setup('/opt/homebrew/Caskroom/miniconda/base/bin/python')

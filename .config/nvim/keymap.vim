@@ -150,8 +150,8 @@ nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 let g:asyncrun_open = 6
 
 " DAP
-nnoremap <silent> <Leader>di  <cmd>lua require'dap'.step_into()<CR>
-nnoremap <silent> <Leader>do  <cmd>lua require'dap'.step_out()<CR>
-nnoremap <silent> <Leader>dp  <cmd>lua require'dap'.step_over()<CR>
-nnoremap <silent> <Leader>du  <cmd>lua require'dap'.continue()<CR>
-nnoremap <silent> <Leader>db  <cmd>lua require'persistent-breakpoints.api'.toggle_breakpoint()<CR>
+nnoremap <silent> <Bslash>i  <cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> <Bslash>o  <cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <Bslash>p  <cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> <Bslash>c  <cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> <Bslash>b  <cmd>lua require'persistent-breakpoints.api'.toggle_breakpoint()<CR>

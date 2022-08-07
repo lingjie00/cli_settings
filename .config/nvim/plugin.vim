@@ -74,4 +74,10 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Run terminal command async
     Plug 'skywind3000/asyncrun.vim'
 
+    " Debugger
+    Plug 'mfussenegger/nvim-dap'
+    Plug 'nvim-telescope/telescope-dap.nvim'
+    Plug 'rcarriga/nvim-dap-ui'
+    Plug 'mfussenegger/nvim-dap-python'
+
 call plug#end()

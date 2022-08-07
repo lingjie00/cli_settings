@@ -148,3 +148,10 @@ nnoremap <C-y> <cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>
 
 " show quickfix after runing AsyncRun
 let g:asyncrun_open = 6
+
+" DAP
+nnoremap <silent> <Leader>di  <cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> <Leader>do  <cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <Leader>dp  <cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> <Leader>du  <cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> <Leader>db  <cmd>lua require'persistent-breakpoints.api'.toggle_breakpoint()<CR>

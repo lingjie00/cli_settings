@@ -55,16 +55,6 @@ nnoremap <silent> <Esc> <Esc>:noh<CR>
 " copy file name to clipboard
 :nnoremap <Leader>+ :let @+=expand('%:p')<CR>
 
-" Auto close brackets in specific languages
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-au FileType tex,rmd         inoremap <buffer> $ $$<left>
-au FileType python          inoremap <buffer> % %%
-au FileType tex             inoremap <buffer> \{ \left\{<space><space>\right\}
-
 " >> replace default search with insearch
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1

@@ -224,5 +224,10 @@ vim.api.nvim_create_autocmd({"BufReadPost"},{ callback = require('persistent-bre
 require('persistent-breakpoints').setup{}
 
 -- python debugger
--- TODO: dynamically set python path
-require('dap-python').setup('/opt/homebrew/Caskroom/miniconda/base/bin/python')
+-- will automatically set debugger based on the current
+-- python in env
+require('dap-python').setup(
+    tostring(
+        require('sh').command('which', 'python')
+    )
+)

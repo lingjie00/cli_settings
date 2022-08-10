@@ -7,14 +7,10 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Plug 'morhetz/gruvbox'
 
     " Current theme
-    Plug 'EdenEast/nightfox.nvim'
     Plug 'dracula/vim'
 
     " status bar
     Plug 'nvim-lualine/lualine.nvim' " status bar
-
-    " Zoom in nvim windows
-    Plug 'nyngwang/NeoZoom.lua'
 
     " indention marks
     Plug 'lukas-reineke/indent-blankline.nvim'
@@ -34,7 +30,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'haya14busa/incsearch.vim' " adds partial search support
     Plug 'ThePrimeagen/harpoon' " adds perm bookmark to files
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
-    Plug 'easymotion/vim-easymotion' " better jump word
     Plug 'folke/trouble.nvim' " nav to code errors
     Plug 'powerman/vim-plugin-autosess' " autosave/load sessions
 
@@ -58,7 +53,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
     Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
     Plug 'ray-x/lsp_signature.nvim' " Provide lsp signature (prompt in function param)
-    Plug 'ThePrimeagen/refactoring.nvim' " Refactoring
 
     " Specific Language support
     Plug 'lervag/vimtex' " latex
@@ -76,9 +70,13 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " Debugger
     Plug 'mfussenegger/nvim-dap'
+    Plug 'Pocco81/dap-buddy.nvim'
     Plug 'nvim-telescope/telescope-dap.nvim'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'mfussenegger/nvim-dap-python'
     Plug 'Weissle/persistent-breakpoints.nvim'
+
+    " Testing
+    Plug 'nvim-neotest/neotest'
 
 call plug#end()

@@ -36,7 +36,6 @@ au FileType vim    nnoremap <buffer> <Leader>c :w<cr>:source %<cr>
 au FileType java   nnoremap <buffer> <Leader>c :w<cr>:AsyncRun javac %<cr>
 
 " Git related commands
-nnoremap <Leader>w :w<cr> :! git add '%:p'<cr>
 nnoremap <Leader>d :Git diff %<cr>
 
 " Map <Leader>q as :q for qutting
@@ -89,11 +88,6 @@ noremap <leader>p "+p
 noremap <leader>y "+y
 noremap <leader>Y "+y$
 
-" >> map Easymotion s{char}{char} to move to {char}{char}
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-f2)
-nmap S <Plug>(easymotion-s2)
-
 " >> adds perm bookmark with Harpoon
 nnoremap <leader>` <cmd>lua require'harpoon.mark'.add_file()<CR>
 nnoremap <leader>1 <cmd>lua require'harpoon.ui'.nav_file(1)<CR>
@@ -108,9 +102,6 @@ map <Leader>a :SlimuxShellLast<CR>
 
 " >> shortcut to launch Trouble
 nnoremap <C-t> :TroubleToggle<CR>
-
-" >> Zoom nvim window
-nnoremap <Leader><CR> :NeoZoomToggle<CR>
 
 " >> Telescope bindings
 " find buffer

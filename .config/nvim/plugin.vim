@@ -32,6 +32,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
     Plug 'folke/trouble.nvim' " nav to code errors
     Plug 'powerman/vim-plugin-autosess' " autosave/load sessions
+    Plug 'simrat39/symbols-outline.nvim' " show symbol in statusbar
 
     " tmux navigation
     Plug 'christoomey/vim-tmux-navigator' " nav shortcut for tmux

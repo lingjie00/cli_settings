@@ -228,6 +228,6 @@ require('persistent-breakpoints').setup{}
 -- python in env
 require('dap-python').setup(
     tostring(
-        require('sh').command('which', 'python')
+        require('sh').command('which')('python')
     )
 )

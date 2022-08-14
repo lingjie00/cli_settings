@@ -33,6 +33,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'folke/trouble.nvim' " nav to code errors
     Plug 'powerman/vim-plugin-autosess' " autosave/load sessions
     Plug 'simrat39/symbols-outline.nvim' " show symbol in statusbar
+    Plug 'nvim-telescope/telescope-dap.nvim' " integration with dap
 
     " tmux navigation
     Plug 'christoomey/vim-tmux-navigator' " nav shortcut for tmux
@@ -72,7 +73,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Debugger
     Plug 'mfussenegger/nvim-dap'
     Plug 'Pocco81/dap-buddy.nvim'
-    Plug 'nvim-telescope/telescope-dap.nvim'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'mfussenegger/nvim-dap-python'
     Plug 'Weissle/persistent-breakpoints.nvim'

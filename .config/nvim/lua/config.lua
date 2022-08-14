@@ -9,6 +9,8 @@ require('telescope').setup({
     }
   },
 })
+require('telescope').load_extension('dap')
+require("telescope").load_extension('harpoon')
 
 -- nvim tree
 require'nvim-tree'.setup {
@@ -23,6 +25,9 @@ require'nvim-tree'.setup {
 
 
 -- PLUGIN --
+-- show quickfix after runing AsyncRun
+vim.g["asyncrun_open"] = 6
+
 
 -- setup nvim-comment, auto convert code into comment
 require('nvim_comment').setup({
@@ -226,8 +231,8 @@ require('persistent-breakpoints').setup{}
 -- python debugger
 -- will automatically set debugger based on the current
 -- python in env
-require('dap-python').setup(
-    tostring(
-        require('sh').command('which')('python')
-    )
-)
+-- require('dap-python').setup(
+--     tostring(
+--         require('sh').command('which')('python')
+--     )
+-- )

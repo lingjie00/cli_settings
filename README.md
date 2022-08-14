@@ -155,3 +155,63 @@ Remember to copy the SSH over with e.g. `scp`
 ```
 ssh-copy-id -i ~./ssh/host.pub user@host
 ```
+
+# Common commands
+
+There are some common commands in (n)Vim for different file types
+
+Note:
+
+- for bigger projects a MakeFile is recommended
+- `%:p` display the file path
+- `%:p:h` displays the folder path file is in
+
+```bash
+#########
+# LaTex #
+#########
+# generate output
+pdflatex -output-directory '%:p:h'  '%:p'
+# clear temp files
+rm '%:p:r.aux' '%:p:r.log' '%:p:r.out'
+
+#####
+# R #
+#####
+# R: run the current script
+Rscript '%:p'
+# Rmd: compile the Rmd file
+Rscript -e "rmarkdown::render('%:p')"
+
+############
+# MarkDown #
+############
+# compile to pdf using pandoc
+pandoc '%:p' -o '%:p:r.pdf'
+
+##########
+# Python #
+##########
+# run the current script
+python3 '%:p'
+# run jupyter ascending sync (a bit buggy now)
+python3 -m jupyter_ascending.requests.sync --filename '%:p'
+
+#######
+# C++ #
+#######
+# compile
+g++ '%' -o '%:r'
+
+########
+# Json #
+########
+# reformat json files with python json.tool
+python -m json.tool
+
+########
+# Java #
+########
+# compile
+javac %
+```

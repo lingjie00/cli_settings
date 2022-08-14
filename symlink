@@ -45,7 +45,6 @@ files=(
     ".config/nvim/keymap.vim"
     ".config/nvim/lua/lualine_theme.lua"
     ".config/nvim/lua/config.lua"
-    ".config/nvim/lua/sh.lua"
     ".config/fish/config.fish"
     ".config/fish/fish_plugins"
     ".config/fish/functions/fish_prompt.fish"

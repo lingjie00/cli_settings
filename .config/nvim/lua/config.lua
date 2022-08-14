@@ -1,110 +1,128 @@
--- THEME and STATUS BAR --
-
 -- telescope
 require('telescope').setup({
-  defaults = {
-    layout_strategy='center',
-    layout_config={
-        width=0.8
-    }
-  },
+    defaults = {
+        layout_strategy = 'center',
+        layout_config = {
+            width = 0.8
+        }
+    },
 })
 require('telescope').load_extension('dap')
 require("telescope").load_extension('harpoon')
 
 -- nvim tree
-require'nvim-tree'.setup {
-  disable_netrw       = true,
-  hijack_netrw        = true,
-  open_on_setup       = false,
-  ignore_ft_on_setup  = {},
-  open_on_tab         = false,
-  hijack_cursor       = false,
-  update_cwd          = false
+require('nvim-tree').setup {
+    disable_netrw      = false,
+    hijack_netrw       = true,
+    open_on_setup      = false,
+    ignore_ft_on_setup = {},
+    open_on_tab        = false,
+    hijack_cursor      = false,
+    update_cwd         = false
 }
 
-
--- PLUGIN --
 -- show quickfix after runing AsyncRun
 vim.g["asyncrun_open"] = 6
 
+-- symbol outline
+vim.g.symbols_outline = {
+    highlight_hovered_item = true,
+    show_guides = true,
+    auto_preview = false,
+    position = 'left',
+    relative_width = true,
+    width = 30,
+    show_numbers = true,
+    show_relative_numbers = true,
+    show_symbol_details = true,
+    keymaps = { -- These keymaps can be a string or a table for multiple keys
+        close = { "<Esc>", "q" },
+        goto_location = "<Cr>",
+        focus_location = "o",
+        hover_symbol = "<C-space>",
+        toggle_preview = "K",
+        rename_symbol = "r",
+        code_actions = "a",
+    }
+}
 
 -- setup nvim-comment, auto convert code into comment
 require('nvim_comment').setup({
-  -- should comment out empty or whitespace only lines
-  comment_empty = true,
-  -- Normal mode mapping left hand side
-  line_mapping = "gcc",
-  -- Visual/Operator mapping left hand side
-  operator_mapping = "gc",
+    -- should comment out empty or whitespace only lines
+    comment_empty = false,
+    -- Normal mode mapping left hand side
+    line_mapping = "gcc",
+    -- Visual/Operator mapping left hand side
+    operator_mapping = "gc",
 })
 
 -- Trouble, showcase all code issues at once
-require'trouble'.setup{}
+require('trouble').setup()
 
 -- LSP --
 -- highlight TODO, FIX, HACK
-require'todo-comments'.setup{}
+require('todo-comments').setup {}
 
 -- Setup nvim-cmp (autocomplete)
-local cmp = require'cmp'
+local cmp = require('cmp')
 cmp.setup({
-snippet = {
-    expand = function(args)
-end,
-},
+    snippet = {
+        expand = function(args)
+        end,
+    },
     mapping = {
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-e>'] = cmp.mapping.close(),
         ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-        ['<C-space>'] = cmp.mapping.confirm( {select = true} ),
+        ['<C-space>'] = cmp.mapping.confirm({ select = true }),
         ['<Up>'] = cmp.mapping.select_prev_item({ select = true }),
         ['<Down>'] = cmp.mapping.select_next_item({ select = true })
-        },
+    },
     sources = cmp.config.sources({
-    { name = 'nvim_diagnostic' },
+        { name = 'nvim_diagnostic' },
     }, {
-    { name = 'buffer' },
+        { name = 'buffer' },
     }, {
-    { name = 'path' },
+        { name = 'path' },
     }, {
-    { name = 'spell' },
+        { name = 'spell' },
     })
 })
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+)
 
 -- Setup treesitter, highlights text and codes
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = 
-  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  {
-    "bash", "c", "cmake", "comment", "cpp",
-    "dockerfile", "dot", "hjson", "java", "javascript",
-    "json", "lua", "make", "markdown", "python", "r",
-    "regex", "swift", "yaml", "vim"
-      }, 
-  highlight = {
-    enable = true,                 -- false will disable the whole extension
-    disable = {"zig", "godotResource"},     -- list of language that will be disabled
-    additional_vim_regex_highlighting = false,
-  },
+require('nvim-treesitter.configs').setup {
+    ensure_installed =
+    -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    {
+        "bash", "c", "cmake", "comment", "cpp",
+        "dockerfile", "dot", "hjson", "java", "javascript",
+        "json", "lua", "make", "markdown", "python", "r",
+        "regex", "swift", "yaml", "vim"
+    },
+    highlight = {
+        enable = true, -- false will disable the whole extension
+        disable = { "zig", "godotResource" }, -- list of language that will be disabled
+        additional_vim_regex_highlighting = false,
+    },
     incremental_selection = {
-    enable = false,
-    keymaps = {
-        init_selection = '<CR>',
-        scope_incremental = '<CR>',
-        node_incremental = '<TAB>',
-        node_decremental = '<S-TAB>',
+        enable = false,
+        keymaps = {
+            init_selection = '<CR>',
+            scope_incremental = '<CR>',
+            node_incremental = '<TAB>',
+            node_decremental = '<S-TAB>',
         },
     },
 }
 
 -- LSP servers
-require("nvim-lsp-installer").setup{}
-lsp_signature = require'lsp_signature'
-lsp_signature.setup{
+require("nvim-lsp-installer").setup({})
+lsp_signature = require('lsp_signature')
+lsp_signature.setup {
     bind = true,
     hint_prefix = "🤪 ",
     max_height = 30,
@@ -119,58 +137,40 @@ end
 -- disable inline error prompt
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    }
+    virtual_text = false
+}
 )
 
-require'lspconfig'.pylsp.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
+lspconfig = require('lspconfig')
+requiredLsps = {
+    pylsp = {},
+    r_language_server = {},
+    texlab = {},
+    vimls = {},
+    bashls = {},
+    dockerls = {},
+    jsonls = {},
+    jdtls = {},
+    eslint = {},
+    yamlls = {},
+    sumneko_lua = {},
+    ltex = {
+        filetypes = {
+            "bib", "markdown", "org",
+            "plaintex", "rst", "rnoweb", "tex"
+        }
+    }
 }
-require'lspconfig'.r_language_server.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.texlab.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.vimls.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.bashls.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.dockerls.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.jsonls.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.ltex.setup{
-    filetypes = {
-        "bib", "markdown", "org",
-        "plaintex", "rst", "rnoweb", "tex"
-    },
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.jdtls.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.eslint.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
-require'lspconfig'.yamlls.setup{
-    on_attach = custom_attach,
-    capabilities = capabilities
-}
+for lspName, user_opts in pairs(requiredLsps) do
+    local opts = {
+        on_attach = custom_attach,
+        capabilities = capabilities
+    }
+
+    opts = vim.tbl_deep_extend('force', opts, user_opts)
+
+    lspconfig[lspName].setup(opts)
+end
 
 -- set up null ls
 null_ls = require("null-ls")
@@ -198,8 +198,8 @@ null_ls.setup({
         -- code actions
         -- null_ls.builtins.code_actions.gitrebase,
         null_ls.builtins.code_actions.proselint.with({
-            filetypes={"markdown", "tex", "rmd"}
-            }),
+            filetypes = { "markdown", "tex", "rmd" }
+        }),
         -- null_ls.builtins.code_actions.refactoring,
         -- hovers
         -- null_ls.builtins.hover.dictionary.with({
@@ -210,29 +210,31 @@ null_ls.setup({
 
 
 -- set up debugger
-require('telescope').load_extension('dap')
-
 local dap, dapui = require("dap"), require("dapui")
-dapui.setup{}
+dapui.setup({})
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+    dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
+    dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+    dapui.close()
 end
 
 -- persist breakpoint
-vim.api.nvim_create_autocmd({"BufReadPost"},{ callback = require('persistent-breakpoints.api').load_breakpoints })
-require('persistent-breakpoints').setup{}
+vim.api.nvim_create_autocmd(
+    { "BufReadPost" },
+    { callback = require('persistent-breakpoints.api').load_breakpoints }
+)
+require('persistent-breakpoints').setup({})
 
 -- python debugger
 -- will automatically set debugger based on the current
 -- python in env
--- require('dap-python').setup(
---     tostring(
---         require('sh').command('which')('python')
---     )
--- )
+local handle = io.popen("which python")
+local pythonPath = handle:read("*a"):gsub("%s+", "")
+handle:close()
+require('dap-python').setup(
+    pythonPath
+)

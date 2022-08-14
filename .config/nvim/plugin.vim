@@ -31,7 +31,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'ThePrimeagen/harpoon' " adds perm bookmark to files
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
     Plug 'folke/trouble.nvim' " nav to code errors
-    Plug 'powerman/vim-plugin-autosess' " autosave/load sessions
     Plug 'simrat39/symbols-outline.nvim' " show symbol in statusbar
     Plug 'nvim-telescope/telescope-dap.nvim' " integration with dap
 

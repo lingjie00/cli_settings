@@ -1,3 +1,24 @@
+# Table of Contents
+
+<!-- vim-markdown-toc GFM -->
+
+* [CLI settings](#cli-settings)
+* [Setup](#setup)
+    * [symbolic links](#symbolic-links)
+    * [Python and R workflow](#python-and-r-workflow)
+* [Config](#config)
+    * [Neovim](#neovim)
+    * [Fish shell](#fish-shell)
+    * [miniconda, and fixes](#miniconda-and-fixes)
+    * [Tmux](#tmux)
+    * [Yabai](#yabai)
+* [Saving SSH settings](#saving-ssh-settings)
+    * [Add SSH host](#add-ssh-host)
+    * [Add private key](#add-private-key)
+* [Common commands](#common-commands)
+
+<!-- vim-markdown-toc -->
+
 # CLI settings
 
 This repo stores the following CLI settings I use:

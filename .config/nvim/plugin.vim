@@ -58,6 +58,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     " Specific Language support
     Plug 'lervag/vimtex' " latex
     Plug 'ellisonleao/glow.nvim' " markdown
+    Plug 'mzlogin/vim-markdown-toc' " generate TOC for markdown
     Plug 'rhysd/vim-grammarous' " Grammar check
 
     " Git

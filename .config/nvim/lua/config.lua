@@ -121,7 +121,7 @@ require('nvim-treesitter.configs').setup {
 
 -- LSP servers
 require("nvim-lsp-installer").setup({})
-lsp_signature = require('lsp_signature')
+local lsp_signature = require('lsp_signature')
 lsp_signature.setup {
     bind = true,
     hint_prefix = "🤪 ",
@@ -130,7 +130,7 @@ lsp_signature.setup {
         border = "rounded"
     }
 }
-custom_attach = function(client, bufnr)
+local custom_attach = function(client, bufnr)
     lsp_signature.on_attach()
 end
 
@@ -141,8 +141,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 }
 )
 
-lspconfig = require('lspconfig')
-requiredLsps = {
+local lspconfig = require('lspconfig')
+local requiredLsps = {
     pylsp = {},
     r_language_server = {},
     texlab = {},
@@ -173,7 +173,7 @@ for lspName, user_opts in pairs(requiredLsps) do
 end
 
 -- set up null ls
-null_ls = require("null-ls")
+local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
         -- formatting

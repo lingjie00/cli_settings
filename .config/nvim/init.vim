@@ -32,6 +32,9 @@ set cmdheight=1
 set termguicolors
 
 """"""""""""""""""
+" Declare some checks
+runtime ./check.vim
+
 " Plugin Install
 runtime ./plugin.vim
 
@@ -49,6 +52,11 @@ runtime ./lua/config.lua
 
 " lualine
 runtime ./lua/lualine_theme.lua
+
+" nvim tree
+if internet == 1
+    runtime ./lua/nvimtree.lua
+endif
 
 " Change spelling highlight"
 hi SpellBad cterm=undercurl

@@ -31,7 +31,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'ThePrimeagen/harpoon' " adds perm bookmark to files
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
     Plug 'folke/trouble.nvim' " nav to code errors
-    Plug 'simrat39/symbols-outline.nvim' " show symbol in statusbar
     Plug 'nvim-telescope/telescope-dap.nvim' " integration with dap
 
     " tmux navigation
@@ -48,7 +47,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     " LSP
     Plug 'jose-elias-alvarez/null-ls.nvim' " null ls
     Plug 'neovim/nvim-lspconfig' " config lsp key maps
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " provide better code highlights
     Plug 'terrortylor/nvim-comment' " convert code into comments
     Plug 'tpope/vim-surround' " auto modify surround brackets
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
@@ -79,5 +77,13 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     " Testing
     Plug 'nvim-neotest/neotest'
+
+    """"""""""""""""""""""""""""""""""""""""
+    " Rely on connections outside of pypi
+    """"""""""""""""""""""""""""""""""""""""
+    if internet == 1
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " provide better code highlights
+        Plug 'simrat39/symbols-outline.nvim' " show symbol in statusbar
+    endif
 
 call plug#end()

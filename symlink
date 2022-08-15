@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Check if machine has internet access beyond pypi #
+echo "Good day, do we have internet access beyond pypi? - y/n"
+read INTERNET
+
+# check if user want to setup workplace script
+echo "Do you want to set up workplace script? - y/n"
+read WORKPLACE
+
+
 #######################
 # check folder exists #
 #######################
@@ -7,31 +16,36 @@
 [ -d ~/.config ] || { echo "creating .config folder"; mkdir ~/.config; }
 [ -d ~/.config/nvim ] || { echo "creating nvim config folder" ; mkdir ~/.config/nvim; }
 [ -d ~/.config/nvim/lua ] || { echo "creating nvim/lua config folder" ; mkdir ~/.config/nvim/lua; }
-[ -d ~/.config/fish ] || { echo "creating fish config folder" ; mkdir ~/.config/fish; }
-[ -d ~/.config/fish/functions ] || { echo "creating fish/functions config folder" ; mkdir ~/.config/fish/functions; }
 
-# macos specific preference
-files=(
-    "limelight" "skhd" "yabai" "zathura"
-    "karabiner" "karabiner/assets"
-    "karabiner/assets/complex_modifications"
-)
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    for program in ${files[@]}
-    do
-        [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
-    done
-fi
+# only if access beyond pypi is available
+if [[ $INTERNET =~ ^[Yy].* ]]; then
+    echo "check folder exist for internet only folders"
 
-# linux specific preference
-lfiles=(
-    "i3" "i3blocks" "rofi"
-)
-if [[ "$OSTYPE" == "linux"* ]]; then
-    for program in ${lfiles[@]}
-    do
-        [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
-    done
+    [ -d ~/.config/fish ] || { echo "creating fish config folder" ; mkdir ~/.config/fish; }
+    [ -d ~/.config/fish/functions ] || { echo "creating fish/functions config folder" ; mkdir ~/.config/fish/functions; }
+
+    # macos specific preference
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        files=(
+            "limelight" "skhd" "yabai" "zathura"
+            "karabiner" "karabiner/assets"
+            "karabiner/assets/complex_modifications"
+        )
+        for program in ${files[@]}
+        do
+            [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
+        done
+
+    # linux specific preference
+    elif [[ "$OSTYPE" == "linux"* ]]; then
+        lfiles=(
+            "i3" "i3blocks" "rofi"
+        )
+        for program in ${lfiles[@]}
+        do
+            [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
+        done
+    fi
 fi
 
 
@@ -39,66 +53,92 @@ fi
 # create symbolic links #
 #########################
 files=(
-    ".vimrc" ".zshrc" ".tmux.conf" ".gitconfig"
+    ".vimrc" ".tmux.conf"
     ".config/nvim/init.vim"
     ".config/nvim/plugin.vim"
     ".config/nvim/keymap.vim"
     ".config/nvim/lua/lualine_theme.lua"
     ".config/nvim/lua/config.lua"
-    ".config/fish/config.fish"
-    ".config/fish/fish_plugins"
-    ".config/fish/functions/fish_prompt.fish"
-    ".config/fish/functions/fish_right_prompt.fish"
     );
 
 for file in ${files[@]}
     do
         [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
 done
+# only if access beyond pypi is available
+if [[ $INTERNET =~ ^[Yy].* ]]; then
+    echo "set up files for internet only config"
 
-# macos specific config files
-files=(
-    ".config/skhd/skhdrc"
-    ".config/yabai/yabairc"
-    ".config/limelight/limelightrc"
-    ".qutebrowser/config.py"
-    ".config/zathura/zathurarc"
-    ".config/karabiner/assets/complex_modifications/keymap.json"
-)
-if [[ "$OSTYPE" == "darwin"* ]]; then
+    files=(
+        ".zshrc" ".gitconfig"
+        ".config/nvim/lua/nvimtree.lua"
+        ".config/fish/config.fish"
+        ".config/fish/fish_plugins"
+        ".config/fish/functions/fish_prompt.fish"
+        ".config/fish/functions/fish_right_prompt.fish"
+        );
     for file in ${files[@]}
-    do
-        [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
+        do
+            [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
     done
-fi
 
-# linux specific config files
-lfiles=(
-    ".config/i3/config"
-    ".config/i3/compton.conf"
-    ".config/i3blocks/config"
-    ".config/rofi/config.rasi"
-    ".qutebrowser/config.py"
-    ".config/zathura/zathurarc"
-)
-if [[ "$OSTYPE" == "linux"* ]]; then
-    for file in ${lfiles[@]}
-    do
-        [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
-    done
+    # macos specific config files
+    files=(
+        ".config/skhd/skhdrc"
+        ".config/yabai/yabairc"
+        ".config/limelight/limelightrc"
+        ".qutebrowser/config.py"
+        ".config/zathura/zathurarc"
+        ".config/karabiner/assets/complex_modifications/keymap.json"
+    )
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        for file in ${files[@]}
+        do
+            [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
+        done
+    fi
+
+    # linux specific config files
+    lfiles=(
+        ".config/i3/config"
+        ".config/i3/compton.conf"
+        ".config/i3blocks/config"
+        ".config/rofi/config.rasi"
+        ".qutebrowser/config.py"
+        ".config/zathura/zathurarc"
+    )
+    if [[ "$OSTYPE" == "linux"* ]]; then
+        for file in ${lfiles[@]}
+        do
+            [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
+        done
+    fi
+
+    # ensure check.vim is yes
+    touch ~/.config/nvim/check.vim
+    echo "let g:internet = 1" > ~/.config/nvim/check.vim
+
+else
+    # change the check.vim to no
+    touch ~/.config/nvim/check.vim
+    echo "let g:internet = 0" > ~/.config/nvim/check.vim
 fi
 
 ####################
 # workplace script #
 ####################
-files=("nb_clean" "tmux_setup")
-for file in ${files[@]}
-do
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        [ -f /usr/local/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        [ -f /usr/local/bin/$file ] || { echo "transfer $file"; ln -s $PWD/$file /usr/local/bin/$file; }
-    fi
-done
+if [[ $WORKPLACE =~ ^[Yy].* ]]; then
+    echo "Set up workplace script"
+
+    files=("nb_clean" "tmux_setup")
+    for file in ${files[@]}
+    do
+        if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+            [ -f /usr/local/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
+        elif [[ "$OSTYPE" == "darwin"* ]]; then
+            [ -f /usr/local/bin/$file ] || { echo "transfer $file"; sudo ln -s $PWD/$file /usr/local/bin/$file; }
+        fi
+    done
+fi
 
 echo "Done with config"

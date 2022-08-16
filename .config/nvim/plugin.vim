@@ -48,7 +48,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'jose-elias-alvarez/null-ls.nvim' " null ls
     Plug 'neovim/nvim-lspconfig' " config lsp key maps
     Plug 'terrortylor/nvim-comment' " convert code into comments
-    Plug 'tpope/vim-surround' " auto modify surround brackets
+    Plug 'kylechui/nvim-surround' " auto modify surround brackets
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
     Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
     Plug 'ray-x/lsp_signature.nvim' " Provide lsp signature (prompt in function param)

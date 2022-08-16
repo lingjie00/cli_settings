@@ -86,13 +86,6 @@ local custom_attach = function(client, bufnr)
     lsp_signature.on_attach()
 end
 
--- disable inline error prompt
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false
-}
-)
-
 local lspconfig = require('lspconfig')
 local requiredLsps = {
     pylsp = {},
@@ -122,6 +115,33 @@ for lspName, user_opts in pairs(requiredLsps) do
     opts = vim.tbl_deep_extend('force', opts, user_opts)
 
     lspconfig[lspName].setup(opts)
+end
+
+function EnableFlake8()
+    -- ensures that only flake8 is enabled
+    -- useful for projects that have customised .flake8
+    require 'lspconfig'.pylsp.setup {
+        on_attach = custom_attach,
+        capabilities = capabilities,
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        enabled = false
+                    },
+                    mccabe = {
+                        enabled = false
+                    },
+                    pyflakes = {
+                        enabled = false
+                    },
+                    flake8 = {
+                        enabled = true
+                    },
+                }
+            }
+        }
+    }
 end
 
 -- set up null ls

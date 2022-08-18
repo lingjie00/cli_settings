@@ -139,7 +139,8 @@ function EnableFlake8()
                         enabled = false
                     },
                     flake8 = {
-                        enabled = true
+                        config = ".flake8",
+                        enabled = false
                     },
                 }
             }

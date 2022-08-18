@@ -37,6 +37,9 @@ require('nvim_comment').setup({
 -- Trouble, showcase all code issues at once
 require('trouble').setup()
 
+-- nvim surround
+require("nvim-surround").setup()
+
 -- LSP --
 -- highlight TODO, FIX, HACK
 require('todo-comments').setup {}

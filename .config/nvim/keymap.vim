@@ -25,8 +25,8 @@ nnoremap <Leader>+ :let @+=expand('%:p')<CR>
 " Map <Leader>q as :q for qutting
 nnoremap <Leader>q :q<cr>
 " Navigate Quickfix list
-nnoremap <Leader>] :cnext<cr>
-nnoremap <Leader>[ :cprevious<cr>
+nnoremap ]e :cnext<cr>
+nnoremap [e :cprevious<cr>
 " cancel highlight with escape
 nnoremap <silent> <Esc> <Esc>:noh<CR>
 

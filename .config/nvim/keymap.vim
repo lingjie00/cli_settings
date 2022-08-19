@@ -85,8 +85,8 @@ nnoremap <Leader>R <cmd>Telescope builtin<CR>
 " Lsp key bindings
 """"""""""""""""""""
 nnoremap K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <C-p> <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <C-n> <cmd>lua vim.diagnostic.goto_next()<CR>
+nnoremap [d    <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap ]d    <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap gf    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap gn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap ga    <cmd>lua vim.lsp.buf.code_action()<CR>

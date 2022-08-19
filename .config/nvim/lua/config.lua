@@ -140,7 +140,7 @@ function EnableFlake8()
                     },
                     flake8 = {
                         config = ".flake8",
-                        enabled = false
+                        enabled = true
                     },
                 }
             }
@@ -173,7 +173,9 @@ null_ls.setup({
         null_ls.builtins.diagnostics.gitlint,
         null_ls.builtins.diagnostics.actionlint,
         null_ls.builtins.diagnostics.hadolint,
-        null_ls.builtins.diagnostics.mypy,
+        null_ls.builtins.diagnostics.mypy.with({
+            extra_args = { "--ignore-missing-imports" }
+        }),
         -- code actions
         null_ls.builtins.code_actions.proselint.with({
             filetypes = { "markdown" }

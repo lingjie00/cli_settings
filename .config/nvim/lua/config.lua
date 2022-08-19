@@ -153,34 +153,32 @@ local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
         -- formatting
-        -- null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
-        -- null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.fish_indent,
         null_ls.builtins.formatting.latexindent,
-        -- null_ls.builtins.formatting.format_r,
+        null_ls.builtins.formatting.eslint,
+        null_ls.builtins.formatting.sqlfluff.with({
+            extra_args = { "--dialect", "mysql" }
+        }),
         -- diagostics
         null_ls.builtins.diagnostics.chktex,
-        -- null_ls.builtins.diagnostics.codespell.with({
-        --     filetypes={ "python", "r", "rmd" },
-        --     }),
-        -- null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.gitlint,
         null_ls.builtins.diagnostics.hadolint,
-        -- null_ls.builtins.diagnostics.write_good.with({
-        --     filetypes={ "markdown", "rmd" },
-        --     }),
+        null_ls.builtins.diagnostics.write_good.with({
+            filetypes={ "markdown" },
+            }),
         null_ls.builtins.diagnostics.yamllint,
+        null_ls.builtins.diagnostics.gitlint,
+        null_ls.builtins.diagnostics.actionlint,
+        null_ls.builtins.diagnostics.hadolint,
+        null_ls.builtins.diagnostics.mypy,
         -- code actions
-        -- null_ls.builtins.code_actions.gitrebase,
         null_ls.builtins.code_actions.proselint.with({
-            filetypes = { "markdown", "tex", "rmd" }
+            filetypes = { "markdown" }
         }),
-        -- null_ls.builtins.code_actions.refactoring,
         -- hovers
-        -- null_ls.builtins.hover.dictionary.with({
-        --     filetypes={"text", "markdown", "rmd"}
-        -- }),
     }
 })
 

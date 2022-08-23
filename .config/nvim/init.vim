@@ -12,8 +12,8 @@ set number
 set relativenumber
 set tabstop=4
 set softtabstop=4
-set textwidth=60
-set colorcolumn=60
+set textwidth=80
+set colorcolumn=80
 set wrap
 set autoindent
 set fileformat=unix

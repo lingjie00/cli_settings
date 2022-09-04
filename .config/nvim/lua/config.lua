@@ -166,9 +166,6 @@ null_ls.setup({
         null_ls.builtins.diagnostics.chktex,
         null_ls.builtins.diagnostics.gitlint,
         null_ls.builtins.diagnostics.hadolint,
-        null_ls.builtins.diagnostics.write_good.with({
-            filetypes={ "markdown" },
-            }),
         null_ls.builtins.diagnostics.yamllint,
         null_ls.builtins.diagnostics.gitlint,
         null_ls.builtins.diagnostics.actionlint,

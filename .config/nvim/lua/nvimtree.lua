@@ -24,5 +24,12 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
---
+-- show context
 require("treesitter-context").setup({})
+
+-- hlargs, highlight args
+require('hlargs').setup({})
+
+-- annotation generator
+require('neogen').setup({})
+

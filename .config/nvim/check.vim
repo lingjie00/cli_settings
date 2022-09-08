@@ -1,1 +1,1 @@
-let g:internet = 1
+let g:internet = 0

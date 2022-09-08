@@ -43,9 +43,10 @@ rshift + rcmd + ralt + rctrl - p  : yabai -m display --focus prev || yabai -m di
 rshift + rcmd + ralt + rctrl - u  : yabai -m display --focus next || yabai -m display --focus first
 
 # Move active window to different spaces
-rshift + rcmd + ralt + rctrl - 8 : yabai -m window --space 1
-rshift + rcmd + ralt + rctrl - 9 : yabai -m window --space 2
-rshift + rcmd + ralt + rctrl - 0 : yabai -m window --space 3
+rshift + rcmd + ralt + rctrl - 7 : yabai -m window --space 1
+rshift + rcmd + ralt + rctrl - 8 : yabai -m window --space 2
+rshift + rcmd + ralt + rctrl - 9 : yabai -m window --space 3
+rshift + rcmd + ralt + rctrl - 0 : yabai -m window --space 4
 
 # Move active window to the next display
 rshift + rcmd + ralt + rctrl - z : yabai -m window --display 1

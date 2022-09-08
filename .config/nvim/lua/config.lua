@@ -21,6 +21,19 @@ require('nvim-tree').setup {
     update_cwd         = false
 }
 
+-- leap forward search
+require('leap').setup({})
+require('leap').set_default_keymaps()
+
+-- hlargs, highlight args
+require('hlargs').setup({})
+
+-- icons
+require('nvim-web-devicons').setup({})
+
+-- annotation generator
+require('neogen').setup({})
+
 -- show quickfix after runing AsyncRun
 vim.g["asyncrun_open"] = 6
 

@@ -32,6 +32,8 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'kyazdani42/nvim-tree.lua' " adds file browser
     Plug 'folke/trouble.nvim' " nav to code errors
     Plug 'nvim-telescope/telescope-dap.nvim' " integration with dap
+    Plug 'nvim-treesitter/nvim-treesitter-context' " adds function context
+    Plug 'ggandor/leap.nvim' " leaping forward search
 
     " tmux navigation
     Plug 'christoomey/vim-tmux-navigator' " nav shortcut for tmux
@@ -43,6 +45,7 @@ call plug#begin(stdpath('data') . 'vimplug')
 	Plug 'hrsh7th/cmp-buffer' " add buffer support
     Plug 'hrsh7th/cmp-path' " add path support
     Plug 'f3fora/cmp-spell' " add spelling support
+    Plug 'danymat/neogen' " auto generate docstrings/annotation
 
     " LSP
     Plug 'jose-elias-alvarez/null-ls.nvim' " null ls
@@ -52,12 +55,14 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'williamboman/nvim-lsp-installer' " LspInstall
     Plug 'folke/todo-comments.nvim' " Highlight TODO, FIX
     Plug 'ray-x/lsp_signature.nvim' " Provide lsp signature (prompt in function param)
+    Plug 'm-demare/hlargs.nvim' " highlight the function args
 
     " Specific Language support
     Plug 'lervag/vimtex' " latex
     Plug 'ellisonleao/glow.nvim' " markdown
     Plug 'mzlogin/vim-markdown-toc' " generate TOC for markdown
     Plug 'rhysd/vim-grammarous' " Grammar check
+    Plug 'jbyuki/venn.nvim' " drawing boxes
 
     " Git
     Plug 'tpope/vim-fugitive' " adds Git command to vim
@@ -75,15 +80,13 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'mfussenegger/nvim-dap-python'
     Plug 'Weissle/persistent-breakpoints.nvim'
 
-    " Testing
-    Plug 'nvim-neotest/neotest'
-
     """"""""""""""""""""""""""""""""""""""""
     " Rely on connections outside of pypi
     """"""""""""""""""""""""""""""""""""""""
     if internet == 1
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " provide better code highlights
-        Plug 'simrat39/symbols-outline.nvim' " show symbol in statusbar
     endif
+    " if no internet, do not run TSUpdate
+        Plug 'nvim-treesitter/nvim-treesitter' " provide better code highlights
 
 call plug#end()

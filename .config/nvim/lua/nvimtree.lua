@@ -24,24 +24,5 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
--- symbol outline
-vim.g.symbols_outline = {
-    highlight_hovered_item = true,
-    show_guides = true,
-    auto_preview = false,
-    position = 'left',
-    relative_width = true,
-    width = 30,
-    show_numbers = true,
-    show_relative_numbers = true,
-    show_symbol_details = true,
-    keymaps = { -- These keymaps can be a string or a table for multiple keys
-        close = { "<Esc>", "q" },
-        goto_location = "<Cr>",
-        focus_location = "o",
-        hover_symbol = "<C-space>",
-        toggle_preview = "K",
-        rename_symbol = "r",
-        code_actions = "a",
-    }
-}
+--
+require("treesitter-context").setup({})

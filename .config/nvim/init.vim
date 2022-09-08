@@ -54,9 +54,9 @@ runtime ./lua/config.lua
 runtime ./lua/lualine_theme.lua
 
 " nvim tree
-if internet == 1
-    runtime ./lua/nvimtree.lua
-endif
+runtime ./lua/nvimtree.lua
+" if internet == 1
+" endif
 
 " Change spelling highlight"
 hi SpellBad cterm=undercurl

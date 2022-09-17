@@ -98,7 +98,27 @@ end
 
 local lspconfig = require('lspconfig')
 local requiredLsps = {
-    pylsp = {},
+    pylsp = {
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        enabled = false
+                    },
+                    mccabe = {
+                        enabled = false
+                    },
+                    pyflakes = {
+                        enabled = false
+                    },
+                    flake8 = {
+                        config = ".flake8",
+                        enabled = true
+                    },
+                }
+            }
+        }
+    },
     r_language_server = {},
     texlab = {},
     vimls = {},
@@ -127,7 +147,7 @@ for lspName, user_opts in pairs(requiredLsps) do
     lspconfig[lspName].setup(opts)
 end
 
-function EnableFlake8()
+function DisableFlake8()
     -- ensures that only flake8 is enabled
     -- useful for projects that have customised .flake8
     require 'lspconfig'.pylsp.setup {
@@ -137,17 +157,17 @@ function EnableFlake8()
             pylsp = {
                 plugins = {
                     pycodestyle = {
-                        enabled = false
+                        enabled = true
                     },
                     mccabe = {
-                        enabled = false
+                        enabled = true
                     },
                     pyflakes = {
-                        enabled = false
+                        enabled = true
                     },
                     flake8 = {
                         config = ".flake8",
-                        enabled = true
+                        enabled = false
                     },
                 }
             }

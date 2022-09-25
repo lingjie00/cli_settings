@@ -15,6 +15,9 @@ call plug#begin(stdpath('data') . 'vimplug')
     " indention marks
     Plug 'lukas-reineke/indent-blankline.nvim'
 
+    " tabs bar
+    Plug 'romgrk/barbar.nvim'
+
     """""""""""
     " Plugins "
     """""""""""
@@ -34,6 +37,7 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-telescope/telescope-dap.nvim' " integration with dap
     Plug 'nvim-treesitter/nvim-treesitter-context' " adds function context
     Plug 'ggandor/leap.nvim' " leaping forward search
+    Plug 'nvim-telescope/telescope-file-browser.nvim' " folder in telescope
 
     " tmux navigation
     Plug 'christoomey/vim-tmux-navigator' " nav shortcut for tmux

@@ -23,7 +23,7 @@ noremap <leader>Y "+y$
 " copy file name to clipboard
 nnoremap <Leader>+ :let @+=expand('%:p')<CR>
 " Map <Leader>q as :q for qutting
-nnoremap <Leader>q :q<cr>
+nnoremap <Leader>q :BufferClose<cr>
 " Navigate Quickfix list
 nnoremap ]e :cnext<cr>
 nnoremap [e :cprevious<cr>
@@ -80,6 +80,8 @@ nnoremap <Leader>? <cmd>Telescope help_tags<CR>
 nnoremap <Leader>r <cmd>Telescope commands<CR>
 " search all Telescope functions
 nnoremap <Leader>R <cmd>Telescope builtin<CR>
+" display folder structure
+nnoremap <Leader>' <cmd>Telescope file_browser<CR>
 
 """"""""""""""""""""
 " Lsp key bindings
@@ -107,4 +109,11 @@ nnoremap <silent> <Bslash>b  <cmd>lua require'persistent-breakpoints.api'.toggle
 """"""""""""
 " NvimTree
 """"""""""""
-nnoremap <Leader>' <cmd>NvimTreeToggle<CR>
+nnoremap <Leader>" <cmd>NvimTreeToggle<CR>
+
+"""""""""""
+" Bar bar
+"""""""""""
+nnoremap bt :BufferNext<CR>
+nnoremap bT :BufferPrevious<CR>
+nnoremap bg :BufferPick<CR>

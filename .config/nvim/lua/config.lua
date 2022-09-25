@@ -9,6 +9,7 @@ require('telescope').setup({
 })
 require('telescope').load_extension('dap')
 require("telescope").load_extension('harpoon')
+require("telescope").load_extension('file_browser')
 
 -- nvim tree
 require('nvim-tree').setup {
@@ -27,6 +28,9 @@ require('leap').set_default_keymaps()
 
 -- icons
 require('nvim-web-devicons').setup({})
+
+-- tab bar
+require('bufferline').setup({})
 
 -- show quickfix after runing AsyncRun
 vim.g["asyncrun_open"] = 6

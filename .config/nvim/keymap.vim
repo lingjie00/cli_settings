@@ -114,6 +114,6 @@ nnoremap <Leader>" <cmd>NvimTreeToggle<CR>
 """""""""""
 " Bar bar
 """""""""""
-nnoremap bt :BufferNext<CR>
-nnoremap bT :BufferPrevious<CR>
-nnoremap bg :BufferPick<CR>
+nnoremap <Bslash>t :BufferNext<CR>
+nnoremap <Bslash>T :BufferPrevious<CR>
+nnoremap <Bslash>g :BufferPick<CR>

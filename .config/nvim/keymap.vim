@@ -103,3 +103,8 @@ nnoremap <silent> <Bslash>o  <cmd>lua require'dap'.step_out()<CR>
 nnoremap <silent> <Bslash>p  <cmd>lua require'dap'.step_over()<CR>
 nnoremap <silent> <Bslash>c  <cmd>lua require'dap'.continue()<CR>
 nnoremap <silent> <Bslash>b  <cmd>lua require'persistent-breakpoints.api'.toggle_breakpoint()<CR>
+
+""""""""""""
+" NvimTree
+""""""""""""
+nnoremap <Leader>' <cmd>NvimTreeToggle<CR>

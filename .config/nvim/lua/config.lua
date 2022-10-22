@@ -29,9 +29,6 @@ require('leap').set_default_keymaps()
 -- icons
 require('nvim-web-devicons').setup({})
 
--- tab bar
-require('bufferline').setup({})
-
 -- show quickfix after runing AsyncRun
 vim.g["asyncrun_open"] = 6
 
@@ -81,7 +78,7 @@ cmp.setup({
         { name = 'spell' },
     })
 })
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
     vim.lsp.protocol.make_client_capabilities()
 )
 

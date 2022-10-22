@@ -15,9 +15,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     " indention marks
     Plug 'lukas-reineke/indent-blankline.nvim'
 
-    " tabs bar
-    Plug 'romgrk/barbar.nvim'
-
     """""""""""
     " Plugins "
     """""""""""

@@ -89,7 +89,7 @@ nnoremap <Leader>' <cmd>Telescope file_browser<CR>
 nnoremap K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap [d    <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap ]d    <cmd>lua vim.diagnostic.goto_next()<CR>
-nnoremap gf    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap gf    <cmd>lua vim.lsp.buf.format({async=true})<CR>
 nnoremap gn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap gd    <cmd>Telescope lsp_definitions<CR>

@@ -33,7 +33,6 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'folke/trouble.nvim' " nav to code errors
     Plug 'nvim-telescope/telescope-dap.nvim' " integration with dap
     Plug 'nvim-treesitter/nvim-treesitter-context' " adds function context
-    Plug 'ggandor/leap.nvim' " leaping forward search
     Plug 'nvim-telescope/telescope-file-browser.nvim' " folder in telescope
 
     " tmux navigation

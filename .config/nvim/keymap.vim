@@ -110,10 +110,3 @@ nnoremap <silent> <Bslash>b  <cmd>lua require'persistent-breakpoints.api'.toggle
 " NvimTree
 """"""""""""
 nnoremap <Leader>" <cmd>NvimTreeToggle<CR>
-
-"""""""""""
-" Bar bar
-"""""""""""
-nnoremap <Bslash>t :BufferNext<CR>
-nnoremap <Bslash>T :BufferPrevious<CR>
-nnoremap <Bslash>g :BufferPick<CR>

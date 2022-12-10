@@ -22,10 +22,6 @@ require('nvim-tree').setup {
     update_cwd         = false
 }
 
--- leap forward search
-require('leap').setup({})
-require('leap').set_default_keymaps()
-
 -- icons
 require('nvim-web-devicons').setup({})
 
@@ -149,8 +145,7 @@ for lspName, user_opts in pairs(requiredLsps) do
 end
 
 function DisableFlake8()
-    -- ensures that only flake8 is enabled
-    -- useful for projects that have customised .flake8
+    -- disable flake 8
     require 'lspconfig'.pylsp.setup {
         on_attach = custom_attach,
         capabilities = capabilities,

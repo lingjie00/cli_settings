@@ -8,7 +8,11 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 -- Install packages
+require("check")
 require("plugin")
+-- personalised config
+require("keymap")
+require("set")
 if is_bootstrap then
     require('packer').sync()
 end
@@ -21,8 +25,5 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = vim.fn.expand '$MYVIMRC',
 })
 
--- personalised config
-require("keymap")
-require("set")
 
 vim.cmd('colorscheme dracula')

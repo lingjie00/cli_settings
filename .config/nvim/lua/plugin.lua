@@ -21,8 +21,12 @@ return require('packer').startup(function(use)
         as = 'dracula'
     })
 
-    use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
-    use('nvim-treesitter/playground')
+    if internet == 1 then
+        use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+        use('nvim-treesitter/playground')
+        use 'm-demare/hlargs.nvim'
+    end
+
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
@@ -53,20 +57,14 @@ return require('packer').startup(function(use)
         }
     }
 
-    use("folke/zen-mode.nvim")
-
     use 'jose-elias-alvarez/null-ls.nvim'
 
     use 'terrortylor/nvim-comment'
-
     use 'kylechui/nvim-surround'
-
-    use 'm-demare/hlargs.nvim'
-
     use 'ray-x/lsp_signature.nvim'
+    use("folke/zen-mode.nvim")
 
     use 'ellisonleao/glow.nvim'
-
     use 'mzlogin/vim-markdown-toc'
 
 end)

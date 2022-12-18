@@ -38,6 +38,13 @@ echo "======================="
 custom_ln ".vimrc" ".tmux.conf" ".gitconfig"
 custom_ln ".config/nvim" ".config/fish"
 
+# fish shell special
+config_fish=$HOME/.config/fish/config.fish
+if [ ! -e $config_fish ]; then
+    echo "add in fish config"
+    echo "fish_vi_key_bindings" > $config_fish
+fi
+
 # only if access beyond pypi is available
 if [[ $INTERNET =~ ^[Yy].* ]]; then
     echo "====================================="
@@ -67,14 +74,12 @@ if [[ $INTERNET =~ ^[Yy].* ]]; then
         custom_ln "${lfolders[@]}";
     fi
 
-    # ensure check.vim is yes
-    touch $HOME/.config/nvim/check.vim
-    echo "let g:internet = 1" > $HOME/.config/nvim/check.vim
+    # ensure check.lua is yes
+    echo "internet = 1" > $HOME/.config/nvim/lua/check.lua
 
 else
-    # change the check.vim to no
-    touch $HOME/.config/nvim/check.vim
-    echo "let g:internet = 0" > $HOME/.config/nvim/check.vim
+    # change the check.lua to no
+    echo "internet = 0" > $HOME/.config/nvim/lua/check.lua
 fi
 
 ####################

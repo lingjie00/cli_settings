@@ -39,7 +39,7 @@ vim.keymap.set("n", "]E", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "[E", "<cmd>lprev<CR>zz")
 
 -- terminal esacpe
--- vim.keymap.set()
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -51,3 +51,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+-- tmux navigator
+vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateUp<cr>")
+vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")

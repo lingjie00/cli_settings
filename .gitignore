@@ -2,3 +2,4 @@
 fish_variables
 check.lua
 config.fish
+packer_compiled.lua

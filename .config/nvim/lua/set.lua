@@ -58,3 +58,7 @@ vim.api.nvim_set_hl(0, "SpellBad", { cterm = undercurl, undercurl = true })
 -- encoding
 vim.opt.fileformat = "unix"
 vim.opt.encoding = "utf-8"
+
+-- folding
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99

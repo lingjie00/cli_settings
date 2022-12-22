@@ -47,12 +47,10 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 -- viewing
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 0
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.colorcolumn = "80"
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "SpellBad", { cterm = undercurl, undercurl = true })
 
 -- encoding

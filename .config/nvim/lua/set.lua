@@ -21,7 +21,7 @@ vim.o.updatetime = 50
 vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -60,3 +60,6 @@ vim.opt.encoding = "utf-8"
 -- folding
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
+
+-- file type indent is having some error in indentation
+vim.cmd("filetype indent off")

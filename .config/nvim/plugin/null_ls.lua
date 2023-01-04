@@ -14,6 +14,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.yamllint,
         null_ls.builtins.diagnostics.actionlint,
         null_ls.builtins.diagnostics.hadolint,
+        null_ls.builtins.diagnostics.flake8,
         -- code actions
         null_ls.builtins.code_actions.proselint.with({
             filetypes = { "markdown" }

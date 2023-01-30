@@ -64,7 +64,7 @@ return require('packer').startup(function(use)
     use 'ray-x/lsp_signature.nvim'
     use("folke/zen-mode.nvim")
 
-    use 'ellisonleao/glow.nvim'
+    use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
     use 'mzlogin/vim-markdown-toc'
 
 end)

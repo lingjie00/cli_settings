@@ -1,134 +1,94 @@
 #!/bin/bash
 
 # Check if machine has internet access beyond pypi #
-echo "Good day, do we have internet access beyond pypi? - y/n"
-read INTERNET
+read -p "Good day, do we have internet access beyond pypi? - y/n " INTERNET
 
 # check if user want to setup workplace script
-echo "Do you want to set up workplace script? - y/n"
-read WORKPLACE
+read -p "Do you want to set up workplace script? - y/n " WORKPLACE
 
+###################
+# Helper function #
+###################
+custom_ln () {
+    # loops through the inputs to create symbolic links
+    # if file exist, then do nothing
+    for file in "$@"
+    do
+        path=$HOME/$file
+        if [ -e $path ]; then
+            echo "$file exist"
+        else
+            echo "creating $file symlink";
+            ln -s $PWD/$file $HOME/$file
+        fi
+    done
+}
 
 #######################
 # check folder exists #
 #######################
-# if not, create folders
-[ -d ~/.config ] || { echo "creating .config folder"; mkdir ~/.config; }
-[ -d ~/.config/nvim ] || { echo "creating nvim config folder" ; mkdir ~/.config/nvim; }
-[ -d ~/.config/nvim/lua ] || { echo "creating nvim/lua config folder" ; mkdir ~/.config/nvim/lua; }
-
-# only if access beyond pypi is available
-if [[ $INTERNET =~ ^[Yy].* ]]; then
-    echo "check folder exist for internet only folders"
-
-    [ -d ~/.config/fish ] || { echo "creating fish config folder" ; mkdir ~/.config/fish; }
-    [ -d ~/.config/fish/functions ] || { echo "creating fish/functions config folder" ; mkdir ~/.config/fish/functions; }
-
-    # macos specific preference
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        files=(
-            "limelight" "skhd" "yabai" "zathura"
-            "karabiner" "karabiner/assets"
-            "karabiner/assets/complex_modifications"
-        )
-        for program in ${files[@]}
-        do
-            [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
-        done
-
-    # linux specific preference
-    elif [[ "$OSTYPE" == "linux"* ]]; then
-        lfiles=(
-            "i3" "i3blocks" "rofi"
-        )
-        for program in ${lfiles[@]}
-        do
-            [ -d ~/.config/$program ] || { echo "creating $program config folder"; mkdir ~/.config/$program; }
-        done
-    fi
-fi
-
+echo "======================="
+echo "creating symbolic links"
+echo "======================="
+[ -d $HOME/.config ] || { echo "creating .config folder"; mkdir $HOME/.config; }
 
 #########################
 # create symbolic links #
 #########################
-files=(
-    ".vimrc" ".tmux.conf"
-    ".config/nvim/init.vim"
-    ".config/nvim/plugin.vim"
-    ".config/nvim/keymap.vim"
-    ".config/nvim/lua/lualine_theme.lua"
-    ".config/nvim/lua/config.lua"
-    );
+custom_ln ".vimrc" ".tmux.conf" ".gitconfig"
+custom_ln ".config/nvim" ".config/fish"
 
-for file in ${files[@]}
-    do
-        [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
-done
+# fish shell special
+config_fish=$HOME/.config/fish/config.fish
+if [ ! -e $config_fish ]; then
+    echo "add in fish config"
+    echo "fish_vi_key_bindings" > $config_fish
+fi
+
 # only if access beyond pypi is available
 if [[ $INTERNET =~ ^[Yy].* ]]; then
+    echo "====================================="
     echo "set up files for internet only config"
+    echo "====================================="
 
-    files=(
-        ".zshrc" ".gitconfig"
-        ".config/nvim/lua/nvimtree.lua"
-        ".config/fish/config.fish"
-        ".config/fish/fish_plugins"
-        ".config/fish/functions/fish_prompt.fish"
-        ".config/fish/functions/fish_right_prompt.fish"
-        );
-    for file in ${files[@]}
-        do
-            [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
-    done
+    custom_ln ".qutebrowser" ".config/zathura"
 
     # macos specific config files
-    files=(
-        ".config/skhd/skhdrc"
-        ".config/yabai/yabairc"
-        ".config/limelight/limelightrc"
-        ".qutebrowser/config.py"
-        ".config/zathura/zathurarc"
-        ".config/karabiner/assets/complex_modifications/keymap.json"
-    )
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        for file in ${files[@]}
-        do
-            [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
-        done
+        mfolders=(
+            ".config/skhd"
+            ".config/yabai"
+            ".config/limelight"
+            ".config/karabiner"
+        )
+        custom_ln "${mfolders[@]}";
     fi
 
     # linux specific config files
-    lfiles=(
-        ".config/i3/config"
-        ".config/i3/compton.conf"
-        ".config/i3blocks/config"
-        ".config/rofi/config.rasi"
-        ".qutebrowser/config.py"
-        ".config/zathura/zathurarc"
-    )
     if [[ "$OSTYPE" == "linux"* ]]; then
-        for file in ${lfiles[@]}
-        do
-            [ -f ~/$file ] || { echo "creating $file symlink"; ln -s $PWD/$file ~/$file; }
-        done
+        lfolders=(
+            ".config/i3"
+            ".config/i3blocks"
+            ".config/rofi"
+        )
+        custom_ln "${lfolders[@]}";
     fi
 
-    # ensure check.vim is yes
-    touch ~/.config/nvim/check.vim
-    echo "let g:internet = 1" > ~/.config/nvim/check.vim
+    # ensure check.lua is yes
+    echo "internet = 1" > $HOME/.config/nvim/lua/check.lua
 
 else
-    # change the check.vim to no
-    touch ~/.config/nvim/check.vim
-    echo "let g:internet = 0" > ~/.config/nvim/check.vim
+    # change the check.lua to no
+    echo "internet = 0" > $HOME/.config/nvim/lua/check.lua
 fi
 
 ####################
 # workplace script #
 ####################
 if [[ $WORKPLACE =~ ^[Yy].* ]]; then
+    echo "======================="
     echo "Set up workplace script"
+    echo "======================="
 
     files=("nb_clean" "tmux_setup")
     for file in ${files[@]}
@@ -141,4 +101,6 @@ if [[ $WORKPLACE =~ ^[Yy].* ]]; then
     done
 fi
 
+echo "================"
 echo "Done with config"
+echo "================"

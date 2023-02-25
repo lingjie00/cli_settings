@@ -40,7 +40,7 @@ clone and symbolic linking the files.
 git clone https://github.com/lingjie00/cli_settings .dotfiles
 
 # symbolic link
-symlink
+./symlink
 ```
 
 ## Python and R workflow
@@ -79,18 +79,11 @@ Vim/Neovim. I use
 for browsing. The only time I will still need my
 mouse is to navigate PDF documents.
 
-For data science related work, I have discovered a
-plugin called [ Jupyter Ascending ]( https://github.com/untitled-ai/jupyter_ascending.vim
-        ).
-This package allows auto-sync between Jupyter
-notebook and Python script which finally balances
+For data science related work, I use [ Jupytext ]( https://github.com/mwouts/jupytext )
+which sync between Jupyter
+notebook and Python script, balances
 the need to experiment with data in notebooks and
 having the best practice in software development.
-
-I have various key mapping designed for some
-common tasks in specific languages.
-I mainly use 1) Python 2) R 3) Latex, so most of
-the mapping are based on these 3 languages.
 
 Read more about Neovim from their [ official
 page ]( https://neovim.io/ )

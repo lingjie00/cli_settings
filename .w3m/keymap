@@ -7,3 +7,5 @@ keymap { PREV_TAB
 keymap } NEXT_TAB
 keymap C-b BOOKMARK
 keymap C-n ADD_BOOKMARK
+keymap w NEXT_LINK
+keymap b PREV_LINK

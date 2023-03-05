@@ -1,0 +1,31 @@
+# Alacritty config
+---
+window:
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 0
+    y: 0
+  # remove title bar
+  decorations: none
+  opacity: 0.9
+
+# font family
+font:
+  normal:
+    family: hack nerd font
+    style: Regular
+
+  bold:
+    family: hack nerd font
+    style: Bold
+
+  italic:
+    family: hack nerd font
+    style: Italic
+
+  bold_italic:
+    family: hack nerd font
+    style: Bold Italic
+
+  size: 14

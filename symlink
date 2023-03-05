@@ -53,7 +53,7 @@ if [[ $INTERNET =~ ^[Yy].* ]]; then
     echo "set up files for internet only config"
     echo "====================================="
 
-    custom_ln ".qutebrowser" ".config/zathura"
+    custom_ln ".qutebrowser" ".config/zathura" ".w3m" ".config/alacritty"
 
     # macos specific config files
     if [[ "$OSTYPE" == "darwin"* ]]; then

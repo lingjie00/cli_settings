@@ -17,6 +17,8 @@ files=(
     ".config/i3"
     ".config/i3blocks"
     ".config/rofi"
+    ".w3m"
+    ".config/alacritty"
     );
 
 for file in ${files[@]}

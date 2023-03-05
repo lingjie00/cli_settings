@@ -1,0 +1,9 @@
+keymap C-d NEXT_PAGE
+keymap C-u PREV_PAGE
+keymap O GOTO
+keymap T NEW_TAB
+keymap q CLOSE_TAB
+keymap { PREV_TAB
+keymap } NEXT_TAB
+keymap C-b BOOKMARK
+keymap C-n ADD_BOOKMARK

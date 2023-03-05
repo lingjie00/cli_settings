@@ -4,3 +4,4 @@ check.lua
 config.fish
 packer_compiled.lua
 *backups
+.w3m/*

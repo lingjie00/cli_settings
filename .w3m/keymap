@@ -1,11 +1,37 @@
+# navigate page
 keymap C-d NEXT_PAGE
 keymap C-u PREV_PAGE
 keymap O GOTO
+keymap H PREV
+keymap L NEXT
+keymap ? HELP
+
+# navigate tabs
 keymap T NEW_TAB
 keymap q CLOSE_TAB
-keymap { PREV_TAB
-keymap } NEXT_TAB
+keymap gt PREV_TAB
+keymap Gt NEXT_TAB
+
+# bookmark
 keymap C-b BOOKMARK
 keymap C-n ADD_BOOKMARK
+
+# navigate links instead of words
 keymap w NEXT_LINK
 keymap b PREV_LINK
+
+# toggle url hinting
+keymap ff COMMAND "SET_OPTION display_link_number=toggle ; RESHAPE"
+# go to url hinting
+keymap g COMMAND "SET_OPTION display_link_number=0 ; RESHAPE ; LINK_BEGIN"
+# open link in current tab
+keymap fo COMMAND "SET_OPTION display_link_number=0 ; RESHAPE ; LINK_BEGIN ; GOTO_LINK"
+# open link in new tab
+keymap ft COMMAND "SET_OPTION display_link_number=0 ; RESHAPE ; LINK_BEGIN ; TAB_LINK"
+# copy url
+keymap  fy      COMMAND "SET_OPTION display_link_number=0 ; RESHAPE ; LINK_BEGIN ; EXTERN_LINK 'url=%s ; printf "%b" "$url" > /tmp/clipbrd.txt ; printf "%b" "$url" | xsel -b 2>/dev/null ; printf "%b" "$url" | tmux load-buffer - ; printf '%s' "$url" | wl-copy 2>/dev/null  ; printf '%s' "$url" | clip 2>/dev/null ; printf '%s' "$url" > /dev/clipboard 2>/dev/null ; printf '%s' "$url" | pbcopy 2>/dev/null ; printf '%s' "$url" | termux-clipboard-set 2>/dev/null'"
+
+# yank url to multiple clipboard (under cursor)
+keymap  yy      EXTERN_LINK "url=%s ; printf "%b" "$url" > /tmp/clipbrd.txt ; printf "%b" "$url" | xsel -b 2>/dev/null ; printf "%b" "$url" | tmux load-buffer - ; printf '%s' "$url" | wl-copy 2>/dev/null  ; printf '%s' "$url" | clip 2>/dev/null ; printf '%s' "$url" > /dev/clipboard 2>/dev/null ; printf '%s' "$url" | pbcopy 2>/dev/null ; printf '%s' "$url" | termux-clipboard-set 2>/dev/null"
+# yank url to multiple clipboard (current page)
+keymap  YY      EXTERN "url=%s ; printf "%b" "$url" > /tmp/clipbrd.txt ; printf "%b" "$url" | xsel -b 2>/dev/null ; printf "%b" "$url" | tmux load-buffer - ; printf '%s' "$url" | wl-copy 2>/dev/null  ; printf '%s' "$url" | clip 2>/dev/null ; printf '%s' "$url" > /dev/clipboard 2>/dev/null ; printf '%s' "$url" | pbcopy 2>/dev/null ; printf '%s' "$url" | termux-clipboard-set 2>/dev/null"

@@ -30,10 +30,11 @@ return require('packer').startup(function(use)
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
-    use 'airblade/vim-gitgutter'
-    use 'f-person/git-blame.nvim'
-    use 'rhysd/conflict-marker.vim'
+    use('airblade/vim-gitgutter')
+    use('f-person/git-blame.nvim')
+    use('rhysd/conflict-marker.vim')
     use('christoomey/vim-tmux-navigator')
+    use('esamattis/slimux')
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -64,7 +65,7 @@ return require('packer').startup(function(use)
     use 'ray-x/lsp_signature.nvim'
     use("folke/zen-mode.nvim")
 
-    use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
+    use {"ellisonleao/glow.nvim", config = function() require("glow").setup({border = "single"}) end}
     use 'mzlogin/vim-markdown-toc'
 
 end)

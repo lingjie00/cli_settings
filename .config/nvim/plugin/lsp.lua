@@ -39,6 +39,10 @@ lsp.configure('lua_ls', {
     }
 })
 
+lsp.configure('ltex', {
+    autostart = false
+})
+
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 

@@ -15,3 +15,5 @@ vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>;', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>R', builtin.commands, {})
 vim.keymap.set('n', '<leader>r', builtin.builtin, {})
+
+require("telescope").load_extension("ui-select")

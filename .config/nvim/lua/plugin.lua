@@ -7,35 +7,48 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    -- fuzzy finder
+    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
+    -- replace vim ui select with telescope
+    use { 'nvim-telescope/telescope-ui-select.nvim' }
 
-    use 'nvim-lualine/lualine.nvim'
+    -- status line
+    use { 'nvim-lualine/lualine.nvim' }
 
-    use 'lukas-reineke/indent-blankline.nvim'
+    -- display dots to blankline
+    use { 'lukas-reineke/indent-blankline.nvim' }
 
-    use({
-        'dracula/vim',
-        as = 'dracula'
-    })
+    -- theme
+    use { 'dracula/vim', as = 'dracula' }
 
+    -- these package will only work if there is external network connection
     if internet == 1 then
-        use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
-        use('nvim-treesitter/playground')
-        use 'm-demare/hlargs.nvim'
+        -- treesitter, and plugins that require treesitter
+        use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+        use { 'nvim-treesitter/playground' }
+        use { 'm-demare/hlargs.nvim' }
+        -- useful for review GitHub PR
+        use { 'ldelossa/gh.nvim', requires = { { 'ldelossa/litee.nvim' } } }
     end
 
-    use('theprimeagen/harpoon')
-    use('mbbill/undotree')
-    use('tpope/vim-fugitive')
-    use('airblade/vim-gitgutter')
-    use('f-person/git-blame.nvim')
-    use('rhysd/conflict-marker.vim')
-    use('christoomey/vim-tmux-navigator')
-    use('esamattis/slimux')
+    -- fast navigation via marks
+    use { 'theprimeagen/harpoon' }
+    -- display history as a tree
+    use { 'mbbill/undotree' }
+    -- runs Git command in Vim
+    use { 'tpope/vim-fugitive' }
+    -- shows Git diff
+    use { 'airblade/vim-gitgutter' }
+    -- display Git Blame
+    use { 'f-person/git-blame.nvim' }
+    -- resolve Git conflict
+    use { 'rhysd/conflict-marker.vim' }
+    -- navigate vim and tmux
+    use { 'christoomey/vim-tmux-navigator' }
+    -- sends text from vim to tmux buffer
+    use { 'esamattis/slimux' }
 
+    -- easy set-up LSPs
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -58,14 +71,18 @@ return require('packer').startup(function(use)
         }
     }
 
-    use 'jose-elias-alvarez/null-ls.nvim'
+    -- enable non LSP server with LSP features
+    use { 'jose-elias-alvarez/null-ls.nvim' }
 
-    use 'terrortylor/nvim-comment'
-    use 'kylechui/nvim-surround'
-    use 'ray-x/lsp_signature.nvim'
-    use("folke/zen-mode.nvim")
+    -- convert code to comments
+    use { 'terrortylor/nvim-comment' }
+    -- change surround parentheses
+    use { 'kylechui/nvim-surround' }
+    -- allow LSP completions
+    use { 'ray-x/lsp_signature.nvim' }
 
-    use {"ellisonleao/glow.nvim", config = function() require("glow").setup({border = "single"}) end}
-    use 'mzlogin/vim-markdown-toc'
-
+    -- preview Markdown files
+    use { "ellisonleao/glow.nvim", config = function() require("glow").setup({ border = "single" }) end }
+    -- generate Markdown TOC
+    use { 'mzlogin/vim-markdown-toc' }
 end)

@@ -46,7 +46,11 @@ return require('packer').startup(function(use)
     -- navigate vim and tmux
     use { 'christoomey/vim-tmux-navigator' }
     -- sends text from vim to tmux buffer
-    use { 'esamattis/slimux' }
+    use { 'jpalardy/vim-slime' }
+    use {
+        'klafyvel/vim-slime-cells',
+        ft = { 'julia', 'python' , 'r'}
+    }
 
     -- easy set-up LSPs
     use {

@@ -57,8 +57,3 @@ vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateUp<cr>")
 vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateDown<cr>")
 vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
-
--- Slimux
-vim.keymap.set("n", "\\s", "<cmd>SlimuxREPLSendLine<cr>")
-vim.keymap.set("v", "\\s", "<cmd>SlimuxREPLSendSelection<cr>")
-vim.keymap.set("n", "\\b", "<cmd>SlimuxREPLSendBuffer<cr>")

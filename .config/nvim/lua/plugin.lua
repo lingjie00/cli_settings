@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
     use { 'jpalardy/vim-slime' }
     use {
         'klafyvel/vim-slime-cells',
-        ft = { 'julia', 'python' , 'r'}
+        ft = { 'julia', 'python', 'r' }
     }
 
     -- easy set-up LSPs
@@ -81,7 +81,7 @@ return require('packer').startup(function(use)
     -- convert code to comments
     use { 'terrortylor/nvim-comment' }
     -- change surround parentheses
-    use { 'kylechui/nvim-surround' }
+    use { "tpope/vim-surround" }
     -- allow LSP completions
     use { 'ray-x/lsp_signature.nvim' }
 

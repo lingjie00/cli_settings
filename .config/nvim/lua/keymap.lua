@@ -31,7 +31,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "gf", vim.lsp.buf.format)
+vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format({async=true})<CR>")
 
 vim.keymap.set("n", "]e", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "[e", "<cmd>cprev<CR>zz")

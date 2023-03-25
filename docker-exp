@@ -1,0 +1,7 @@
+#!/bin/bash
+
+JUPYTER_PORT=$1
+MLFLOW=$2
+
+# Starts a docker container in the current folder
+docker run -it -v .:/code/ --name $(basename $PWD)-jupyter --rm -p $JUPYTER_PORT:8888 -p $MLFLOW:5000 exp

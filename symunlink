@@ -28,7 +28,7 @@ done
 
 # clean the workspace files
 
-files=("nb_clean" "tmux_setup")
+files=("nb_clean" "tmux_setup" "docker-dev" "docker-exp")
 for file in ${files[@]}
 do
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then

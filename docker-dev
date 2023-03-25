@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Starts a docker container in the current folder
+docker run -it -v .:/code/ --name $(basename $PWD) --rm dev

@@ -2,6 +2,7 @@
 
 JUPYTER_PORT=$1
 MLFLOW=$2
+PARAMS=$3
 
 # Starts a docker container in the current folder
-docker run -it -v .:/code/ --name $(basename $PWD)-jupyter --rm -p $JUPYTER_PORT:8888 -p $MLFLOW:5000 exp
+docker run -it -v .:/code/ --name $(basename $PWD)-jupyter --rm $PARAMS -p $JUPYTER_PORT:8888 -p $MLFLOW:5000 exp

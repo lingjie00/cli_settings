@@ -1,4 +1,6 @@
 #!/bin/bash
 
+PARAMS=$1
+
 # Starts a docker container in the current folder
-docker run -it -v .:/code/ --name $(basename $PWD) --rm dev
+docker run -it -v .:/code/ --name $(basename $PWD) $PARAMS --rm dev

@@ -2,5 +2,12 @@
 
 PARAMS=$1
 
-# Starts a docker container in the current folder
-docker run -it -v .:/code/ --name $(basename $PWD) $PARAMS --rm dev
+DOCKERNAME=$(basename $PWD)
+
+if [ "$(docker ps -aqf name=$DOCKERNAME)" ]; then
+    # if docker exist, then attach to it
+    docker attach $DOCKERNAME;
+else
+    # Starts a docker container in the current folder
+    docker run -it -v .:/code/ --name $(basename $PWD) $PARAMS --rm dev
+fi;

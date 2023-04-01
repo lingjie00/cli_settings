@@ -79,4 +79,7 @@ if internet == 1 then
     -- [[ Other tree sitter dendent library ]]
     -- hlargs, highlight args
     require('hlargs').setup({})
+
+    -- context, showing the function currently in
+    require('treesitter-context').setup({})
 end

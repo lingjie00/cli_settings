@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
     if internet == 1 then
         -- treesitter, and plugins that require treesitter
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+        use { 'nvim-treesitter/nvim-treesitter-context' }
         use { 'nvim-treesitter/playground' }
         use { 'm-demare/hlargs.nvim' }
         -- useful for review GitHub PR

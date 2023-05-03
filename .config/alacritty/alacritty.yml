@@ -8,7 +8,7 @@ window:
     y: 0
   # remove title bar
   decorations: none
-  opacity: 0.9
+  opacity: 1.0
 
 # font family
 font:

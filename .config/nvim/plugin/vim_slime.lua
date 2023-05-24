@@ -13,5 +13,5 @@ vim.g.slime_no_mappings = 1
 vim.keymap.set('n', '\\c', '<Plug>SlimeCellsSendAndGoToNext<CR>')
 vim.keymap.set('n', '\\n', '<Plug>SlimeCellsNext<CR>')
 vim.keymap.set('n', '\\p', '<Plug>SlimeCellsPrev<CR>')
-vim.keymap.set('x', '\\s', '<Plug>SlimeRegionSend<CR>')
-vim.keymap.set('n', '\\S', '<Plug>SlimeParagraphSend<CR>')
+vim.keymap.set('x', '\\S', '<Plug>SlimeRegionSend<CR>')
+vim.keymap.set('n', '\\s', '<Plug>SlimeParagraphSend<CR>')

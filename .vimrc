@@ -24,8 +24,8 @@ set foldlevel=99
 set encoding=utf-8
 set cmdheight=1
 set ignorecase "ignore search case
-set updatetime=300
-set spell
+set updatetime=50
+set nospell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
 set cmdheight=1
@@ -50,10 +50,12 @@ call plug#begin('~/.vim/plugged')
     " status bar
     Plug 'vim-airline/vim-airline'
     " gruvbox
-    Plug 'morhetz/gruvbox'
+    " Plug 'morhetz/gruvbox'
 
     " navigation shortcut
     Plug 'christoomey/vim-tmux-navigator'
+    " Send command to tmux buffer
+    Plug 'jpalardy/vim-slime'
 
     " insearch
     Plug 'haya14busa/incsearch.vim'
@@ -61,6 +63,18 @@ call plug#begin('~/.vim/plugged')
     " Git
     Plug 'tpope/vim-fugitive' " adds Git command to vim
     Plug 'airblade/vim-gitgutter' " shows git diff marks
+    Plug 'rhysd/conflict-marker.vim' " resolve Git conflict
+
+    " surround
+    Plug 'tpope/vim-surround'
+
+    " generate markdown TOC
+    Plug 'mzlogin/vim-markdown-toc'
+
+    " lsp
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+
 
 " Initialize plugin system
 call plug#end()
@@ -73,10 +87,25 @@ colorscheme dracula
 " set background=dark
 " let g:gruvbox_contrast_dark="hard"
 
+" >> vim-slime config
+" set tmux as the default slime target
+let g:slime_target = 'tmux'
+" use Ipython notation of %% for a new cell
+let g:slime_cell_delimiter = '^\\s*# %%' 
+" fix tmux auto spacing issue
+let g:slime_bracketed_paste = 1
+" set default target location
+let g:slime_default_config = { 'socket_name': 'default', 'target_pane': ':.1' }
+let g:slime_dont_ask_default = 1
+
+" >> change edit history
+set noswapfile
+let undodir = "/.vim/undodir"
+
 """""""""""""""
 " map keys
 " >> replace default search with insearch
-set hlsearch
+set nohlsearch
 let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -110,3 +139,16 @@ nnoremap Y y$
 noremap <leader>p "+p
 noremap <leader>y "+y
 noremap <leader>Y "+y$
+" >> view folders
+nnoremap <leader>' :Ex<CR>
+" >> navigate quickfix
+nnoremap ]e :cnext<CR>zz
+nnoremap [e :cprev<CR>zz
+
+" >> vim-slime keymap
+let g:slime_no_mappings = 1
+nnoremap \c <Plug>SlimeCellsSendAndGoToNext<CR>
+nnoremap \n <Plug>SlimeCellsNext<CR>
+nnoremap \p <Plug>SlimeCellsPrev<CR>
+nnoremap \s <Plug>SlimeRegionSend<CR>
+nnoremap \S <Plug>SlimeParagraphSend<CR>

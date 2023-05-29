@@ -21,3 +21,7 @@ null_ls.setup({
         }),
     }
 })
+
+if internet == 1 then
+    require("mason-null-ls").setup({ automatic_installation = true })
+end

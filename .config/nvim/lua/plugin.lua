@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
     -- these package will only work if there is external network connection
     if internet == 1 then
         -- treesitter, and plugins that require treesitter
-        use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+        use { 'nvim-treesitter/nvim-treesitter'}
         use { 'nvim-treesitter/nvim-treesitter-context' }
         use { 'nvim-treesitter/playground' }
         use { 'm-demare/hlargs.nvim' }

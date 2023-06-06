@@ -6,7 +6,7 @@
 
 ## Quickly restart the yabai launch agent
 # ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-ctrl + alt + cmd - r : bash -c "brew services restart yabai"
+ctrl + alt + cmd - r : bash -c "yabai --restart-service"
 
 ## swap window
 # hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key

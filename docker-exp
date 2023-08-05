@@ -11,5 +11,5 @@ if [ "$(docker ps -aqf name=$DOCKERNAME)" ]; then
     docker attach $DOCKERNAME;
 else
     # Starts a docker container in the current folder
-    docker run -it -v $(PWD):/code/ --name $DOCKERNAME --rm $PARAMS -p $JUPYTER_PORT:8888 -p $MLFLOW:5000 exp
+    docker run -it -v $PWD:/code/ --name $DOCKERNAME --rm $PARAMS -p $JUPYTER_PORT:8888 -p $MLFLOW:5000 exp
 fi;

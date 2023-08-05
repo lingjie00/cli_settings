@@ -75,6 +75,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
 
+    " Auto-complete
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 
 " Initialize plugin system
 call plug#end()

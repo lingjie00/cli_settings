@@ -25,7 +25,7 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 # Change $SCRIPT_DIR to the location of your scripts!
-command=~/.config/i3blocks/$BLOCK_NAME
+command=~/.config/i3blocks/i3blocks-contrib/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -36,7 +36,7 @@ markup=none
 # See the script for details.
 
 [volume]
-command=~/.config/i3blocks/volume/volume
+command=~/.config/i3blocks/i3blocks-contrib/volume/volume
 label=♪
 #label=VOL
 interval=1
@@ -47,14 +47,8 @@ signal=10
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-command=~/.config/i3blocks/memory/memory
+command=~/.config/i3blocks/i3blocks-contrib/memory/memory
 label=MEM
-#separator=false
-interval=30
-
-[memory]
-label=SWAP
-instance=swap
 separator=false
 interval=30
 
@@ -63,45 +57,45 @@ interval=30
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk]
-label=HOME
-#DIR=/mnt/data
-interval=30
+# [disk]
+# label=HOME
+# DIR=/mnt/data
+# interval=30
 
 # Network interface monitoring
 #
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
-#IFACE=wlan0
-color=#00FF00
-interval=10
-separator=false
+# [iface]
+# #IFACE=wlan0
+# color=#00FF00
+# interval=10
+# separator=false
 
-[wifi]
-#INTERFACE=wlp3s0
-label=wifi:
-interval=10
-separator=false
+# [wifi]
+# #INTERFACE=wlp3s0
+# label=wifi:
+# interval=10
+# separator=false
 
-[bandwidth]
+# [bandwidth]
 #INTERFACE=eth0
-interval=5
+# interval=5
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-command=~/.config/i3blocks/cpu_usage/cpu_usage
+command=~/.config/i3blocks/i3blocks-contrib/cpu_usage/cpu_usage
 label=CPU
 interval=10
 min_width=CPU 100.00%
 #separator=false
 
-[load_average]
-label=LOAD
-interval=10
+# [load_average]
+# label=LOAD
+# interval=10
 
 # Battery indicator
 #

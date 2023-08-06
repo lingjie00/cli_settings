@@ -53,7 +53,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # focus on firefox
-bindsym $mod+w [class="firefox"] focus
+bindsym $mod+w [class="google-chrome"] focus
 
 # change volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -179,7 +179,7 @@ bar {
 assign [class="Telegram"] 10
 
 # Startup programs
-exec --no-startup-id firefox
+exec --no-startup-id google-chrome
 exec --no-startup-id nordvpn connect sg
 exec --no-startup-id i3-sensible-terminal -x tmux
 exec --no-startup-id telegram-desktop

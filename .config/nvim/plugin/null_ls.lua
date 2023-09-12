@@ -7,6 +7,7 @@ null_ls.setup({
         null_ls.builtins.formatting.isort,
         null_ls.builtins.formatting.fish_indent,
         null_ls.builtins.formatting.latexindent,
+        null_ls.builtins.formatting.yamlfix,
         -- diagostics
         null_ls.builtins.diagnostics.chktex,
         null_ls.builtins.diagnostics.gitlint,

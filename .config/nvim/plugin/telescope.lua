@@ -17,3 +17,4 @@ vim.keymap.set({ 'n', 'v' }, '<leader>r', builtin.commands, {})
 vim.keymap.set({ 'n', 'v' }, '<leader>R', builtin.builtin, {})
 
 require("telescope").load_extension("ui-select")
+require('telescope').load_extension('dap')

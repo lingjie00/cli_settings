@@ -95,5 +95,6 @@ return require('packer').startup(function(use)
     use { 'mzlogin/vim-markdown-toc' }
 
     -- DAP
-    use { 'mfussenegger/nvim-dap', requires = { { 'rcarriga/nvim-dap-ui' }, { 'mfussenegger/nvim-dap-python' } } }
+    use { 'mfussenegger/nvim-dap', requires = { { 'rcarriga/nvim-dap-ui' }, { 'mfussenegger/nvim-dap-python' },
+        { 'LiadOz/nvim-dap-repl-highlights' }, { 'nvim-telescope/telescope-dap.nvim' } } }
 end)

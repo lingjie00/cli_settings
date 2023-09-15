@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
     -- these package will only work if there is external network connection
     if internet == 1 then
         -- treesitter, and plugins that require treesitter
-        use { 'nvim-treesitter/nvim-treesitter'}
+        use { 'nvim-treesitter/nvim-treesitter' }
         use { 'nvim-treesitter/nvim-treesitter-context' }
         use { 'nvim-treesitter/playground' }
         use { 'm-demare/hlargs.nvim' }
@@ -93,4 +93,7 @@ return require('packer').startup(function(use)
     use { "ellisonleao/glow.nvim", config = function() require("glow").setup({ border = "single" }) end }
     -- generate Markdown TOC
     use { 'mzlogin/vim-markdown-toc' }
+
+    -- DAP
+    use { 'mfussenegger/nvim-dap', requires = { { 'rcarriga/nvim-dap-ui' }, { 'mfussenegger/nvim-dap-python' } } }
 end)

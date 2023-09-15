@@ -57,3 +57,6 @@ vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateUp<cr>")
 vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateDown<cr>")
 vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+
+-- DAP
+vim.keymap.set("n", "<C-d>", "<cmd>lua require('dapui').toggle()<CR>")

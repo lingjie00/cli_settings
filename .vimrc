@@ -79,6 +79,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+    " DAP
+    Plug 'puremourning/vimspector'
+
 
 " Initialize plugin system
 call plug#end()

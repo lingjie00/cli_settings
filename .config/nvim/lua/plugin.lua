@@ -32,8 +32,6 @@ return require('packer').startup(function(use)
         use { 'ldelossa/gh.nvim', requires = { { 'ldelossa/litee.nvim' } } }
     end
 
-    -- fast navigation via marks
-    use { 'theprimeagen/harpoon' }
     -- display history as a tree
     use { 'mbbill/undotree' }
     -- runs Git command in Vim

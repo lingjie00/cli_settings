@@ -2,4 +2,7 @@
 require('dap')
 require('dapui').setup()
 require('dap-python').setup('python', {})
-require('nvim-dap-repl-highlights').setup()
+
+if internet == 1 then
+    require('nvim-dap-repl-highlights').setup()
+end

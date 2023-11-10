@@ -40,7 +40,7 @@ clone and symbolic linking the files.
 git clone https://github.com/lingjie00/cli_settings .dotfiles
 
 # symbolic link
-./symlink
+./install
 ```
 
 ## Python and R workflow

@@ -9,10 +9,10 @@ packages_mac:
 	bash homebrew.sh y
 
 config:
-	bash symlink y y
+	bash install y y
 
 reset:
-	bash symunlink
+	bash uninstall
 
 homebrew:
 	echo "Installing homebrew"

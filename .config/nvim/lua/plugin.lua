@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
     -- runs Git command in Vim
     use { 'tpope/vim-fugitive' }
     -- shows Git diff
-    use { 'airblade/vim-gitgutter' }
+    use { 'airblade/vim-gitgutter', branch = 'main' }
     -- display Git Blame
     use { 'f-person/git-blame.nvim' }
     -- resolve Git conflict
@@ -75,8 +75,7 @@ return require('packer').startup(function(use)
     }
 
     -- enable non LSP server with LSP features
-    use { 'jose-elias-alvarez/null-ls.nvim' }
-    use { 'jay-babu/mason-null-ls.nvim' }
+    use { 'stevearc/conform.nvim' }
 
     -- convert code to comments
     use { 'terrortylor/nvim-comment' }

@@ -8,6 +8,9 @@
 # ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 ctrl + alt + cmd - r : bash -c "yabai --restart-service"
 
+# switch to chrome
+rshift + rcmd + ralt + rctrl - q : bash -c "open -a Google\ Chrome"
+
 ## swap window
 # hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key
 rshift + rcmd + ralt + rctrl - h : yabai -m window --swap west

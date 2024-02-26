@@ -9,51 +9,47 @@
 ctrl + alt + cmd - r : bash -c "yabai --restart-service"
 
 # switch to chrome
-rshift + rcmd + ralt + rctrl - q : bash -c "open -a Google\ Chrome"
+hyper - q : bash -c "open -a Google\ Chrome"
 
 ## swap window
 # hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key
-rshift + rcmd + ralt + rctrl - h : yabai -m window --swap west
-rshift + rcmd + ralt + rctrl - l : yabai -m window --swap east
-rshift + rcmd + ralt + rctrl - j : yabai -m window --swap south
-rshift + rcmd + ralt + rctrl - k : yabai -m window --swap north
+hyper - h : yabai -m window --swap west
+hyper - l : yabai -m window --swap east
+hyper - j : yabai -m window --swap south
+hyper - k : yabai -m window --swap north
 
 ## resize window
-rshift + rcmd + ralt + rctrl - a : yabai -m window --resize left:-100:0
-rshift + rcmd + ralt + rctrl - s : yabai -m window --resize bottom:0:100
-rshift + rcmd + ralt + rctrl - w : yabai -m window --resize top:0:-100
-rshift + rcmd + ralt + rctrl - d : yabai -m window --resize right:100:0
-rshift + rcmd + ralt + rctrl - b : yabai -m window --resize abs:1280:750
-rshift + rcmd + ralt + rctrl - n : yabai -m window --resize abs:1780:1350
-shift + cmd - a : yabai -m window --resize left:100:0
-shift + cmd - s : yabai -m window --resize bottom:0:-100
-shift + cmd - w : yabai -m window --resize top:0:100
-shift + cmd - d : yabai -m window --resize right:-100:0
+hyper - b : yabai -m window --resize abs:1280:750
+hyper - n : yabai -m window --resize abs:1780:1350
+hyper - d : yabai -m window --resize left:100:0
+hyper - s : yabai -m window --resize bottom:0:-100
+hyper - w : yabai -m window --resize top:0:100
+hyper - a : yabai -m window --resize right:-100:0
 
 # rebalance the current space
-rshift + rcmd + ralt + rctrl - g : yabai -m space --balance
+hyper - g : yabai -m space --balance
 
 ## toggle window fullscreen zoom and float
-rshift + rcmd + ralt + rctrl - f : yabai -m window --toggle zoom-fullscreen
-rshift + rcmd + ralt + rctrl - r : yabai -m window --toggle float
+hyper - f : yabai -m window --toggle zoom-fullscreen
+hyper - r : yabai -m window --toggle float
 
 # cycle through windows
-rshift + rcmd + ralt + rctrl - i : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
-rshift + rcmd + ralt + rctrl - o : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
+hyper - i : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
+hyper - o : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
 
 # cycle through monitor
-rshift + rcmd + ralt + rctrl - p  : yabai -m display --focus prev || yabai -m display --focus last
-rshift + rcmd + ralt + rctrl - u  : yabai -m display --focus next || yabai -m display --focus first
+hyper - p  : yabai -m display --focus prev || yabai -m display --focus last
+hyper - u  : yabai -m display --focus next || yabai -m display --focus first
 
 # Move active window to different spaces
-rshift + rcmd + ralt + rctrl - 7 : yabai -m window --space 1
-rshift + rcmd + ralt + rctrl - 8 : yabai -m window --space 2
-rshift + rcmd + ralt + rctrl - 9 : yabai -m window --space 3
-rshift + rcmd + ralt + rctrl - 0 : yabai -m window --space 4
+hyper - 7 : yabai -m window --space 1
+hyper - 8 : yabai -m window --space 2
+hyper - 9 : yabai -m window --space 3
+hyper - 0 : yabai -m window --space 4
 
 # Move active window to the next display
-rshift + rcmd + ralt + rctrl - z : yabai -m window --display 1
-rshift + rcmd + ralt + rctrl - x : yabai -m window --display 2
+hyper - z : yabai -m window --display 1
+hyper - x : yabai -m window --display 2
 
 ################################################################
 ############################# UNUSED ###########################

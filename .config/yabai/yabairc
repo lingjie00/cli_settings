@@ -5,15 +5,15 @@
 #yabai -m config layout bsp
 
 # float system preferences. Most of these just diable Yabai form resizing them.
-yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Keka$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Settings$" sticky=on manage=off
+yabai -m rule --add app="^Karabiner-Elements$" sticky=on manage=off
+yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on manage=off
+yabai -m rule --add app="^Finder$" sticky=on manage=off
+yabai -m rule --add app="^Keka$" sticky=on manage=off
+yabai -m rule --add app="^Alfred Preferences$" sticky=on manage=off
+yabai -m rule --add app="^Disk Utility$" sticky=on manage=off
+yabai -m rule --add app="^System Information$" sticky=on manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="Fantastical" manage=off
 yabai -m rule --add app="Reminders" manage=off

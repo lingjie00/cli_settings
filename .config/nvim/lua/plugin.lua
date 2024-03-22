@@ -30,6 +30,8 @@ return require('packer').startup(function(use)
         use { 'm-demare/hlargs.nvim' }
         -- useful for review GitHub PR
         use { 'ldelossa/gh.nvim', requires = { { 'ldelossa/litee.nvim' } } }
+        -- GitHub copilot
+        use { 'github/copilot.vim' }
     end
 
     -- display history as a tree
@@ -93,5 +95,6 @@ return require('packer').startup(function(use)
 
     -- DAP
     use { 'mfussenegger/nvim-dap', requires = { { 'rcarriga/nvim-dap-ui' }, { 'mfussenegger/nvim-dap-python' },
-        { 'LiadOz/nvim-dap-repl-highlights' }, { 'nvim-telescope/telescope-dap.nvim' } } }
+        { 'LiadOz/nvim-dap-repl-highlights' }, { 'nvim-telescope/telescope-dap.nvim' },
+        { 'nvim-neotest/nvim-nio' } } }
 end)

@@ -62,6 +62,7 @@ if [[ $INTERNET =~ ^[Yy].* ]]; then
             ".config/yabai"
             ".config/limelight"
             ".config/karabiner"
+            ".config/kitty"
         )
         custom_ln "${mfolders[@]}";
     fi

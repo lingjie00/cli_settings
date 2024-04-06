@@ -77,6 +77,8 @@ return require('packer').startup(function(use)
     }
 
     -- enable non LSP server with LSP features
+    use { 'jose-elias-alvarez/null-ls.nvim' }
+    use { 'jay-babu/mason-null-ls.nvim' }
     use { 'stevearc/conform.nvim' }
 
     -- convert code to comments

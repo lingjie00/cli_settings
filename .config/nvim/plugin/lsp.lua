@@ -56,9 +56,10 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "gn", vim.lsp.buf.rename, opts)
 end)
+vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
 })

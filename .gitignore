@@ -6,3 +6,4 @@ packer_compiled.lua
 *backups
 .w3m/*
 **/i3blocks-contrib
+.qutebrowser/*

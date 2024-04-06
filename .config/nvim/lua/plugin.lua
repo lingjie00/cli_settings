@@ -53,6 +53,8 @@ return require('packer').startup(function(use)
         'klafyvel/vim-slime-cells',
         ft = { 'julia', 'python', 'r' }
     }
+    -- execute codes directly like Jupyter
+    use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
     -- easy set-up LSPs
     use {
@@ -99,5 +101,6 @@ return require('packer').startup(function(use)
     -- DAP
     use { 'mfussenegger/nvim-dap', requires = { { 'rcarriga/nvim-dap-ui' }, { 'mfussenegger/nvim-dap-python' },
         { 'LiadOz/nvim-dap-repl-highlights' }, { 'nvim-telescope/telescope-dap.nvim' },
-        { 'nvim-neotest/nvim-nio' } } }
+         } }
+    use { 'nvim-neotest/nvim-nio', requires = { { 'nvim-neotest/neotest' }, {'nvim-neotest/neotest-python'}, {"nvim-neotest/neotest-plenary"} } }
 end)

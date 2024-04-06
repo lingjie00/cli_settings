@@ -54,10 +54,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- tmux navigator
 vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
-vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateUp<cr>")
-vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 
 -- DAP
 vim.keymap.set("n", "\\d", "<cmd>lua require('dapui').toggle()<CR>")
 vim.keymap.set("v", "\\e", "<cmd>lua require('dapui').eval()<CR>")
+vim.keymap.set("n", "\\b", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
+vim.keymap.set("n", "\\de", "<cmd>lua require('dap').repl.toggle()<CR>")
+vim.keymap.set("n", "\\dc", "<cmd>lua require('dap').continue()<CR>")
+vim.keymap.set("n", "\\t", "<cmd>lua require('neotest').run.run()<CR>")
+vim.keymap.set("n", "\\ts", "<cmd>lua require('neotest').summary.toggle()<CR>")

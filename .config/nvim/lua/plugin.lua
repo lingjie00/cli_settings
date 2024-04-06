@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
         use { 'ldelossa/gh.nvim', requires = { { 'ldelossa/litee.nvim' } } }
         -- GitHub copilot
         use { 'github/copilot.vim' }
+        use { 'CopilotC-Nvim/CopilotChat.nvim', requires = { 'github/copilot.vim' }, branch = 'canary' }
     end
 
     -- display history as a tree

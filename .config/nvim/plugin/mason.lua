@@ -1,4 +1,4 @@
-if internet == 1 then
+if Internet == 1 then
     require('mason').setup {
         PATH = 'append'
     }

@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
     use { 'dracula/vim', as = 'dracula' }
 
     -- these package will only work if there is external network connection
-    if internet == 1 then
+    if Internet == 1 then
         -- treesitter, and plugins that require treesitter
         use { 'nvim-treesitter/nvim-treesitter' }
         use { 'nvim-treesitter/nvim-treesitter-context' }

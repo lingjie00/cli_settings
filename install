@@ -78,11 +78,11 @@ if [[ $INTERNET =~ ^[Yy].* ]]; then
     fi
 
     # ensure check.lua is yes
-    echo "internet = 1" > $HOME/.config/nvim/lua/check.lua
+    echo "Internet = 1" > $HOME/.config/nvim/lua/check.lua
 
 else
     # change the check.lua to no
-    echo "internet = 0" > $HOME/.config/nvim/lua/check.lua
+    echo "Internet = 0" > $HOME/.config/nvim/lua/check.lua
 fi
 
 ####################

@@ -1,4 +1,4 @@
-if internet == 1 then
+if Internet == 1 then
     require 'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
         ensure_installed = { "lua", "python" },

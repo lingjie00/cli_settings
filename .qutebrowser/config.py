@@ -1,15 +1,12 @@
 import dracula.draw
 
+# pyright: reportUndefinedVariable=false
+
 # Load existing settings made via :set
 config.load_autoconfig()
 
 # set theme
-dracula.draw.blood(c, {
-    'spacing': {
-        'vertical': 6,
-        'horizontal': 8
-    }
-})
+dracula.draw.blood(c, {"spacing": {"vertical": 6, "horizontal": 8}})
 
 # change default editor
 c.editor.command = ["xterm", "-e", "nvim '{}'"]
@@ -57,7 +54,10 @@ config.bind("<Ctrl-l>", "fake-key <Ctrl-Right>", "insert")
 # hide status bar/ tabs
 config.bind("zb", "config-cycle statusbar.show always never")
 config.bind("zt", "config-cycle tabs.show multiple never")
-config.bind("zx", "config-cycle statusbar.show always never;; config-cycle tabs.show multiple never")
+config.bind(
+    "zx",
+    "config-cycle statusbar.show always never;; config-cycle tabs.show multiple never",
+)
 
 # copy url and title
 config.bind("yy", "yank inline [{title}]({url})")

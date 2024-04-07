@@ -24,7 +24,7 @@ vim.wo.signcolumn = 'yes'
 -- vim.o.termguicolors = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noselect,noinsert'
 
 -- netrw
 vim.g.netrw_browse_split = 0

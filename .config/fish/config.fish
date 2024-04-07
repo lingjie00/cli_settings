@@ -25,4 +25,4 @@ function git_base --description "Go to base of git repo"
     cd (git rev-parse --show-toplevel)
 end
 
-alias icat="kitten icat"
+alias icat="kitty kitten icat"

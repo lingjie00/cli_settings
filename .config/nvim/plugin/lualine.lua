@@ -147,9 +147,9 @@ ins_left {
     color = { fg = colors.blue },
 }
 
-ins_left { 'location' }
+-- ins_left { 'location' }
 
-ins_left { 'progress', color = { fg = colors.fg } }
+-- ins_left { 'progress', color = { fg = colors.fg } }
 
 ins_left {
     'diagnostics',
@@ -164,47 +164,47 @@ ins_left {
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
-ins_left {
-    function()
-        return '%='
-    end,
-}
+-- ins_left {
+--     function()
+--         return '%='
+--     end,
+-- }
 
-ins_left {
-    -- Lsp server name .
-    function()
-        local msg = 'No Active Lsp'
-        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-        local clients = vim.lsp.get_active_clients()
-        if next(clients) == nil then
-            return msg
-        end
-        for _, client in ipairs(clients) do
-            local filetypes = client.config.filetypes
-            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                return client.name
-            end
-        end
-        return msg
-    end,
-    icon = 'LSP:',
-    color = { fg = '#e3e3e3' },
-}
+-- ins_left {
+--     -- Lsp server name .
+--     function()
+--         local msg = 'No Active Lsp'
+--         local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+--         local clients = vim.lsp.get_active_clients()
+--         if next(clients) == nil then
+--             return msg
+--         end
+--         for _, client in ipairs(clients) do
+--             local filetypes = client.config.filetypes
+--             if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+--                 return client.name
+--             end
+--         end
+--         return msg
+--     end,
+--     icon = 'LSP:',
+--     color = { fg = '#e3e3e3' },
+-- }
 
 -- Add components to right sections
-ins_right {
-    'o:encoding', -- option component same as &encoding in viml
-    fmt = string.upper, -- I'm not sure why it's upper case either ;)
-    cond = conditions.hide_in_width,
-    color = { fg = colors.green },
-}
+-- ins_right {
+--     'o:encoding', -- option component same as &encoding in viml
+--     fmt = string.upper, -- I'm not sure why it's upper case either ;)
+--     cond = conditions.hide_in_width,
+--     color = { fg = colors.green },
+-- }
 
-ins_right {
-    'fileformat',
-    fmt = string.upper,
-    icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-    color = { fg = colors.green },
-}
+-- ins_right {
+--     'fileformat',
+--     fmt = string.upper,
+--     icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+--     color = { fg = colors.green },
+-- }
 
 ins_right {
     'branch',
@@ -215,7 +215,7 @@ ins_right {
 ins_right {
     'diff',
     -- Is it me or the symbol for modified us really weird
-    symbols = { added = '+ ', modified = '~ ', removed = '- ' },
+    symbols = { added = '+', modified = '~', removed = '-' },
     diff_color = {
         added = { fg = colors.green },
         modified = { fg = colors.orange },

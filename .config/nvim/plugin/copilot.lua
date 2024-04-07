@@ -5,5 +5,5 @@ vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true,
 -- chat UI
 local chat = require("CopilotChat")
 chat.setup( {
-    debug = true,
+    debug = false,
 })

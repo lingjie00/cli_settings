@@ -22,7 +22,7 @@ font pango:Hack Nerd Font 16
 # Shortcuts #
 #############
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal -x tmux a
+bindsym $mod+Return exec kitty 
 
 # kill focused window
 bindsym $mod+q kill
@@ -176,13 +176,12 @@ bar {
 # Others #
 ##########
 # Assign default workspace
-assign [class="Telegram"] 10
+# assign [class="Telegram"] 10
 
 # Startup programs
 exec --no-startup-id google-chrome
 exec --no-startup-id nordvpn connect sg
-exec --no-startup-id i3-sensible-terminal -x tmux
-exec --no-startup-id telegram-desktop
+# exec --no-startup-id i3-sensible-terminal -x tmux
 exec --no-startup-id compton --config ~/.config/i3/compton.conf
 exec --no-startup-id feh --bg-fill ~/wallpaper.jpeg
 

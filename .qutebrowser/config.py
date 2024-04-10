@@ -67,3 +67,6 @@ config.set("downloads.location.prompt", False)
 
 # speed up launch time by not opening windows
 config.set("qt.args", ["no-window"])
+
+# fix to ensure background do not flash white when opening new tab
+config.set("colors.webpage.bg", "#282a36")

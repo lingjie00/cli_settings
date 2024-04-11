@@ -48,7 +48,7 @@ if [ ! -e $config_fish ]; then
 fi
 
 # only if access beyond pypi is available
-if [[ $INTERNET =~ ^[Yy].* ]]; then
+if ! [[ $INTERNET =~ ^[Nn].* ]]; then
     echo "====================================="
     echo "set up files for internet only config"
     echo "====================================="

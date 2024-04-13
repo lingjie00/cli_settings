@@ -2,6 +2,35 @@ if Internet == 1 then
     require('mason').setup {
         PATH = 'append'
     }
+
+    require('mason-lspconfig').setup({
+        ensure_installed = {
+            'pyright'
+        },
+        handlers = {
+            function(server_name)
+                require('lspconfig')[server_name].setup({})
+            end,
+
+            ltex = function()
+                require('lspconfig').ltex.setup({
+                    autostart = false,
+                })
+            end,
+
+            lua_ls = function()
+                require('lspconfig').lua_ls.setup({
+                    settings = {
+                        Lua = {
+                            diagnostics = {
+                                globals = { 'vim' }
+                            }
+                        }
+                    }
+                })
+            end
+        }
+    })
 end
 
 -- custom python provider
@@ -21,3 +50,4 @@ else
     vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, "python")
     vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, "python3")
 end
+

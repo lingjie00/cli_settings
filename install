@@ -104,6 +104,15 @@ if [[ $WORKPLACE =~ ^[Yy].* ]]; then
     done
 fi
 
+
+# auto download neovim in GitHub Codespaces
+if printenv CODESPACES > /dev/null; then
+    echo "Downloading and Unziping Neovim into /workspaces"
+    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz /workspaces/
+    tar xzvf /workspaces/nvim-linux64.tar.gz
+fi
+
+
 echo "================"
 echo "Done with config"
 echo "================"

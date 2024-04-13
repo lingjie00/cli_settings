@@ -2,23 +2,6 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-    'pyright'
-})
-
-local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ["<S-Tab>"] = cmp.mapping.complete(),
-})
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
-
 lsp.set_preferences({
     suggest_lsp_servers = true,
     sign_icons = {
@@ -27,20 +10,6 @@ lsp.set_preferences({
         hint = 'H',
         info = 'I'
     }
-})
-
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
-
-lsp.configure('ltex', {
-    autostart = false
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -62,4 +31,33 @@ lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = false,
+})
+
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        'pyright'
+    },
+    handlers = {
+        function(server_name)
+            require('lspconfig')[server_name].setup({})
+        end,
+
+        ltex = function()
+            require('lspconfig').ltex.setup({
+                autostart = false,
+            })
+        end,
+
+        lua_ls = function()
+            require('lspconfig').lua_ls.setup({
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' }
+                        }
+                    }
+                }
+            })
+        end
+    }
 })

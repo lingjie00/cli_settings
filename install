@@ -113,7 +113,8 @@ if printenv CODESPACES > /dev/null; then
     ln -s /workspaces/nvim-linux64/bin/nvim $HOME/.local/bin/nvim
 
     echo "Setting TERM to xterm"
-    echo "TERM=xterm" >> $HOME/.bashrc
+    echo "" >> $HOME/.bashrc
+    echo "export TERM=xterm" >> $HOME/.bashrc
 fi
 
 

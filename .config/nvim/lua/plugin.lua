@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
         ft = { 'julia', 'python', 'r' }
     }
     -- execute codes directly like Jupyter
-    use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+    use { 'luk400/vim-jukit' }
 
     -- easy set-up LSPs
     use {

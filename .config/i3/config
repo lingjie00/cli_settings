@@ -22,7 +22,7 @@ font pango:Hack Nerd Font 16
 # Shortcuts #
 #############
 # start a terminal
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec kitty tmux
 
 # kill focused window
 bindsym $mod+q kill

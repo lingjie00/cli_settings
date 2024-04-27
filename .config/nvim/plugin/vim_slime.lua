@@ -11,8 +11,3 @@ vim.g.slime_dont_ask_default = 1
 
 -- change keymapping
 vim.g.slime_no_mappings = 1
-vim.keymap.set('n', '\\s', '<Plug>SlimeCellsSendAndGoToNext<CR>')
-vim.keymap.set('x', '\\s', '<Plug>SlimeRegionSend<CR>')
-vim.keymap.set('n', '\\]', '<Plug>SlimeCellsNext<CR>')
-vim.keymap.set('n', '\\[', '<Plug>SlimeCellsPrev<CR>')
-vim.keymap.set('n', '\\p', '<Plug>SlimeParagraphSend<CR>')

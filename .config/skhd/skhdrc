@@ -13,6 +13,7 @@ hyper - q : bash -c "open -a qutebrowser"
 hyper - w : bash -c "open -a Microsoft\ Teams\ \(work\ or\ school\)"
 hyper - e : bash -c "open -a Microsoft\ Outlook"
 hyper - t : bash -c "open -a kitty"
+hyper - c : bash -c "open -a Google\ Chrome"
 
 ## swap window
 # hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key

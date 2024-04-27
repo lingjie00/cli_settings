@@ -26,3 +26,13 @@ function git_base --description "Go to base of git repo"
 end
 
 alias icat="kitty kitten icat"
+
+alias ls="eza"
+
+alias ll="eza -h -l --no-user --no-permissions --grid"
+
+alias tree="eza --tree"
+
+zoxide init fish | source
+
+fzf --fish | source

@@ -34,7 +34,7 @@ function edit_files --description "Find and edit files in current directory"
     nvim $(find . -type f -iname "*$argv*" | fzf)
 end
 
-alias icat="kitty kitten icat"
+alias icat="kitten icat"
 
 alias ls="eza"
 

@@ -64,3 +64,6 @@ vim.opt.foldlevel = 99
 
 -- file type indent is having some error in indentation
 vim.cmd("filetype indent off")
+
+-- change grep to ripgrep
+vim.opt.grepprg = "rg --vimgrep --smart-case --hidden"

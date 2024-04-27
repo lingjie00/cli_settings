@@ -5,7 +5,17 @@ require('telescope').setup({
         layout_strategy = 'center',
         layout_config = {
             width = 0.8
-        }
+        },
+        vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden'
+        },
     },
 })
 

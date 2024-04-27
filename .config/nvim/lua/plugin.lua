@@ -97,6 +97,8 @@ return require('packer').startup(function(use)
     use { "ellisonleao/glow.nvim", config = function() require("glow").setup({ border = "single" }) end }
     -- generate Markdown TOC
     use { 'mzlogin/vim-markdown-toc' }
+    -- paste image to markdown
+    use { 'TobinPalmer/pastify.nvim' }
 
     -- DAP
     use { 'mfussenegger/nvim-dap', requires = { { 'rcarriga/nvim-dap-ui' }, { 'mfussenegger/nvim-dap-python' },

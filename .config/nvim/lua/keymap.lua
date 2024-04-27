@@ -48,8 +48,8 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set('n', ']j', '<cmd>call jukit#cells#jump_to_next_cell()<cr>')
 vim.keymap.set('n', '[j', '<cmd>call jukit#cells#jump_to_previous_cell()<cr>')
 -- LSP diagnostics
-vim.keymap.set("n", "[d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 -- quickfix
 vim.keymap.set("n", "]e", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "[e", "<cmd>cprev<CR>zz")

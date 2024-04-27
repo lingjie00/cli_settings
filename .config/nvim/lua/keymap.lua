@@ -90,14 +90,30 @@ vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format({async=true})<CR>")
 
 -- [[ Plugins ]]
 -- git-fugitive
+vim.keymap.set("n", "<leader>gg", "<cmd>Git<CR><cmd>resize 10<CR>")
+vim.keymap.set("n", "<leader>gh", "<cmd>Git diff<CR>")
 vim.keymap.set("n", "<leader>gd", "<cmd>GitGutterDiffOrig<CR>")
 
 -- undo tree
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
 
 -- telescope
-vim.keymap.set('n', '<leader>F', telescope_builtin.find_files, {})
-vim.keymap.set('n', '<leader>f', telescope_builtin.git_files, {})
+local function telescope_find_files()
+    -- determine to use git_files or find_files based if current directory is a git repo
+
+    -- check if current directory is a git repo
+    local handle = io.popen('git rev-parse --is-inside-work-tree --show-toplevel')
+    local is_git_repo = handle:read('*a'):match('true')
+    handle:close()
+
+    if is_git_repo then
+        telescope_builtin.git_files()
+    else
+        telescope_builtin.find_files()
+    end
+    
+end
+vim.keymap.set('n', '<leader>f', telescope_find_files, {})
 vim.keymap.set('n', '<leader>b', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>t', telescope_builtin.help_tags, {})
 vim.keymap.set('n', '<leader>m', telescope_builtin.marks, {})

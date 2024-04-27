@@ -7,5 +7,11 @@ if Internet == 1 then
     local chat = require("CopilotChat")
     chat.setup( {
         debug = false,
+        mappings = {
+            reset = {
+                normal ='<C-r>',
+                insert = '<C-r>'
+            },
+        }
     })
 end

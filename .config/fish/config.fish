@@ -25,7 +25,6 @@ function git_base --description "Go to base of git repo"
     cd (git rev-parse --show-toplevel)
 end
 
-alias icat="kitty kitten icat"
 
 function open_files --description "Find and open files in current directory"
     open $(find . -type f -iname "*$argv*" | fzf)
@@ -34,3 +33,15 @@ end
 function edit_files --description "Find and edit files in current directory"
     nvim $(find . -type f -iname "*$argv*" | fzf)
 end
+
+alias icat="kitty kitten icat"
+
+alias ls="eza"
+
+alias ll="eza -h -l --no-user --no-permissions --grid"
+
+alias tree="eza --tree"
+
+zoxide init fish | source
+
+fzf --fish | source

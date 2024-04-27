@@ -92,6 +92,8 @@ return require('packer').startup(function(use)
     use { 'ray-x/lsp_signature.nvim' }
     -- display issues at once
     use { 'folke/trouble.nvim', requires = { 'nvim-tree/nvim-web-devicons' } }
+    -- display TODO
+    use { 'folke/todo-comments.nvim' }
 
     -- preview Markdown files
     use { "ellisonleao/glow.nvim", config = function() require("glow").setup({ border = "single" }) end }

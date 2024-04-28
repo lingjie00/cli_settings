@@ -6,7 +6,7 @@
 
 ## Quickly restart the yabai launch agent
 # ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-ctrl + alt + cmd - r : bash -c "yabai --restart-service"
+ctrl + alt + cmd - r : bash -c "yabai --restart-service | skhd --restart-service"
 
 # switch to chrome
 hyper - q : bash -c "open -a qutebrowser"
@@ -19,16 +19,16 @@ hyper - c : bash -c "open -a Google\ Chrome"
 # hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key
 hyper - h : yabai -m window --swap west
 hyper - l : yabai -m window --swap east
-# hyper - j : yabai -m window --swap south
-# hyper - k : yabai -m window --swap north
+hyper - j : yabai -m window --swap south
+hyper - k : yabai -m window --swap north
 
 ## resize window
 hyper - b : yabai -m window --resize abs:1280:750
 hyper - n : yabai -m window --resize abs:1780:1350
-hyper - d : yabai -m window --resize left:100:0
-# hyper - s : yabai -m window --resize bottom:0:-100
-# hyper - w : yabai -m window --resize top:0:100
-hyper - a : yabai -m window --resize right:-100:0
+hyper - right : yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
+hyper - down : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
+hyper - up : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
+hyper - left : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
 
 # rebalance the current space
 hyper - g : yabai -m space --balance

@@ -17,6 +17,6 @@ brew install neovim docker docker-compose pandoc\
 ############
 if [[ "$(uname)" == "Darwin" ]]; then
     brew install yabai skhd
-    brew install --cask karabiner-elements alfred numi drawio cyberduck
+    brew install --cask karabiner-elements alfred numi drawio cyberduck shortcat
 
 fi

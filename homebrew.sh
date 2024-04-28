@@ -12,12 +12,11 @@ brew install neovim docker docker-compose pandoc\
     ripgrep fd fish fisher gh tldr tmux tree tree-sitter w3m\
     eza zoxide fzf bat
 
-brew install --cask drawio cyberduck
-
 ############
 # Mac only #
 ############
 if [[ "$(uname)" == "Darwin" ]]; then
     brew install yabai skhd
-    brew install --cask karabiner-elements alfred numi
+    brew install --cask karabiner-elements alfred numi drawio cyberduck
+
 fi

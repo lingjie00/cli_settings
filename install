@@ -117,6 +117,11 @@ if printenv CODESPACES > /dev/null; then
     echo "export TERM=xterm" >> $HOME/.bashrc
 fi
 
+# install tmux plugin manager
+if [ ! -d $HOME/.tmux/plugins/tpm ]; then
+    echo "installing tmux plugin manager"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
 echo "================"
 echo "Done with config"

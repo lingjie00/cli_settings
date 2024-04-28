@@ -42,8 +42,8 @@ config.unbind("d")
 config.bind("x", "tab-close")
 config.unbind("u")
 config.bind("X", "undo")
-config.bind("d", "cmd-run-with-count 10 scroll down")
-config.bind("u", "cmd-run-with-count 10 scroll up")
+config.bind("d", "run-with-count 10 scroll down")
+config.bind("u", "run-with-count 10 scroll up")
 
 # fake-key to manipulate insert mode
 config.bind("<Ctrl-j>", "fake-key <Left>", "insert")
@@ -60,7 +60,8 @@ config.bind(
 )
 
 # copy url and title
-config.bind("yy", "yank inline [{title}]({url})")
+config.bind("yy", "yank inline {url}")
+config.bind("yt", "yank inline [{title}]({url})")
 
 # download files to downloads folder
 config.set("downloads.location.prompt", False)

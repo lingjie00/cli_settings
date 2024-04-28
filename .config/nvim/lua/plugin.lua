@@ -21,6 +21,9 @@ return require('packer').startup(function(use)
     -- theme
     use { 'dracula/vim', as = 'dracula' }
 
+    -- file explorer
+    use { 'nvim-tree/nvim-tree.lua'}
+
     -- these package will only work if there is external network connection
     if Internet == 1 then
         -- treesitter, and plugins that require treesitter
@@ -91,7 +94,7 @@ return require('packer').startup(function(use)
     -- allow LSP completions
     use { 'ray-x/lsp_signature.nvim' }
     -- display issues at once
-    use { 'folke/trouble.nvim', requires = { 'nvim-tree/nvim-web-devicons' } }
+    use { 'folke/trouble.nvim' }
     -- display TODO
     use { 'folke/todo-comments.nvim' }
 

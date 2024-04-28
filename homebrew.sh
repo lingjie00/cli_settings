@@ -6,7 +6,7 @@ then
 fi
 
 
-echo "Instaling homebrew packages"
+echo "Installing homebrew packages"
 
 brew install neovim docker docker-compose pandoc\
     ripgrep fd fish fisher gh tldr tmux tree tree-sitter w3m\

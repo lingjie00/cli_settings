@@ -1,4 +1,6 @@
 import dracula.draw
+from packaging.version import Version
+from qutebrowser import __version__
 
 # pyright: reportUndefinedVariable=false
 
@@ -42,8 +44,14 @@ config.unbind("d")
 config.bind("x", "tab-close")
 config.unbind("u")
 config.bind("X", "undo")
-config.bind("d", "run-with-count 10 scroll down")
-config.bind("u", "run-with-count 10 scroll up")
+if Version(__version__) <= Version("2.5.4"):
+    config.bind("d", "run-with-count 10 scroll down")
+    config.bind("u", "run-with-count 10 scroll up")
+else:
+    # cmd-run-with-count is the new command for qutebrowser > 2.5.4
+    config.bind("d", "cmd-run-with-count 10 scroll down")
+    config.bind("u", "cmd-run-with-count 10 scroll up")
+
 
 # fake-key to manipulate insert mode
 config.bind("<Ctrl-j>", "fake-key <Left>", "insert")

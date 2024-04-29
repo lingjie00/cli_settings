@@ -39,7 +39,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.o.breakindent = true
-vim.opt.textwidth = 120
+vim.opt.textwidth = 79
 
 -- store edit history
 vim.opt.swapfile = false

@@ -23,10 +23,10 @@ hyper - j : yabai -m window --swap south
 hyper - k : yabai -m window --swap north
 
 ## wrap window
-shift + cmd - up: yabai -m window --warp north
-shift + cmd - right: yabai -m window --warp east
-shift + cmd - down: yabai -m window --warp south
-shift + cmd - left: yabai -m window --warp west
+# shift + cmd - up: yabai -m window --warp north
+# shift + cmd - right: yabai -m window --warp east
+# shift + cmd - down: yabai -m window --warp south
+# shift + cmd - left: yabai -m window --warp west
 
 ## resize window
 hyper - b : yabai -m window --resize abs:1280:750

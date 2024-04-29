@@ -148,3 +148,7 @@ vim.keymap.set('n', '\\cO', '<cmd>call jukit#cells#create_above(0)<cr>')
 vim.keymap.set('n', '\\ct', '<cmd>call jukit#cells#create_below(1)<cr>')
 vim.keymap.set('n', '\\cT', '<cmd>call jukit#cells#create_above(1)<cr>')
 vim.keymap.set('n', '\\cd', '<cmd>call jukit#cells#delete()<cr>')
+
+-- codesnap
+vim.keymap.set('v', '\\cc', '<cmd>lua require("codesnap").copy_into_clipboard()<cr>')
+vim.keymap.set('v', '\\cs', '<cmd>lua require("codesnap").save_snapshot()<cr>')

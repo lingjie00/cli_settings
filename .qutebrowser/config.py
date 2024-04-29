@@ -1,5 +1,10 @@
 import dracula.draw
-from packaging.version import Version
+
+try:
+    from packaging.version import Version
+except ImportError:
+    from pkg_resources import parse_version as Version
+
 from qutebrowser import __version__
 
 # pyright: reportUndefinedVariable=false
@@ -18,10 +23,10 @@ config.set("colors.webpage.darkmode.enabled", True)
 config.set("colors.webpage.darkmode.policy.images", "never")
 
 # set font size (for big display)
-config.set("fonts.default_size", "18pt")
+config.set("fonts.default_size", "13pt")
 
 # set default zoom (for big display)
-config.set("zoom.default", "100%")
+config.set("zoom.default", "110%")
 
 # set search engine
 config.set("url.searchengines", {"DEFAULT": "https://www.google.com/search?q={}"})
@@ -35,6 +40,9 @@ config.set("tabs.show", "multiple")
 
 # quit browser (but save session)
 config.bind("<Ctrl-w>", "wq")
+
+# goes to home page
+config.bind("<Ctrl-o>", "home")
 
 # download images
 config.bind("<Ctrl-i>", "hint images download")

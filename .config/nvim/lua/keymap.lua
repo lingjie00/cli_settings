@@ -91,7 +91,6 @@ vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format({async=true})<CR>")
 
 -- [[ Plugins ]]
 -- git-fugitive
-vim.keymap.set("n", "<leader>gg", "<cmd>Git<CR><cmd>resize 10<CR>")
 vim.keymap.set("n", "<leader>gh", "<cmd>Git diff<CR>")
 vim.keymap.set("n", "<leader>gd", "<cmd>GitGutterDiffOrig<CR>")
 

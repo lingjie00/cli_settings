@@ -110,4 +110,7 @@ return require('packer').startup(function(use)
         { 'LiadOz/nvim-dap-repl-highlights' }, { 'nvim-telescope/telescope-dap.nvim' },
          } }
     use { 'nvim-neotest/nvim-nio', requires = { { 'nvim-neotest/neotest' }, {'nvim-neotest/neotest-python'}, {"nvim-neotest/neotest-plenary"} } }
+
+    -- write, compile, and run codes
+    use { 'Makaze/watch.nvim' }
 end)

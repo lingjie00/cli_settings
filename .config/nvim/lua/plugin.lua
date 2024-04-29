@@ -113,4 +113,6 @@ return require('packer').startup(function(use)
 
     -- write, compile, and run codes
     use { 'Makaze/watch.nvim' }
+    -- codesnap: take code snapshot
+    use { 'mistricky/codesnap.nvim', run = 'make' }
 end)

@@ -35,7 +35,7 @@ config.set("url.searchengines", {"DEFAULT": "https://www.google.com/search?q={}"
 config.set("url.start_pages", "about:blank")
 
 # keep a minimal look by hiding status bar and tab bar
-config.set("statusbar.show", "never")
+config.set("statusbar.show", "always")
 config.set("tabs.show", "multiple")
 
 # quit browser (but save session)
@@ -87,3 +87,6 @@ config.set("qt.args", ["no-window"])
 
 # fix to ensure background do not flash white when opening new tab
 config.set("colors.webpage.bg", "#282a36")
+
+# view PDF
+config.set("content.pdfjs", True)

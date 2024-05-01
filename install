@@ -93,7 +93,7 @@ if [[ $WORKPLACE =~ ^[Yy].* ]]; then
     echo "Set up workplace script"
     echo "======================="
 
-    files=("nb_clean" "tmux_setup" "docker-dev" "docker-exp")
+    files=("nb_clean" "tmux_setup")
     for file in ${files[@]}
     do
         if [[ "$OSTYPE" == "linux-gnu"* ]]; then

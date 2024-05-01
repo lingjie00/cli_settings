@@ -29,7 +29,14 @@ config.set("fonts.default_size", "13pt")
 config.set("zoom.default", "110%")
 
 # set search engine
-config.set("url.searchengines", {"DEFAULT": "https://www.google.com/search?q={}"})
+config.set(
+    "url.searchengines",
+    {
+        "DEFAULT": "https://www.google.com/search?q={}",
+        "pdf": "https://www.google.com/search?q=filetype%3Apdf+{}",
+        "duck": "https://duckduckgo.com/?q={}",
+    },
+)
 
 # change start page to blank
 config.set("url.start_pages", "about:blank")

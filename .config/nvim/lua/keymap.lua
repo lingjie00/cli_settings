@@ -109,7 +109,12 @@ local function telescope_find_files()
     if is_git_repo then
         telescope_builtin.git_files()
     else
-        telescope_builtin.find_files()
+        telescope_builtin.find_files({
+            hidden = true,
+            no_ignore = true,
+            no_ignore_parent = true,
+            follow = true,
+        })
     end
     
 end

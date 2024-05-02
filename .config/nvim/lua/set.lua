@@ -40,6 +40,9 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.o.breakindent = true
 vim.opt.textwidth = 79
+-- ensure window size is always sufficient to show all text
+vim.opt.winwidth = 90
+vim.opt.winheight = 20
 
 -- store edit history
 vim.opt.swapfile = false

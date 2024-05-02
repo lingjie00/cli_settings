@@ -1,0 +1,35 @@
+{
+    "Dataframe Info": {
+        "prefix": "dfinfo",
+        "body": [
+        "def dfinfo(df, n_rows=5, n_cols=5):",
+        "    \"\"\"Prints the info and head of a dataframe in chunks.\"\"\"",
+        "    df.info()",
+        "    for col_idx in range(0, len(df.columns), n_cols):",
+        "        print(",
+        "            df.iloc[:, col_idx : col_idx + n_cols]",
+        "            .head(n_rows)",
+        "            .to_markdown(tablefmt=\"simple_grid\", numalign=\"right\")",
+        "        )"
+
+        ],
+        "description": "Prints the info and head of a dataframe in chunks."
+    },
+    "Save plots": {
+        "prefix": "plotsave",
+        "body": [
+        "def saveplots(filename, folder=\"./figures/\", dpi=300):",
+        "    \"\"\"Saves a matplotlib figure to a file.\"\"\"",
+        "    import os",
+        "",
+        "    try:",
+        "        if not os.path.exists(folder):",
+        "            os.makedirs(folder)",
+        "        plt.savefig(os.path.join(folder, \"latest.pdf\"), dpi=dpi, bbox_inches='tight')",
+        "        plt.savefig(os.path.join(folder, filename), dpi=dpi, bbox_inches='tight')",
+        "    finally:",
+        "        plt.close()"
+        ],
+        "description": "Saves a matplotlib figure to a file."
+    }
+}

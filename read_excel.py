@@ -65,7 +65,7 @@ def read_excel(file_path, **kwargs):
         print("=" * 80)
         print(BLUE + f"Sheet: {sheet_name}" + RESET)
         print("\n")
-        print(sheet_content.info())
+        sheet_content.info()
         print("\n")
         # print only 5 columns each time to avoid cluttering the output
         n_rows = 5

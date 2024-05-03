@@ -48,11 +48,11 @@ yabai -m config mouse_action1 move
 
 ## Change how yabai looks
 yabai -m config layout bsp
-yabai -m config top_padding 1
-yabai -m config bottom_padding 1
-yabai -m config left_padding 1
-yabai -m config right_padding 1
-yabai -m config window_gap 1
+yabai -m config top_padding 0
+yabai -m config bottom_padding 0
+yabai -m config left_padding 0
+yabai -m config right_padding 0
+yabai -m config window_gap 0
 
 #Limelight addon (Kill it and start it each time Yabai starts)
 killall limelight &>/dev/null

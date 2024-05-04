@@ -26,7 +26,9 @@
         "        if not os.path.exists(folder):",
         "            os.makedirs(folder)",
         "        plt.savefig(os.path.join(folder, \"latest.pdf\"), dpi=dpi, bbox_inches='tight')",
-        "        plt.savefig(os.path.join(folder, filename), dpi=dpi, bbox_inches='tight')",
+        "        plot_path = os.path.join(folder, filename)",
+        "        print(f\"Saving plot to {plot_path}\")",
+        "        plt.savefig(plot_path, dpi=dpi, bbox_inches='tight')",
         "    finally:",
         "        plt.close()"
         ],

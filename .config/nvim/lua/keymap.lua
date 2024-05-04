@@ -28,7 +28,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
--- Highlight on yank 
+-- Highlight on yank
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -99,6 +99,16 @@ vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
 
 -- telescope
 local function telescope_find_files()
+    telescope_builtin.find_files({
+        hidden = true,
+        no_ignore = true,
+        no_ignore_parent = true,
+        follow = true,
+    })
+end
+
+
+local function telescope_find_git_files()
     -- determine to use git_files or find_files based if current directory is a git repo
 
     -- check if current directory is a git repo
@@ -109,16 +119,11 @@ local function telescope_find_files()
     if is_git_repo then
         telescope_builtin.git_files()
     else
-        telescope_builtin.find_files({
-            hidden = true,
-            no_ignore = true,
-            no_ignore_parent = true,
-            follow = true,
-        })
+        telescope_find_files()
     end
-    
 end
-vim.keymap.set('n', '<leader>f', telescope_find_files, {})
+vim.keymap.set('n', '<leader>f', telescope_find_git_files, {})
+vim.keymap.set('n', '<leader>F', telescope_find_files, {})
 vim.keymap.set('n', '<leader>b', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>t', telescope_builtin.help_tags, {})
 vim.keymap.set('n', '<leader>m', telescope_builtin.marks, {})

@@ -51,3 +51,5 @@ zoxide init fish | source
 fzf --fish | source
 
 set -x EDITOR nvim
+
+fish_vi_key_bindings

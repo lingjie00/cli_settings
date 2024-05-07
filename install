@@ -40,13 +40,6 @@ echo "======================="
 custom_ln ".vimrc" ".tmux.conf" ".gitconfig"
 custom_ln ".config/nvim" ".config/fish"
 
-# fish shell special
-config_fish=$HOME/.config/fish/config.fish
-if [ ! -e $config_fish ]; then
-    echo "add in fish config"
-    echo "fish_vi_key_bindings" > $config_fish
-fi
-
 # only if access beyond pypi is available
 if ! [[ $INTERNET =~ ^[Nn].* ]]; then
     echo "====================================="

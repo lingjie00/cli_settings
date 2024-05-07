@@ -87,7 +87,6 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "gn", vim.lsp.buf.rename)
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
-vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format({async=true})<CR>")
 
 -- [[ Plugins ]]
 -- git-fugitive

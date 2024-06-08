@@ -11,11 +11,8 @@ require("conform").setup({
 		latex = { "latexindent" },
 		fish = { "fish_indent" },
 	},
-})
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = "*.lua,*.py,*.yaml,*.tex",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
+	format_on_save = {
+		timeout_ms = 2500,
+		lsp_fallback = true,
+	},
 })

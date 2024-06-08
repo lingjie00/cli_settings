@@ -5,7 +5,7 @@
 
 return require("packer").startup(function(use)
 	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
+	use({ "wbthomason/packer.nvim" })
 
 	-- fuzzy finder
 	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
@@ -48,6 +48,8 @@ return require("packer").startup(function(use)
 	use({ "f-person/git-blame.nvim" })
 	-- resolve Git conflict
 	use({ "rhysd/conflict-marker.vim" })
+	-- navigate git changes
+	use({ "NeogitOrg/neogit" })
 	-- navigate vim and tmux
 	use({ "christoomey/vim-tmux-navigator" })
 	-- sends text from vim to tmux buffer
@@ -92,10 +94,6 @@ return require("packer").startup(function(use)
 	use({ "tpope/vim-surround" })
 	-- allow LSP completions
 	use({ "ray-x/lsp_signature.nvim" })
-	-- display issues at once
-	use({ "folke/trouble.nvim" })
-	-- display TODO
-	use({ "folke/todo-comments.nvim" })
 
 	-- preview Markdown files
 	use({
@@ -126,4 +124,10 @@ return require("packer").startup(function(use)
 	use({ "Makaze/watch.nvim" })
 	-- codesnap: take code snapshot
 	use({ "mistricky/codesnap.nvim", run = "make" })
+
+	-- interact with terminal
+	use({ "akinsho/nvim-toggleterm.lua" })
+
+	-- outline symbols
+	use({ "hedyhli/outline.nvim" })
 end)

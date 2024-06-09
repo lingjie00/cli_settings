@@ -6,6 +6,10 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	-- install plugin before loading configs
 	require("packer").sync()
 end
+if is_bootstrap then
+	-- install plugin before loading configs
+	require("packer").sync()
+end
 
 -- Install packages
 require("check")

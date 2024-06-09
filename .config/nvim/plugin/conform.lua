@@ -6,7 +6,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
-		python = { "darker", "usort" },
+		python = { "darker", "isort" },
 		yaml = { "yamlfix" },
 		latex = { "latexindent" },
 		fish = { "fish_indent" },

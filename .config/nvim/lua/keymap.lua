@@ -68,13 +68,17 @@ vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 
 -- [[Debugging, Testing]]
 -- DAP and Neotest
-vim.keymap.set("n", "\\d", "<cmd>lua require('dapui').toggle()<CR>")
-vim.keymap.set("v", "\\e", "<cmd>lua require('dapui').eval()<CR>")
-vim.keymap.set("n", "\\b", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
-vim.keymap.set("n", "\\de", "<cmd>lua require('dap').repl.toggle()<CR>")
-vim.keymap.set("n", "\\dc", "<cmd>lua require('dap').continue()<CR>")
-vim.keymap.set("n", "\\t", "<cmd>lua require('neotest').run.run()<CR>")
-vim.keymap.set("n", "\\ts", "<cmd>lua require('neotest').summary.toggle()<CR>")
+vim.keymap.set("n", "\\dr", require("dapui").toggle)
+vim.keymap.set("n", "\\de", require("dapui").eval)
+vim.keymap.set("x", "\\de", require("dapui").eval)
+vim.keymap.set("n", "\\b", require("dap").toggle_breakpoint)
+vim.keymap.set("n", "\\dt", require("dap").repl.toggle)
+vim.keymap.set("n", "\\dc", require("dap").continue)
+vim.keymap.set("n", "\\dr", require("dap").restart)
+vim.keymap.set("n", "\\do", require("dap").step_over)
+vim.keymap.set("n", "\\di", require("dap").step_into)
+vim.keymap.set("n", "\\tr", "<CMD>lua require('neotest').run.run()<CR>")
+vim.keymap.set("n", "\\ts", "<CMD>lua require('neotest').summary.toggle()<CR>")
 
 -- [[ LSP ]]
 local telescope_builtin = require("telescope.builtin")

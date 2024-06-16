@@ -112,6 +112,7 @@ return require("packer").startup(function(use)
 			{ "mfussenegger/nvim-dap-python" },
 			{ "LiadOz/nvim-dap-repl-highlights" },
 			{ "nvim-telescope/telescope-dap.nvim" },
+			{ "theHamsta/nvim-dap-virtual-text" },
 		},
 	})
 	use({

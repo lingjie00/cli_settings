@@ -1,3 +1,6 @@
+# evaluate homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 source $HOME/venv/ds/bin/activate.fish
 
 function venv --argument-names cmd --description "Activate Python venvs - Ling"

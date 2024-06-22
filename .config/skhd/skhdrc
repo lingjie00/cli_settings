@@ -13,7 +13,7 @@ hyper - q : bash -c "open -a qutebrowser"
 hyper - w : bash -c "open -a Microsoft\ Teams\ \(work\ or\ school\)"
 hyper - e : bash -c "open -a Microsoft\ Outlook"
 hyper - t : bash -c "open -a kitty"
-hyper - c : bash -c "open -a Orion"
+hyper - c : bash -c "open -a Safari"
 hyper - d : yabai -m query --windows | grep "zathura" -B 3 | grep -o '"id":[0-9]*' | grep -o "[0-9]*" | xargs yabai -m window --focus
 
 ## swap window

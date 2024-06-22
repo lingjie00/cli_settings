@@ -22,7 +22,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     brew install koekeishiya/formulae/yabai
     brew install yabai skhd
     brew install --cask karabiner-elements alfred numi drawio cyberduck shortcat\
-    hiddenbar kitty
+    hiddenbar kitty obsidian docker
     
     # MacOS needs to append fish shell before changing shell
     sudo echo $(which fish) >> /etc/shells

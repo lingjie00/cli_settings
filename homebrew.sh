@@ -12,7 +12,10 @@ echo "Installing homebrew packages"
 
 brew install neovim docker docker-compose pandoc\
     ripgrep fd fish fisher gh tldr tmux tree tree-sitter w3m\
-    eza zoxide fzf bat npm python
+    eza zoxide fzf bat npm python git-lfs
+
+# initiate lfs
+git lfs install
 
 
 ############
@@ -22,7 +25,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     brew install koekeishiya/formulae/yabai
     brew install yabai skhd
     brew install --cask karabiner-elements alfred numi drawio cyberduck shortcat\
-    hiddenbar kitty obsidian docker
+    hiddenbar kitty obsidian docker visual-studio-code zotero
     
     # MacOS needs to append fish shell before changing shell
     sudo echo $(which fish) >> /etc/shells

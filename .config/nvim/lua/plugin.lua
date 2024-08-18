@@ -18,6 +18,9 @@ return require("packer").startup(function(use)
 	-- display dots to blankline
 	use({ "lukas-reineke/indent-blankline.nvim" })
 
+	-- display diagnostic messages inline
+	use({ "rachartier/tiny-inline-diagnostic.nvim" })
+
 	-- theme
 	use({ "dracula/vim", as = "dracula" })
 

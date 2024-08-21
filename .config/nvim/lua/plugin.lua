@@ -61,8 +61,6 @@ return require("packer").startup(function(use)
 		"klafyvel/vim-slime-cells",
 		ft = { "julia", "python", "r" },
 	})
-	-- execute codes directly like Jupyter
-	use({ "luk400/vim-jukit" })
 
 	-- easy set-up LSPs
 	use({

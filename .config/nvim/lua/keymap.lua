@@ -162,13 +162,6 @@ vim.keymap.set("v", "\\<space>", "<cmd>call jukit#send#line()<cr>")
 -- runs all cells
 vim.keymap.set("n", "\\all", "<cmd>call jukit#send#all()<cr>")
 
--- create new cell (code cell and text cell), and delete them
-vim.keymap.set("n", "\\co", "<cmd>call jukit#cells#create_below(0)<cr>")
-vim.keymap.set("n", "\\cO", "<cmd>call jukit#cells#create_above(0)<cr>")
-vim.keymap.set("n", "\\ct", "<cmd>call jukit#cells#create_below(1)<cr>")
-vim.keymap.set("n", "\\cT", "<cmd>call jukit#cells#create_above(1)<cr>")
-vim.keymap.set("n", "\\cd", "<cmd>call jukit#cells#delete()<cr>")
-
 -- preview git changes
 vim.keymap.set("n", "<leader>v", "<cmd>GitGutterPreviewHunk<CR>")
 

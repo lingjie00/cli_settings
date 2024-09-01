@@ -131,4 +131,7 @@ return require("packer").startup(function(use)
 
 	-- outline symbols
 	use({ "hedyhli/outline.nvim" })
+
+	-- multi-cursor
+	use({ "mg979/vim-visual-multi" })
 end)

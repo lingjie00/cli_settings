@@ -88,6 +88,9 @@ return require("packer").startup(function(use)
 	use({ "stevearc/conform.nvim" })
 	use({ "zapling/mason-conform.nvim" })
 
+	-- enable linter
+	use({ "mfussenegger/nvim-lint" })
+
 	-- convert code to comments
 	use({ "terrortylor/nvim-comment" })
 	-- change surround parentheses

@@ -18,6 +18,7 @@ require("dapui").setup({
 require("dap-python").setup("python", {})
 
 if Internet == 1 then
+	-- requires treesitter
 	require("nvim-dap-repl-highlights").setup()
 end
 

@@ -32,12 +32,8 @@ return require("packer").startup(function(use)
 		-- treesitter, and plugins that require treesitter
 		use({ "nvim-treesitter/nvim-treesitter" })
 		use({ "nvim-treesitter/nvim-treesitter-context" })
-		use({ "nvim-treesitter/playground" })
 		use({ "m-demare/hlargs.nvim" })
-		-- useful for review GitHub PR
-		use({ "ldelossa/gh.nvim", requires = { { "ldelossa/litee.nvim" } } })
 		-- GitHub copilot
-		use({ "github/copilot.vim" })
 		use({ "CopilotC-Nvim/CopilotChat.nvim", requires = { "github/copilot.vim" }, branch = "canary" })
 	end
 
@@ -51,8 +47,6 @@ return require("packer").startup(function(use)
 	use({ "f-person/git-blame.nvim" })
 	-- resolve Git conflict
 	use({ "rhysd/conflict-marker.vim" })
-	-- navigate git changes
-	use({ "NeogitOrg/neogit" })
 	-- navigate vim and tmux
 	use({ "christoomey/vim-tmux-navigator" })
 	-- sends text from vim to tmux buffer
@@ -77,7 +71,9 @@ return require("packer").startup(function(use)
 			{ "hrsh7th/cmp-path" },
 			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-latex-symbols" },
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip", requires = { { "rafamadriz/friendly-snippets" } } },
@@ -87,16 +83,12 @@ return require("packer").startup(function(use)
 	-- enable non LSP server with LSP features
 	use({ "stevearc/conform.nvim" })
 	use({ "zapling/mason-conform.nvim" })
-
-	-- enable linter
 	use({ "mfussenegger/nvim-lint" })
 
 	-- convert code to comments
 	use({ "terrortylor/nvim-comment" })
 	-- change surround parentheses
 	use({ "tpope/vim-surround" })
-	-- allow LSP completions
-	use({ "ray-x/lsp_signature.nvim" })
 
 	-- preview Markdown files
 	use({
@@ -121,7 +113,11 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"nvim-neotest/nvim-nio",
-		requires = { { "nvim-neotest/neotest" }, { "nvim-neotest/neotest-python" }, { "nvim-neotest/neotest-plenary" } },
+		requires = {
+			{ "nvim-neotest/neotest" },
+			{ "nvim-neotest/neotest-python" },
+			{ "nvim-neotest/neotest-plenary" },
+		},
 	})
 
 	-- write, compile, and run codes

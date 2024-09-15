@@ -22,8 +22,9 @@ git lfs install
 # Mac only #
 ############
 if [[ "$(uname)" == "Darwin" ]]; then
-    brew install koekeishiya/formulae/yabai
-    brew install yabai skhd
+    # brew install koekeishiya/formulae/yabai
+    # brew install yabai
+    brew install skhd
     brew install --cask karabiner-elements alfred numi drawio cyberduck shortcat\
     hiddenbar kitty obsidian docker visual-studio-code zotero
     

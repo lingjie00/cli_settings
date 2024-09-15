@@ -6,7 +6,7 @@
 
 ## Quickly restart the yabai launch agent
 # ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-ctrl + alt + cmd - r : bash -c "yabai --restart-service | skhd --restart-service"
+# ctrl + alt + cmd - r : bash -c "yabai --restart-service | skhd --restart-service"
 
 # switch to chrome
 hyper - q : bash -c "open -a Google\ Chrome"
@@ -14,14 +14,14 @@ hyper - w : bash -c "open -a Microsoft\ Teams\ \(work\ or\ school\)"
 hyper - e : bash -c "open -a Microsoft\ Outlook"
 hyper - t : bash -c "open -a kitty"
 hyper - c : bash -c "open -a Safari"
-hyper - d : yabai -m query --windows | grep "zathura" -B 3 | grep -o '"id":[0-9]*' | grep -o "[0-9]*" | xargs yabai -m window --focus
+# hyper - d : yabai -m query --windows | grep "zathura" -B 3 | grep -o '"id":[0-9]*' | grep -o "[0-9]*" | xargs yabai -m window --focus
 
 ## swap window
 # hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key
-hyper - h : yabai -m window --swap west
-hyper - l : yabai -m window --swap east
-hyper - j : yabai -m window --swap south
-hyper - k : yabai -m window --swap north
+# hyper - h : yabai -m window --swap west
+# hyper - l : yabai -m window --swap east
+# hyper - j : yabai -m window --swap south
+# hyper - k : yabai -m window --swap north
 
 ## wrap window
 # shift + cmd - up: yabai -m window --warp north
@@ -30,37 +30,37 @@ hyper - k : yabai -m window --swap north
 # shift + cmd - left: yabai -m window --warp west
 
 ## resize window
-hyper - b : yabai -m window --resize abs:1280:750
-hyper - n : yabai -m window --resize abs:1780:1350
-hyper - right : yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
-hyper - down : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
-hyper - up : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
-hyper - left : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
+# hyper - b : yabai -m window --resize abs:1280:750
+# hyper - n : yabai -m window --resize abs:1780:1350
+# hyper - right : yabai -m window --resize left:50:0 || yabai -m window --resize right:50:0
+# hyper - down : yabai -m window --resize top:0:50 || yabai -m window --resize bottom:0:50
+# hyper - up : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
+# hyper - left : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
 
 # rebalance the current space
-hyper - g : yabai -m space --balance
+# hyper - g : yabai -m space --balance
 
 ## toggle window fullscreen zoom and float
-hyper - f : yabai -m window --toggle zoom-fullscreen
-hyper - r : yabai -m window --toggle float
+# hyper - f : yabai -m window --toggle zoom-fullscreen
+# hyper - r : yabai -m window --toggle float
 
 # cycle through windows
-hyper - i : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
-hyper - o : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
+# hyper - i : yabai -m window --focus stack.prev || yabai -m window --focus prev || yabai -m window --focus last
+# hyper - o : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus first
 
 # cycle through monitor
-hyper - p  : yabai -m display --focus prev || yabai -m display --focus last
-hyper - u  : yabai -m display --focus next || yabai -m display --focus first
+# hyper - p  : yabai -m display --focus prev || yabai -m display --focus last
+# hyper - u  : yabai -m display --focus next || yabai -m display --focus first
 
 # Move active window to different spaces
-hyper - 7 : yabai -m window --space 1
-hyper - 8 : yabai -m window --space 2
-hyper - 9 : yabai -m window --space 3
-hyper - 0 : yabai -m window --space 4
+# hyper - 7 : yabai -m window --space 1
+# hyper - 8 : yabai -m window --space 2
+# hyper - 9 : yabai -m window --space 3
+# hyper - 0 : yabai -m window --space 4
 
 # Move active window to the next display
-hyper - z : yabai -m window --display 1
-hyper - x : yabai -m window --display 2
+# hyper - z : yabai -m window --display 1
+# hyper - x : yabai -m window --display 2
 
 ################################################################
 ############################# UNUSED ###########################

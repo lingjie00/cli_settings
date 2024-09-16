@@ -42,6 +42,7 @@ None
 """
 
 import argparse
+from pathlib import Path
 
 import pandas as pd
 
@@ -49,14 +50,43 @@ BLUE = "\033[44m"
 RESET = "\033[0m"
 
 
-def read_excel(file_path, **kwargs):
+def read_data(file_path_str: str, **kwargs) -> None:
     """Read an excel file and prints the loaded excel
 
     =========
 
 
     """
-    df_dict = pd.read_excel(file_path, **kwargs)
+    file_path = Path(file_path_str)
+    sheet_name = kwargs.pop("sheet_name", None)
+    header = kwargs.pop("header", 0)
+    index_col = kwargs.pop("index_col", None)
+    usecols = kwargs.pop("usecols", None)
+    skiprows = kwargs.pop("skiprows", 0)
+    nrows = kwargs.pop("nrows", 30)
+    if not file_path.is_file():
+        raise FileNotFoundError(f"File not found: {file_path}")
+    elif file_path.suffix == ".xlsx":
+        df_dict = pd.read_excel(
+            file_path_str,
+            sheet_name=sheet_name,
+            header=header,
+            index_col=index_col,
+            usecols=usecols,
+            skiprows=skiprows,
+            nrows=nrows,
+        )
+    elif file_path.suffix == ".csv":
+        df_dict = pd.read_csv(
+            file_path_str,
+            header=header,
+            index_col=index_col,
+            usecols=usecols,
+            skiprows=skiprows,
+            nrows=nrows,
+        )
+    else:
+        raise ValueError(f"File type not supported: {file_path}")
 
     if not isinstance(df_dict, dict):
         df_dict = {"sheet": df_dict}
@@ -85,7 +115,7 @@ def read_excel(file_path, **kwargs):
 def main():
     """Main function to read an excel file"""
     parser = argparse.ArgumentParser(description="Read an excel file")
-    parser.add_argument("file_path", help="Path to the excel file")
+    parser.add_argument("file_path_str", help="Path to the excel file")
     parser.add_argument("--sheet_name", help="Name of the sheet to read", default=None)
     parser.add_argument(
         "--header", help="Row number to use as the column names", default=0
@@ -111,7 +141,7 @@ def main():
     )
     args = parser.parse_args()
 
-    read_excel(**vars(args))
+    read_data(**vars(args))
 
 
 if __name__ == "__main__":

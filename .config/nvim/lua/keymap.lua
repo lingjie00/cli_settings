@@ -45,9 +45,6 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- [[ Nagivation ]]
--- navigate cells
-vim.keymap.set("n", "]j", "<cmd>call jukit#cells#jump_to_next_cell()<cr>")
-vim.keymap.set("n", "[j", "<cmd>call jukit#cells#jump_to_previous_cell()<cr>")
 -- LSP diagnostics
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
@@ -93,18 +90,15 @@ end)
 -- [[ LSP ]]
 local telescope_builtin = require("telescope.builtin")
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-vim.keymap.set("n", "gS", telescope_builtin.lsp_workspace_symbols)
 vim.keymap.set("n", "gs", telescope_builtin.lsp_document_symbols)
-vim.keymap.set("n", "ga", vim.lsp.buf.code_action)
-vim.keymap.set("n", "gr", vim.lsp.buf.references)
+vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references toggle focus=true<CR>")
 vim.keymap.set("n", "gn", vim.lsp.buf.rename)
 vim.keymap.set("n", "ge", vim.diagnostic.open_float)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
 -- [[ Plugins ]]
 -- git-fugitive
-vim.keymap.set("n", "<leader>gh", "<cmd>Git diff<CR>")
-vim.keymap.set("n", "<leader>gd", "<cmd>GitGutterDiffOrig<CR>")
+vim.keymap.set("n", "<leader>gd", "<cmd>Gvdiffsplit<CR>")
 
 -- undo tree
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
@@ -147,21 +141,6 @@ vim.keymap.set("n", "\\s", "<Plug>SlimeCellsSendAndGoToNext<CR>")
 vim.keymap.set("x", "\\s", "<Plug>SlimeRegionSend<CR>")
 vim.keymap.set("n", "\\p", "<Plug>SlimeParagraphSend<CR>")
 
--- jukit
--- opens output and history splits
-vim.keymap.set("n", "\\os", "<cmd>call jukit#splits#output_and_history()<cr>")
-vim.keymap.set("n", "\\Os", "<cmd>call jukit#splits#close_output_and_history(1)<cr>")
-
--- show current cell output
-vim.keymap.set("n", "\\h", "<cmd>call jukit#splits#show_last_cell_output(1)<cr>")
-
--- runs current cell
-vim.keymap.set("n", "\\<space>", "<cmd>call jukit#send#section(0)<cr>")
--- runs current selection
-vim.keymap.set("v", "\\<space>", "<cmd>call jukit#send#line()<cr>")
--- runs all cells
-vim.keymap.set("n", "\\all", "<cmd>call jukit#send#all()<cr>")
-
 -- preview git changes
 vim.keymap.set("n", "<leader>v", "<cmd>GitGutterPreviewHunk<CR>")
 
@@ -170,5 +149,9 @@ vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>")
 vim.keymap.set("v", "<leader>t", "<cmd>ToggleTermSendVisualLine<CR>")
 vim.keymap.set("v", "<leader>T", "<cmd>ToggleTermSendVisualSelection<CR>")
 
--- outline
-vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>")
+-- trouble
+vim.keymap.set("n", "<leader>o", "<cmd>Trouble symbols toggle focus=false<CR>")
+vim.keymap.set("n", "<leader>l", "<cmd>Trouble loclist toggle focus=false<CR>")
+vim.keymap.set("n", "<leader>L", "<cmd>Trouble qflist toggle focus=false<CR>")
+vim.keymap.set("n", "<leader>I", "<cmd>Trouble diagnostics toggle focus=false<CR>")
+vim.keymap.set("n", "<leader>i", "<cmd>Trouble diagnostics toggle focus=false filter.buf=0<CR>")

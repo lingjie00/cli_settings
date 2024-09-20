@@ -122,15 +122,13 @@ return require("packer").startup(function(use)
 
 	-- write, compile, and run codes
 	use({ "Makaze/watch.nvim" })
+
 	-- codesnap: take code snapshot
 	use({ "mistricky/codesnap.nvim", run = "make" })
 
 	-- interact with terminal
 	use({ "akinsho/nvim-toggleterm.lua" })
 
-	-- outline symbols
-	use({ "hedyhli/outline.nvim" })
-
-	-- multi-cursor
-	use({ "mg979/vim-visual-multi" })
+	-- show lsp troubles
+	use({ "folke/lsp-trouble.nvim" })
 end)

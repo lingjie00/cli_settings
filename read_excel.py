@@ -85,6 +85,10 @@ def read_data(file_path_str: str, **kwargs) -> None:
             skiprows=skiprows,
             nrows=nrows,
         )
+    elif file_path.suffix == ".parquet":
+        df_dict = pd.read_parquet(
+            file_path_str,
+        )
     else:
         raise ValueError(f"File type not supported: {file_path}")
 

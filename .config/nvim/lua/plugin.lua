@@ -82,7 +82,6 @@ return require("packer").startup(function(use)
 
 	-- enable non LSP server with LSP features
 	use({ "stevearc/conform.nvim" })
-	use({ "zapling/mason-conform.nvim" })
 	use({ "mfussenegger/nvim-lint" })
 
 	-- convert code to comments

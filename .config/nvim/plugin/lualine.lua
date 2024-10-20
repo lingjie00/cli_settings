@@ -105,7 +105,7 @@ ins_left {
     function()
         return '▊'
     end,
-    color = { fg = colors.blue }, -- Sets highlighting of component
+    color = { fg = colors.blue },      -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
@@ -154,7 +154,7 @@ ins_left {
 ins_left {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
-    symbols = { error = 'E ', warn = 'W ', info = 'I ', hint = 'H '},
+    symbols = { error = 'E ', warn = 'W ', info = 'I ', hint = 'H ' },
 }
 
 -- Insert mid section. You can make any number of sections in neovim :)

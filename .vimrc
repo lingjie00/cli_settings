@@ -12,8 +12,8 @@ set number
 set relativenumber
 set tabstop=4
 set softtabstop=4
-set textwidth=60
-set colorcolumn=60
+set textwidth=80
+set colorcolumn=80
 set nowrap
 set autoindent
 set fileformat=unix
@@ -28,8 +28,8 @@ set updatetime=50
 set nospell
 set mouse=a
 set completeopt=menu,menuone,preview,noinsert
-set cmdheight=1
 set termguicolors
+set belloff=all
 
 """""""""""""""""""
 " Plugin
@@ -68,9 +68,6 @@ call plug#begin('~/.vim/plugged')
     " surround
     Plug 'tpope/vim-surround'
 
-    " generate markdown TOC
-    Plug 'mzlogin/vim-markdown-toc'
-
     " lsp
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
@@ -78,9 +75,6 @@ call plug#begin('~/.vim/plugged')
     " Auto-complete
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-    " DAP
-    Plug 'puremourning/vimspector'
 
 
 " Initialize plugin system
@@ -96,14 +90,14 @@ colorscheme dracula
 
 " >> vim-slime config
 " set tmux as the default slime target
-let g:slime_target = 'tmux'
+let g:slime_target = 'vimterminal'
 " use Ipython notation of %% for a new cell
-let g:slime_cell_delimiter = '^\\s*# %%' 
+let g:slime_cell_delimiter = '^# %%' 
 " fix tmux auto spacing issue
 let g:slime_bracketed_paste = 1
 " set default target location
-let g:slime_default_config = { 'socket_name': 'default', 'target_pane': ':.1' }
-let g:slime_dont_ask_default = 1
+" let g:slime_default_config = { 'socket_name': 'default', 'target_pane': ':.1' }
+" let g:slime_dont_ask_default = 1
 
 " >> change edit history
 set noswapfile
@@ -149,13 +143,15 @@ noremap <leader>Y "+y$
 " >> view folders
 nnoremap <leader>' :Ex<CR>
 " >> navigate quickfix
-nnoremap ]e :cnext<CR>zz
-nnoremap [e :cprev<CR>zz
+nnoremap ]w :cnext<CR>zz
+nnoremap [w :cprev<CR>zz
+nnoremap ]e :lnext<CR>zz
+nnoremap [e :lprev<CR>zz
 
 " >> vim-slime keymap
 let g:slime_no_mappings = 1
-nnoremap \c <Plug>SlimeCellsSendAndGoToNext<CR>
-nnoremap \n <Plug>SlimeCellsNext<CR>
-nnoremap \p <Plug>SlimeCellsPrev<CR>
-nnoremap \s <Plug>SlimeRegionSend<CR>
-nnoremap \S <Plug>SlimeParagraphSend<CR>
+nnoremap \s <Plug>SlimeCellsSendAndGoToNext<CR>
+xnoremap \s <Plug>SlimeRegionSend<CR>
+nnoremap \p <Plug>SlimeParagraphSend<CR>
+nnoremap ]s <Plug>SlimeCellsNext<CR>
+nnoremap [s <Plug>SlimeCellsPrev<CR>

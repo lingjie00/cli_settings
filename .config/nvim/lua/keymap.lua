@@ -32,11 +32,11 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
 
 vim.keymap.set("n", "Q", "<nop>")
@@ -75,16 +75,16 @@ vim.keymap.set("n", "\\ds", require("dap").restart)
 vim.keymap.set("n", "\\do", require("dap").step_over)
 vim.keymap.set("n", "\\di", require("dap").step_into)
 vim.keymap.set("n", "\\tr", function()
-	require("neotest").run.run()
+    require("neotest").run.run()
 end)
 vim.keymap.set("n", "\\td", function()
-	require("neotest").run.run({ strategy = "dap" })
+    require("neotest").run.run({ strategy = "dap" })
 end)
 vim.keymap.set("n", "\\ts", function()
-	require("neotest").summary.toggle()
+    require("neotest").summary.toggle()
 end)
 vim.keymap.set("n", "\\to", function()
-	require("neotest").output.open({ enter = true })
+    require("neotest").output.open({ enter = true })
 end)
 
 -- [[ LSP ]]
@@ -105,27 +105,27 @@ vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
 
 -- telescope
 local function telescope_find_files()
-	telescope_builtin.find_files({
-		hidden = true,
-		no_ignore = true,
-		no_ignore_parent = true,
-		follow = true,
-	})
+    telescope_builtin.find_files({
+        hidden = true,
+        no_ignore = true,
+        no_ignore_parent = true,
+        follow = true,
+    })
 end
 
 local function telescope_find_git_files()
-	-- determine to use git_files or find_files based if current directory is a git repo
+    -- determine to use git_files or find_files based if current directory is a git repo
 
-	-- check if current directory is a git repo
-	local handle = io.popen("git rev-parse --is-inside-work-tree --show-toplevel")
-	local is_git_repo = handle:read("*a"):match("true")
-	handle:close()
+    -- check if current directory is a git repo
+    local handle = io.popen("git rev-parse --is-inside-work-tree --show-toplevel")
+    local is_git_repo = handle:read("*a"):match("true")
+    handle:close()
 
-	if is_git_repo then
-		telescope_builtin.git_files()
-	else
-		telescope_find_files()
-	end
+    if is_git_repo then
+        telescope_builtin.git_files()
+    else
+        telescope_find_files()
+    end
 end
 vim.keymap.set("n", "<leader>f", telescope_find_git_files, {})
 vim.keymap.set("n", "<leader>F", telescope_find_files, {})

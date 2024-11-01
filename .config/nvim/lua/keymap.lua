@@ -7,8 +7,8 @@ vim.g.maplocalleader = " "
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- display current folder
-vim.keymap.set("n", "<leader>'", "<cmd>NvimTreeToggle<CR>")
-vim.keymap.set("n", '<leader>"', "<cmd>NvimTreeFindFile<CR>")
+vim.keymap.set("n", '<leader>"', "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>'", "<cmd>NvimTreeFindFile<CR>")
 
 -- move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

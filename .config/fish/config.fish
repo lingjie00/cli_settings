@@ -33,3 +33,7 @@ fzf --fish | source
 set -x EDITOR nvim
 
 fish_vi_key_bindings
+
+if not test -n "$TMUX"
+    tmux a
+end

@@ -10,7 +10,7 @@
 
 # switch to chrome
 hyper - q : bash -c "open -a Google\ Chrome"
-hyper - w : bash -c "open -a Microsoft\ Teams\ \(work\ or\ school\)"
+hyper - w : bash -c "open -a Microsoft\ Teams"
 hyper - e : bash -c "open -a Microsoft\ Outlook"
 hyper - t : bash -c "open -a kitty"
 hyper - c : bash -c "open -a Safari"

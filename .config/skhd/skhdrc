@@ -9,7 +9,7 @@
 # ctrl + alt + cmd - r : bash -c "yabai --restart-service | skhd --restart-service"
 
 # switch to chrome
-hyper - q : bash -c "open -a Google\ Chrome"
+hyper - q : bash -c "open -a Brave\ Browser"
 hyper - w : bash -c "open -a Microsoft\ Teams"
 hyper - e : bash -c "open -a Microsoft\ Outlook"
 hyper - t : bash -c "open -a kitty"

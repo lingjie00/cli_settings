@@ -12,7 +12,7 @@ echo "Installing homebrew packages"
 
 brew install neovim docker docker-compose pandoc\
     ripgrep fd fish fisher gh tldr tmux tree tree-sitter w3m\
-    eza zoxide fzf bat git-lfs
+    eza zoxide fzf bat git-lfs duckdb
 
 # initiate lfs
 git lfs install

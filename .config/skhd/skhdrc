@@ -9,11 +9,12 @@
 # ctrl + alt + cmd - r : bash -c "yabai --restart-service | skhd --restart-service"
 
 # switch to chrome
-hyper - q : bash -c "open -a Brave\ Browser"
+hyper - q : bash -c "open -a Microsoft\ Edge"
 hyper - w : bash -c "open -a Microsoft\ Teams"
 hyper - e : bash -c "open -a Microsoft\ Outlook"
 hyper - t : bash -c "open -a kitty"
 hyper - c : bash -c "open -a Safari"
+hyper - v : bash -c "open -a Visual\ Studio\ Code"
 # hyper - d : yabai -m query --windows | grep "zathura" -B 3 | grep -o '"id":[0-9]*' | grep -o "[0-9]*" | xargs yabai -m window --focus
 
 ## swap window

@@ -45,5 +45,9 @@ else
         set -x PATH "/opt/homebrew/Caskroom/miniforge/base/bin" $PATH
     end
 end
+
+if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/mamba.fish"
+    source "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/mamba.fish"
+end
 # <<< conda initialize <<<
 

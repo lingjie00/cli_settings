@@ -34,7 +34,7 @@ return require("packer").startup(function(use)
         use({ "nvim-treesitter/nvim-treesitter-context" })
         use({ "m-demare/hlargs.nvim" })
         -- GitHub copilot
-        use({ "CopilotC-Nvim/CopilotChat.nvim", requires = { "github/copilot.vim" }, branch = "canary" })
+        use({ "CopilotC-Nvim/CopilotChat.nvim", requires = { "github/copilot.vim" }, branch = "main" })
     end
 
     -- display history as a tree

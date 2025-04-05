@@ -23,11 +23,23 @@ git lfs install
 ############
 if [[ "$(uname)" == "Darwin" ]]; then
     # brew install koekeishiya/formulae/yabai
-    # brew install yabai
-    brew install skhd
-    brew install --cask karabiner-elements alfred numi drawio cyberduck shortcat\
-    kitty obsidian docker visual-studio-code zotero rectangle\
-    jordanbaird-ice miniforge pdf-expert google-chrome
+    brew install koekeishiya/formulae/skhd
+    brew install --cask karabiner-elements
+    brew install --cask alfred
+    brew install --cask numi
+    brew install --cask drawio
+    brew install --cask cyberduck
+    brew install --cask shortcat
+    brew install --cask kitty
+    brew install --cask obsidian
+    brew install --cask docker
+    brew install --cask visual-studio-code
+    brew install --cask zotero
+    brew install --cask rectangle
+    brew install --cask jordanbaird-ice
+    brew install --cask miniforge
+    brew install --cask pdf-expert
+    brew install --cask microsoft-edge
     
     # MacOS needs to append fish shell before changing shell
     sudo echo $(which fish) >> /etc/shells
@@ -36,3 +48,5 @@ fi
 
 # change shell
 chsh -s $(which fish)
+
+echo "Log out user to effective shell change."

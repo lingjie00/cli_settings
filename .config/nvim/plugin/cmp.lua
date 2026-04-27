@@ -2,6 +2,17 @@
 require("blink.cmp").setup({
     keymap = {
         preset = "default",
+        ["<Tab>"] = {
+            function(cmp)
+                if cmp.is_visible() then
+                    return cmp.select_and_accept()
+                elseif vim.fn.exists("*copilot#GetDisplayedSuggestion") == 1 and vim.fn["copilot#GetDisplayedSuggestion"]().text ~= "" then
+                    vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](), "i", true)
+                    return true
+                end
+            end,
+            "fallback",
+        },
         -- preserve the same doc-scroll bindings as the old nvim-cmp setup
         ["<C-b>"] = { "scroll_documentation_up",   "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },

@@ -1,28 +1,26 @@
--- enhance the completion experience
-local cmp = require("cmp")
-
-cmp.setup({
+-- blink.cmp: replaces nvim-cmp + cmp-buffer/path/nvim-lsp/nvim-lsp-signature-help/cmp_luasnip/cmp-nvim-lua
+require("blink.cmp").setup({
+    keymap = {
+        preset = "default",
+        -- preserve the same doc-scroll bindings as the old nvim-cmp setup
+        ["<C-b>"] = { "scroll_documentation_up",   "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-e>"] = { "hide",                      "fallback" },
+    },
     completion = {
-        completeopt = "menu,menuone,noinsert,preview",
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
     },
-    snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
-    },
-
     sources = {
-        { name = "luasnip" },
-        { name = "nvim_lsp" },
-        { name = "buffer" },
-        { name = "path" },
-        { name = "nvim_lua" },
-        { name = "nvim_lsp_signature_help" },
-        { name = "latex_symbols" },
+        default = { "lsp", "path", "snippets", "buffer", "latex_symbols" },
+        providers = {
+            -- latex_symbols bridged via blink.compat from hrsh7th/cmp-latex-symbols
+            latex_symbols = {
+                name   = "latex_symbols",
+                module = "blink.compat.source",
+                score_offset = -3,
+            },
+        },
     },
-    mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-e>"] = cmp.mapping.abort(),
-    }),
+    snippets  = { preset = "luasnip" },
+    signature = { enabled = true },    -- replaces cmp-nvim-lsp-signature-help
 })

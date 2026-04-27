@@ -64,16 +64,16 @@ vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 
 -- [[Debugging, Testing]]
--- DAP and Neotest
-vim.keymap.set("n", "\\dr", require("dapui").toggle)
-vim.keymap.set("n", "\\de", require("dapui").eval)
-vim.keymap.set("x", "\\de", require("dapui").eval)
-vim.keymap.set("n", "\\b", require("dap").toggle_breakpoint)
-vim.keymap.set("n", "\\dt", require("dap").repl.toggle)
-vim.keymap.set("n", "\\dc", require("dap").continue)
-vim.keymap.set("n", "\\ds", require("dap").restart)
-vim.keymap.set("n", "\\do", require("dap").step_over)
-vim.keymap.set("n", "\\di", require("dap").step_into)
+-- DAP and Neotest (wrapped in functions for lazy-loading compatibility)
+vim.keymap.set("n", "\\dr", function() require("dapui").toggle() end)
+vim.keymap.set("n", "\\de", function() require("dapui").eval() end)
+vim.keymap.set("x", "\\de", function() require("dapui").eval() end)
+vim.keymap.set("n", "\\b", function() require("dap").toggle_breakpoint() end)
+vim.keymap.set("n", "\\dt", function() require("dap").repl.toggle() end)
+vim.keymap.set("n", "\\dc", function() require("dap").continue() end)
+vim.keymap.set("n", "\\ds", function() require("dap").restart() end)
+vim.keymap.set("n", "\\do", function() require("dap").step_over() end)
+vim.keymap.set("n", "\\di", function() require("dap").step_into() end)
 vim.keymap.set("n", "\\tr", function()
     require("neotest").run.run()
 end)
@@ -144,7 +144,7 @@ vim.keymap.set("x", "\\s", "<Plug>SlimeRegionSend<CR>")
 vim.keymap.set("n", "\\p", "<Plug>SlimeParagraphSend<CR>")
 
 -- preview git changes
-vim.keymap.set("n", "<leader>v", "<cmd>GitGutterPreviewHunk<CR>")
+vim.keymap.set("n", "<leader>v", "<cmd>Gitsigns preview_hunk<CR>")
 
 -- toggle term
 vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>")

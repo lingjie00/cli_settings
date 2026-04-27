@@ -1,133 +1,203 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
--- vim.cmd.packadd('packer.nvim')
-
-return require("packer").startup(function(use)
-    -- Packer can manage itself
-    use({ "wbthomason/packer.nvim" })
-
-    -- fuzzy finder
-    use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
-    -- replace vim ui select with telescope
-    use({ "nvim-telescope/telescope-ui-select.nvim" })
+return {
+    -- fuzzy finder (lazy=false: keymaps reference telescope.builtin at startup)
+    {
+        "nvim-telescope/telescope.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            -- native C-speed sorter (replaces default Lua sorter)
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
+    },
+    { "nvim-telescope/telescope-ui-select.nvim" },
 
     -- status line
-    use({ "nvim-lualine/lualine.nvim" })
+    { "nvim-lualine/lualine.nvim" },
 
-    -- display dots to blankline
-    use({ "lukas-reineke/indent-blankline.nvim" })
+    -- indent guides
+    { "lukas-reineke/indent-blankline.nvim" },
 
-    -- display diagnostic messages inline
-    use({ "rachartier/tiny-inline-diagnostic.nvim" })
+    -- inline diagnostic messages
+    { "rachartier/tiny-inline-diagnostic.nvim" },
 
     -- theme
-    use({ "dracula/vim", as = "dracula" })
+    { "dracula/vim", name = "dracula" },
 
     -- file explorer
-    use({ "nvim-tree/nvim-tree.lua" })
+    { "nvim-tree/nvim-tree.lua" },
 
-    -- these package will only work if there is external network connection
-    if Internet == 1 then
-        -- treesitter, and plugins that require treesitter
-        use({ "nvim-treesitter/nvim-treesitter" })
-        use({ "nvim-treesitter/nvim-treesitter-context" })
-        use({ "m-demare/hlargs.nvim" })
-        -- GitHub copilot
-        use({ "CopilotC-Nvim/CopilotChat.nvim", requires = { "github/copilot.vim" }, branch = "main" })
-    end
+    -- internet-dependent plugins
+    {
+        "nvim-treesitter/nvim-treesitter",
+        enabled = Internet == 1,
+        lazy = false,
+        build = ":TSUpdate",
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                branch = "main",
+                config = function()
+                    require("nvim-treesitter-textobjects").setup({
+                        select = { lookahead = true },
+                        move   = { set_jumps = true },
+                    })
+                    local sel = require("nvim-treesitter-textobjects.select")
+                    local mov = require("nvim-treesitter-textobjects.move")
+                    local swp = require("nvim-treesitter-textobjects.swap")
+                    -- select
+                    vim.keymap.set({ "x", "o" }, "aa", function() sel.select_textobject("@parameter.outer", "textobjects") end)
+                    vim.keymap.set({ "x", "o" }, "ia", function() sel.select_textobject("@parameter.inner", "textobjects") end)
+                    vim.keymap.set({ "x", "o" }, "af", function() sel.select_textobject("@function.outer", "textobjects") end)
+                    vim.keymap.set({ "x", "o" }, "if", function() sel.select_textobject("@function.inner", "textobjects") end)
+                    vim.keymap.set({ "x", "o" }, "ac", function() sel.select_textobject("@class.outer", "textobjects") end)
+                    vim.keymap.set({ "x", "o" }, "ic", function() sel.select_textobject("@class.inner", "textobjects") end)
+                    -- move
+                    vim.keymap.set({ "n", "x", "o" }, "]m", function() mov.goto_next_start("@function.outer", "textobjects") end)
+                    vim.keymap.set({ "n", "x", "o" }, "]]", function() mov.goto_next_start("@class.outer", "textobjects") end)
+                    vim.keymap.set({ "n", "x", "o" }, "]M", function() mov.goto_next_end("@function.outer", "textobjects") end)
+                    vim.keymap.set({ "n", "x", "o" }, "][", function() mov.goto_next_end("@class.outer", "textobjects") end)
+                    vim.keymap.set({ "n", "x", "o" }, "[m", function() mov.goto_previous_start("@function.outer", "textobjects") end)
+                    vim.keymap.set({ "n", "x", "o" }, "[[", function() mov.goto_previous_start("@class.outer", "textobjects") end)
+                    vim.keymap.set({ "n", "x", "o" }, "[M", function() mov.goto_previous_end("@function.outer", "textobjects") end)
+                    vim.keymap.set({ "n", "x", "o" }, "[]", function() mov.goto_previous_end("@class.outer", "textobjects") end)
+                    -- swap
+                    vim.keymap.set("n", "<leader>a", function() swp.swap_next("@parameter.inner") end)
+                    vim.keymap.set("n", "<leader>A", function() swp.swap_previous("@parameter.inner") end)
+                end,
+            },
+            { "nvim-treesitter/nvim-treesitter-context", enabled = Internet == 1 },
+            { "m-demare/hlargs.nvim",                    enabled = Internet == 1 },
+        },
+        config = function()
+            -- Minimal setup: parsers installed/updated via :TSUpdate
+            require("nvim-treesitter").setup()
+            -- Enable treesitter highlighting for all filetypes
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    local ok = pcall(vim.treesitter.start)
+                    if not ok then
+                        -- parser not available for this filetype — silently skip
+                    end
+                end,
+            })
+            require("hlargs").setup({})
+            require("treesitter-context").setup({})
+        end,
+    },
+
+    -- GitHub Copilot
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "main",
+        dependencies = { "github/copilot.vim" },
+        enabled = Internet == 1,
+    },
 
     -- display history as a tree
-    use({ "mbbill/undotree" })
-    -- runs Git command in Vim
-    use({ "tpope/vim-fugitive" })
-    -- shows Git diff
-    use({ "airblade/vim-gitgutter", branch = "main" })
-    -- display Git Blame
-    use({ "f-person/git-blame.nvim" })
-    -- resolve Git conflict
-    use({ "rhysd/conflict-marker.vim" })
-    -- navigate vim and tmux
-    use({ "christoomey/vim-tmux-navigator" })
-    -- sends text from vim to tmux buffer
-    use({ "jpalardy/vim-slime" })
-    use({
-        "klafyvel/vim-slime-cells",
-        ft = { "julia", "python", "r" },
-    })
+    { "mbbill/undotree" },
 
-    -- easy set-up LSPs
-    use({
-        "VonHeikemen/lsp-zero.nvim",
-        requires = {
-            -- LSP Support
-            { "neovim/nvim-lspconfig" },
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" },
+    -- Git integration
+    { "tpope/vim-fugitive" },
+    { "lewis6991/gitsigns.nvim" },          -- replaces airblade/vim-gitgutter
+    { "f-person/git-blame.nvim" },
+    { "rhysd/conflict-marker.vim" },
 
-            -- Autocompletion
-            { "hrsh7th/nvim-cmp" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
-            { "saadparwaiz1/cmp_luasnip" },
-            { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-nvim-lsp-signature-help" },
-            { "hrsh7th/cmp-nvim-lua" },
-            { "hrsh7th/cmp-latex-symbols" },
+    -- navigate vim and tmux splits
+    { "christoomey/vim-tmux-navigator" },
 
-            -- Snippets
-            { "L3MON4D3/LuaSnip",                   requires = { { "rafamadriz/friendly-snippets" } } },
+    -- send text to a REPL
+    { "jpalardy/vim-slime" },
+    { "klafyvel/vim-slime-cells", ft = { "julia", "python", "r" } },
+
+    -- LSP
+    { "neovim/nvim-lspconfig" },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
+
+    -- Completion (blink.cmp replaces nvim-cmp + 6 source plugins)
+    -- Rust-based fuzzy matching, built-in LSP/buffer/path/snippets sources
+    {
+        "saghen/blink.cmp",
+        version = "1.*",    -- use pre-built Rust binaries from GitHub releases
+        dependencies = {
+            "L3MON4D3/LuaSnip",
+            "saghen/blink.compat",          -- bridges nvim-cmp community sources
+            "hrsh7th/cmp-latex-symbols",    -- kept via compat layer
         },
-    })
+    },
 
-    -- enable non LSP server with LSP features
-    use({ "stevearc/conform.nvim" })
-    use({ "mfussenegger/nvim-lint" })
+    -- Snippets
+    { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
 
-    -- convert code to comments
-    use({ "terrortylor/nvim-comment" })
-    -- change surround parentheses
-    use({ "tpope/vim-surround" })
+    -- Python venv selector
+    {
+        "linux-cultist/venv-selector.nvim",
+        dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
+        opts = { name = ".venv" },
+    },
 
-    -- preview Markdown files
-    use({
+    -- formatting and linting
+    { "stevearc/conform.nvim" },
+    { "mfussenegger/nvim-lint" },
+
+    -- commenting (replaces terrortylor/nvim-comment)
+    { "numToStr/Comment.nvim" },
+
+    -- surround motions
+    { "tpope/vim-surround" },
+
+    -- Markdown
+    {
         "ellisonleao/glow.nvim",
         config = function()
             require("glow").setup({ border = "single" })
         end,
-    })
-    -- generate Markdown TOC
-    use({ "mzlogin/vim-markdown-toc" })
+    },
+    { "mzlogin/vim-markdown-toc" },
 
-    -- DAP
-    use({
+    -- DAP (lazy=false: keymaps call require("dap")/require("dapui") eagerly)
+    {
         "mfussenegger/nvim-dap",
-        requires = {
-            { "rcarriga/nvim-dap-ui" },
+        lazy = false,
+        dependencies = {
+            { "rcarriga/nvim-dap-ui",              dependencies = { "nvim-neotest/nvim-nio" } },
             { "mfussenegger/nvim-dap-python" },
-            { "LiadOz/nvim-dap-repl-highlights" },
+            { "LiadOz/nvim-dap-repl-highlights",   enabled = Internet == 1 },
             { "nvim-telescope/telescope-dap.nvim" },
             { "theHamsta/nvim-dap-virtual-text" },
         },
-    })
-    use({
-        "nvim-neotest/nvim-nio",
-        requires = {
-            { "nvim-neotest/neotest" },
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            { "nvim-neotest/nvim-nio" },
             { "nvim-neotest/neotest-python" },
             { "nvim-neotest/neotest-plenary" },
         },
-    })
+    },
 
-    -- write, compile, and run codes
-    use({ "Makaze/watch.nvim" })
+    -- run/watch files
+    { "Makaze/watch.nvim" },
 
-    -- codesnap: take code snapshot
-    use({ "mistricky/codesnap.nvim", run = "make" })
+    -- code snapshot (lazy: load only when commands are invoked)
+    {
+        "mistricky/codesnap.nvim",
+        build = "make",
+        lazy = true,
+        cmd = { "CodeSnap", "CodeSnapSave", "CodeSnapHighlight", "CodeSnapSaveHighlight", "CodeSnapASCII", "CodeSnapCopyASCII" },
+        config = function()
+            require("codesnap").setup({
+                has_line_number = true,
+                bg_color = "#00000000",
+                watermark = "",
+                save_path = os.getenv("HOME") .. "/Downloads",
+            })
+        end,
+    },
 
-    -- interact with terminal
-    use({ "akinsho/nvim-toggleterm.lua" })
+    -- floating terminal (renamed from nvim-toggleterm.lua)
+    { "akinsho/toggleterm.nvim" },
 
-    -- show lsp troubles
-    use({ "folke/lsp-trouble.nvim" })
-end)
+    -- diagnostics / quickfix list UI (renamed from lsp-trouble.nvim)
+    { "folke/trouble.nvim" },
+}

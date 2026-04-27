@@ -51,9 +51,7 @@ fish_vi_key_bindings
 
 
 # Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/ling/.lmstudio/bin
+if test "$HOME/.lmstudio/bin"
+    set -gx PATH $PATH $HOME/.lmstudio/bin
+end
 # End of LM Studio CLI section
-
-
-# Added by Antigravity
-fish_add_path /Users/ling/.antigravity/antigravity/bin

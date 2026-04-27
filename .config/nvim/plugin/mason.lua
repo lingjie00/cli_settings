@@ -4,7 +4,7 @@ if Internet == 1 then
     })
 
     require("mason-lspconfig").setup({
-        ensure_installed = {},
+        ensure_installed = { "julials" },
         handlers = {
             function(server_name)
                 require("lspconfig")[server_name].setup({})
@@ -17,7 +17,7 @@ if Internet == 1 then
                             analysis = {
                                 autoSearchPaths = true,
                                 useLibraryCodeForTypes = true,
-                                diagnosticMode = "workspace",
+                                diagnosticMode = "openFilesOnly",
                             },
                             venvPath = ".",
                             venv = ".venv",
@@ -47,6 +47,11 @@ if Internet == 1 then
             ltex = function()
                 require("lspconfig").ltex.setup({
                     autostart = false,
+                    settings = {
+                        ltex = {
+                            logLevel = "warning",
+                        },
+                    },
                 })
             end,
 

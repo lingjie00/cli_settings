@@ -105,6 +105,7 @@ return {
     -- send text to a REPL
     { "jpalardy/vim-slime" },
     { "klafyvel/vim-slime-cells", ft = { "julia", "python", "r" } },
+    { "JuliaEditorSupport/julia-vim" },
 
     -- LSP
     { "neovim/nvim-lspconfig" },

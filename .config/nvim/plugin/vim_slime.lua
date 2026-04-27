@@ -1,8 +1,8 @@
 -- set tmux as the default slime target
-vim.g.slime_target = "neovim"
+vim.g.slime_target = "tmux"
 -- vim.g.slime_target = "tmux"
--- use Ipython notation of %% for a new cell
-vim.g.slime_cell_delimiter = "^# %%"
+-- use Ipython notation of %% for a new cell, also support Julia's ##
+vim.g.slime_cell_delimiter = [[^\(# %%\|##\)]]
 
 -- fix tmux auto spacing issue
 vim.g.slime_bracketed_paste = 1

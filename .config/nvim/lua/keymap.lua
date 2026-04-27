@@ -89,6 +89,7 @@ end)
 
 -- [[ LSP ]]
 local telescope_builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>vs", "<cmd>VenvSelect<cr>")
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gs", telescope_builtin.lsp_document_symbols)
 vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references toggle focus=true<CR>")

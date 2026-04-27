@@ -10,6 +10,40 @@ if Internet == 1 then
                 require("lspconfig")[server_name].setup({})
             end,
 
+            pyright = function()
+                require("lspconfig").pyright.setup({
+                    settings = {
+                        python = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                useLibraryCodeForTypes = true,
+                                diagnosticMode = "workspace",
+                            },
+                            venvPath = ".",
+                            venv = ".venv",
+                        },
+                    },
+                })
+            end,
+
+            basedpyright = function()
+                require("lspconfig").basedpyright.setup({
+                    settings = {
+                        basedpyright = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                useLibraryCodeForTypes = true,
+                                diagnosticMode = "workspace",
+                            },
+                        },
+                        python = {
+                            venvPath = ".",
+                            venv = ".venv",
+                        },
+                    },
+                })
+            end,
+
             ltex = function()
                 require("lspconfig").ltex.setup({
                     autostart = false,

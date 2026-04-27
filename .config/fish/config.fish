@@ -18,8 +18,6 @@ function edit_files --description "Find and edit files in current directory"
     nvim $(fzf --preview "bat --color=always --style=numbers --line-range=:500 {}")
 end
 
-alias icat="kitten icat"
-
 alias ls="eza"
 
 alias ll="eza -h -l --no-user --no-permissions --grid"
@@ -36,18 +34,26 @@ fish_vi_key_bindings
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /opt/homebrew/Caskroom/miniforge/base/bin/conda
-    eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/conda.fish"
-        . "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "/opt/homebrew/Caskroom/miniforge/base/bin" $PATH
-    end
-end
+# if test -f /opt/homebrew/Caskroom/miniforge/base/bin/conda
+#     eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
+# else
+#     if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/conda.fish"
+#         . "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/conda.fish"
+#     else
+#         set -x PATH "/opt/homebrew/Caskroom/miniforge/base/bin" $PATH
+#     end
+# end
 
-if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/mamba.fish"
-    source "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/mamba.fish"
-end
+# if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/mamba.fish"
+#     source "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/mamba.fish"
+# end
 # <<< conda initialize <<<
 
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/ling/.lmstudio/bin
+# End of LM Studio CLI section
+
+
+# Added by Antigravity
+fish_add_path /Users/ling/.antigravity/antigravity/bin

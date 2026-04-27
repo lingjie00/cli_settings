@@ -27,6 +27,7 @@ This repo stores the following CLI settings I use:
 2. fish shell
 3. Tmux
 4. Yabai (window management for macOS)
+5. Ghostty (terminal emulator)
 
 # Setup
 

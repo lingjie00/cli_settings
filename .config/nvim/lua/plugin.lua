@@ -74,10 +74,7 @@ return {
             -- Enable treesitter highlighting for all filetypes
             vim.api.nvim_create_autocmd("FileType", {
                 callback = function()
-                    local ok = pcall(vim.treesitter.start)
-                    if not ok then
-                        -- parser not available for this filetype — silently skip
-                    end
+                    pcall(vim.treesitter.start)
                 end,
             })
             require("hlargs").setup({})

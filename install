@@ -56,6 +56,7 @@ if ! [[ $INTERNET =~ ^[Nn].* ]]; then
             ".config/limelight"
             ".config/karabiner"
             ".config/kitty"
+            ".config/ghostty"
         )
         custom_ln "${mfolders[@]}";
     fi

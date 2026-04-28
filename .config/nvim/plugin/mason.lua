@@ -3,92 +3,82 @@ if Internet == 1 then
 		PATH = "append",
 	})
 
+	-- Note: mason-lspconfig's `handlers` option is no longer supported in the
+	-- new API. Server configuration must be done via vim.lsp.config() directly.
 	require("mason-lspconfig").setup({
 		ensure_installed = { "julials" },
-		handlers = {
-			function(server_name)
-				require("lspconfig")[server_name].setup({})
-			end,
+	})
 
-			pyright = function()
-				require("lspconfig").pyright.setup({
-					settings = {
-						python = {
-							analysis = {
-								autoSearchPaths = true,
-								useLibraryCodeForTypes = true,
-								diagnosticMode = "openFilesOnly",
-							},
-							venvPath = ".",
-							venv = ".venv",
-						},
-					},
-				})
-			end,
+	-- Per-server LSP configuration (must come after mason-lspconfig.setup so
+	-- that automatic_enable has already registered the servers, and our calls
+	-- here take final precedence via _configs merging).
 
-			basedpyright = function()
-				require("lspconfig").basedpyright.setup({
-					settings = {
-						basedpyright = {
-							analysis = {
-								autoSearchPaths = true,
-								useLibraryCodeForTypes = true,
-								diagnosticMode = "workspace",
-							},
-						},
-						python = {
-							venvPath = ".",
-							venv = ".venv",
-						},
-					},
-				})
-			end,
+	vim.lsp.config("pyright", {
+		settings = {
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					useLibraryCodeForTypes = true,
+					diagnosticMode = "openFilesOnly",
+				},
+				venvPath = ".",
+				venv = ".venv",
+			},
+		},
+	})
 
-			ltex = function()
-				require("lspconfig").ltex.setup({
-					autostart = false,
-					settings = {
-						ltex = {
-							logLevel = "warning",
-						},
-					},
-				})
-			end,
+	vim.lsp.config("basedpyright", {
+		settings = {
+			basedpyright = {
+				analysis = {
+					autoSearchPaths = true,
+					useLibraryCodeForTypes = true,
+					diagnosticMode = "workspace",
+				},
+			},
+			python = {
+				venvPath = ".",
+				venv = ".venv",
+			},
+		},
+	})
 
-			lua_ls = function()
-				require("lspconfig").lua_ls.setup({
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-						},
-					},
-				})
-			end,
+	vim.lsp.config("ltex", {
+		settings = {
+			ltex = {
+				logLevel = "warning",
+			},
+		},
+	})
 
-			julials = function()
-				require("lspconfig").julials.setup({
-					on_new_config = function(new_config, _)
-						-- Force the server to use our stable shared environment
-						new_config.cmd = {
-							"julia",
-							"--project=@lspconfig",
-							"--startup-file=no",
-							"--history-file=no",
-							"-e",
-							"using LanguageServer; runserver()",
-						}
-					end,
-					settings = {
-						julia = {
-							format = {
-								indent = 4,
-							},
-						},
-					},
-				})
-			end,
+	vim.lsp.config("lua_ls", {
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+				},
+			},
+		},
+	})
+
+	-- Override mason-lspconfig's automatic `julia-lsp` wrapper with the
+	-- manually installed LanguageServer.jl in the @lspconfig Julia environment.
+	-- This must come AFTER mason-lspconfig.setup() so it wins the _configs merge.
+	vim.lsp.config("julials", {
+		cmd = {
+			"/opt/homebrew/bin/julia",
+			"--project=@lspconfig",
+			"--startup-file=no",
+			"--history-file=no",
+			"-e",
+			"using LanguageServer; runserver()",
+		},
+		settings = {
+			julia = {
+				format = {
+					indent = 4,
+				},
+			},
 		},
 	})
 end

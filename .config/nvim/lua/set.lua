@@ -40,6 +40,7 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.o.breakindent = true
 vim.opt.textwidth = 79
+vim.opt.formatoptions-=t
 
 -- store edit history
 vim.opt.swapfile = false

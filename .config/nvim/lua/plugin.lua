@@ -138,9 +138,6 @@ return {
     { "stevearc/conform.nvim" },
     { "mfussenegger/nvim-lint" },
 
-    -- commenting (replaces terrortylor/nvim-comment)
-    { "numToStr/Comment.nvim" },
-
     -- surround motions
     { "tpope/vim-surround" },
 

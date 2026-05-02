@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "lsp-python": {
+      "type": "local",
+      "command": "npx",
+      "tools": [
+        "*"
+      ],
+      "args": [
+        "-y",
+        "tritlo/lsp-mcp",
+        "python",
+        "/Users/ling/.local/share/nvim/mason/bin/pyright-langserver",
+        "--stdio"
+      ]
+    },
+    "python-local": {
+      "type": "local",
+      "command": "uvx",
+      "tools": [
+        "*"
+      ],
+      "args": [
+        "mcp-run-python",
+        "stdio"
+      ]
+    },
+    "lsp-typescript": {
+      "type": "local",
+      "command": "npx",
+      "tools": [
+        "*"
+      ],
+      "args": [
+        "-y",
+        "tritlo/lsp-mcp",
+        "typescript",
+        "/Users/ling/.local/share/nvim/mason/bin/typescript-language-server",
+        "--stdio"
+      ]
+    },
+    "duckdb": {
+      "type": "local",
+      "command": "uvx",
+      "tools": [
+        "*"
+      ],
+      "args": [
+        "mcp-server-motherduck",
+        "--db-path",
+        "$DUCKDB_PATH",
+        "--read-write"
+      ]
+    }
+  }
+}

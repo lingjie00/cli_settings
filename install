@@ -40,6 +40,18 @@ echo "======================="
 custom_ln ".vimrc" ".tmux.conf" ".gitconfig"
 custom_ln ".config/nvim" ".config/fish"
 
+# copilot CLI config (symlink individual files to preserve local state)
+[ -d $HOME/.copilot ] || { echo "creating .copilot folder"; mkdir $HOME/.copilot; }
+for file in agents mcp-config.json; do
+    target=$HOME/.copilot/$file
+    if [ -e "$target" ] || [ -L "$target" ]; then
+        echo ".copilot/$file exist"
+    else
+        echo "creating .copilot/$file symlink"
+        ln -s $PWD/.copilot/$file $target
+    fi
+done
+
 # only if access beyond pypi is available
 if ! [[ $INTERNET =~ ^[Nn].* ]]; then
     echo "====================================="

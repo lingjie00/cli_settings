@@ -1,0 +1,6 @@
+# Ignore everything except tracked config
+*
+!.gitignore
+!agents/
+!agents/**
+!mcp-config.json

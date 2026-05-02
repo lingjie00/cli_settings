@@ -4,7 +4,7 @@ require("nvim-tree").setup({
             quit_on_open = true,
         }
     },
-    filters = { custom = { "^.git$" } },
+    filters = { custom = { "^.git$", "^.venv$" }, git_ignored = false },
     renderer = {
         icons = {
             git_placement = "after",

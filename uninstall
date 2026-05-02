@@ -27,6 +27,11 @@ for file in ${files[@]}
         [ -e $HOME/$file ] && { echo "deleting $file"; rm $HOME/$file; }
 done
 
+# clean copilot symlinks
+for file in agents mcp-config.json; do
+    [ -L $HOME/.copilot/$file ] && { echo "deleting .copilot/$file"; rm $HOME/.copilot/$file; }
+done
+
 # clean the workspace files
 
 files=("nb_clean" "tmux_setup")

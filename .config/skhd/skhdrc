@@ -13,9 +13,10 @@ hyper - q : bash -c "open -a Microsoft\ Edge"
 hyper - w : bash -c "open -a Microsoft\ Teams"
 hyper - e : bash -c "open -a Microsoft\ Outlook"
 hyper - t : bash -c "open -a Ghostty"
+hyper - d : bash -c "open -a Zotero"
 hyper - c : bash -c "open -a Safari"
 hyper - v : bash -c "open -a Visual\ Studio\ Code"
-hyper - d : bash -c "open -a Zotero"
+hyper - r : bash -c "open -a Obsidian"
 # hyper - d : yabai -m query --windows | grep "zathura" -B 3 | grep -o '"id":[0-9]*' | grep -o "[0-9]*" | xargs yabai -m window --focus
 
 ## swap window
